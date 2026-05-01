@@ -44,53 +44,42 @@ export default function Home() {
 
       <Footer onTabChange={handleTabChange} />
 
-      {/* Floating Buttons */}
+      {/* Floating cluster — bottom right */}
       <div
-        className={`fixed bottom-8 right-8 z-40 flex flex-col items-center gap-3 transition-all duration-500 ${
+        className={`fixed bottom-6 right-6 z-40 flex flex-col items-stretch gap-2 transition-all duration-500 ${
           showFloatingBtn ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"
         }`}
       >
-        {/* Scroll to Top */}
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="w-11 h-11 bg-white text-cool-gray rounded-sm shadow-md border border-gray-100 flex items-center justify-center hover:bg-off-white hover:text-navy transition-all duration-300"
+          className="w-10 h-10 bg-paper text-stone border border-ink/10 hover:text-ink hover:border-ink/30 transition-all flex items-center justify-center"
           title="맨 위로"
         >
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
+          <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 15l7-7 7 7" />
           </svg>
         </button>
-
-        {/* Register CTA */}
         <button
           onClick={() => handleTabChange("register")}
-          className="w-12 h-12 bg-gold text-white rounded-sm shadow-lg flex items-center justify-center hover:bg-gold-light transition-all duration-300"
-          title="관심고객등록"
+          className="px-4 h-10 bg-ink text-paper hover:bg-rust transition-all flex items-center gap-2 text-[11px] tracking-[2px] uppercase"
         >
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={1.5}
-              d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
-            />
-          </svg>
+          Register <span className="text-rust group-hover:text-paper">→</span>
         </button>
       </div>
 
-      {/* Phone Floating Button (Mobile) — only if phone is configured */}
+      {/* Phone CTA (mobile only) */}
       {hasPhone && (
         <a
           href={telHref}
-          className={`fixed bottom-8 left-6 z-40 lg:hidden flex items-center gap-2 px-5 py-3 bg-navy text-white rounded-sm shadow-lg transition-all duration-500 ${
+          className={`fixed bottom-6 left-6 z-40 lg:hidden inline-flex items-center gap-2 px-4 h-10 bg-ink text-paper transition-all duration-500 ${
             showFloatingBtn ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"
           }`}
         >
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-3.5 h-3.5 text-rust" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5}
               d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
           </svg>
-          <span className="text-[13px] font-medium tracking-wider">분양문의</span>
+          <span className="text-[11px] tracking-[2px] uppercase">Call</span>
         </a>
       )}
     </div>

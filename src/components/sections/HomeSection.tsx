@@ -11,7 +11,10 @@ function useInView(threshold = 0.15) {
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setVisible(true); obs.disconnect(); } }, { threshold });
+    const obs = new IntersectionObserver(
+      ([e]) => { if (e.isIntersecting) { setVisible(true); obs.disconnect(); } },
+      { threshold }
+    );
     obs.observe(el);
     return () => obs.disconnect();
   }, [threshold]);
@@ -22,12 +25,28 @@ interface HomeSectionProps {
   onTabChange?: (tabId: string) => void;
 }
 
+const marqueeTags = [
+  "성성호수공원 도보 1분",
+  "총 1,908세대",
+  "지상 39층",
+  "11개동",
+  "전용 72·84·95㎡",
+  "푸르지오 브랜드",
+  "대우건설 시공",
+  "2026 분양",
+];
+
+const visionParagraphs = [
+  "충청남도 천안시 서북구 업성동에 들어서는 1,908세대 규모의 푸르지오 주거단지. 성성호수공원과 맞닿은 입지 위에 호수 조망과 도시 인프라가 균형 있게 자리 잡습니다.",
+  "11개 동, 최고 39층의 단지 구성. 전용 72·84·95㎡ 의 다양한 평형이 가족 구성에 따라 선택의 폭을 제공하며, 푸르지오 특유의 단지 조경과 커뮤니티 시설이 함께 설계됩니다.",
+];
+
 export default function HomeSection({ onTabChange }: HomeSectionProps) {
   const [loaded, setLoaded] = useState(false);
-  const hero = useInView(0.1);
-  const about = useInView();
-  const features = useInView(0.1);
-  const stats = useInView();
+  const vision = useInView();
+  const features = useInView(0.05);
+  const numbers = useInView(0.2);
+  const map = useInView();
   const cta = useInView();
 
   useEffect(() => {
@@ -35,334 +54,328 @@ export default function HomeSection({ onTabChange }: HomeSectionProps) {
     return () => clearTimeout(t);
   }, []);
 
-  const scrollToContent = () => {
-    const el = document.getElementById("home-content");
-    if (el) el.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
-    <section>
-      {/* ══════════ INTRO SPLASH ══════════ */}
-      <div className="relative h-screen min-h-[700px] flex flex-col items-center justify-center overflow-hidden bg-[#070b12]">
+    <section className="bg-paper">
 
-        {/* Lake photo background */}
-        <Image src="/images/lake-view.jpg" alt="" fill className="object-cover opacity-35" sizes="100vw" priority />
+      {/* ═══════════════════════════════════════════════
+          HERO — Editorial Split (text left, image right)
+          ═══════════════════════════════════════════════ */}
+      <div className="relative h-screen min-h-[680px] grid grid-cols-1 lg:grid-cols-12 overflow-hidden">
 
-        {/* Multi-layer gradient for depth */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#070b12]/70 via-transparent to-[#070b12]/80" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#070b12]/30 via-transparent to-[#070b12]/30" />
-        {/* Radial vignette */}
-        <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse at center, transparent 40%, rgba(7,11,18,0.6) 100%)" }} />
+        {/* LEFT — Dark editorial panel */}
+        <div className="relative lg:col-span-7 bg-ink text-paper flex flex-col justify-between px-6 sm:px-10 lg:pl-[88px] lg:pr-12 pt-24 pb-10 lg:py-20">
 
-        {/* Decorative circle — outer (gold) */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none">
-          <div
-            className="w-[420px] h-[420px] sm:w-[500px] sm:h-[500px] lg:w-[580px] lg:h-[580px] rounded-full"
-            style={{ border: "1px solid rgba(184,151,106,0.12)" }}
-          />
-        </div>
-        {/* Decorative circle — inner */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none">
-          <div
-            className="w-[350px] h-[350px] sm:w-[410px] sm:h-[410px] lg:w-[480px] lg:h-[480px] rounded-full"
-            style={{ border: "1px solid rgba(255,255,255,0.04)" }}
-          />
-        </div>
-
-        {/* Gold corner accents */}
-        <div className="absolute top-8 right-8 lg:top-14 lg:right-14 pointer-events-none">
-          <div className="w-10 h-10 lg:w-14 lg:h-14 border-t border-r border-gold/20" />
-        </div>
-        <div className="absolute bottom-24 left-8 lg:bottom-28 lg:left-14 pointer-events-none">
-          <div className="w-10 h-10 lg:w-14 lg:h-14 border-b border-l border-gold/20" />
-        </div>
-
-        {/* Content */}
-        <div className="relative z-10 flex flex-col items-center text-center px-6">
-          {/* Eyebrow */}
-          <p
-            className={`text-gold/60 text-[10px] sm:text-[11px] tracking-[6px] uppercase font-light mb-6 text-shadow-subtle transition-all duration-[1400ms] delay-100 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
-          >
-            Upseong · Daewoo E&amp;C
-          </p>
-
-          {/* Title */}
-          <h1
-            className={`text-white text-[38px] sm:text-[52px] lg:text-[64px] tracking-[12px] sm:tracking-[16px] lg:tracking-[22px] leading-none text-shadow-hero transition-all duration-[1400ms] delay-200 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
-            style={{ fontWeight: 200, paddingLeft: "22px" }}
-          >
-            PRUGIO
-          </h1>
-
-          {/* Subtitle */}
-          <div className={`flex items-center gap-4 sm:gap-5 mt-5 mb-8 transition-all duration-[1400ms] delay-[400ms] ${loaded ? "opacity-100" : "opacity-0"}`}>
-            <span className="w-10 sm:w-20 h-[1px] bg-gradient-to-r from-transparent to-gold/40" />
-            <span className="text-white/70 text-[13px] sm:text-[15px] tracking-[8px] sm:tracking-[12px] font-extralight text-shadow-subtle" style={{ paddingLeft: "12px" }}>
-              레 이 크 시 티
-            </span>
-            <span className="w-10 sm:w-20 h-[1px] bg-gradient-to-l from-transparent to-gold/40" />
+          {/* Top meta line */}
+          <div className={`flex items-center gap-3 transition-all duration-1000 ${loaded ? "opacity-100" : "opacity-0 translate-y-2"}`}>
+            <span className="text-mono text-[10px] tabular-nums tracking-wider text-paper/50">N°01</span>
+            <span className="w-8 h-[1px] bg-paper/20" />
+            <span className="text-[10px] tracking-[3px] uppercase text-paper/50">Upseong District · Cheonan</span>
           </div>
 
-          {/* Description */}
-          <p className={`text-white/50 text-[12px] sm:text-[14px] tracking-[2px] font-light mb-1 text-shadow-subtle transition-all duration-[1400ms] delay-[600ms] ${loaded ? "opacity-100" : "opacity-0"}`}>
-            호수공원 앞 · 프리미엄 주거단지
-          </p>
-          <p className={`text-white/30 text-[10px] tracking-[3px] uppercase font-light mb-16 text-shadow-subtle transition-all duration-[1400ms] delay-[700ms] ${loaded ? "opacity-100" : "opacity-0"}`}>
-            Lake Park · Premium Residence
-          </p>
-
-          {/* Enter Button */}
-          <button
-            onClick={scrollToContent}
-            className={`group relative px-16 sm:px-20 py-4 border border-white/20 text-white/70 text-[11px] tracking-[5px] uppercase font-light hover:bg-white hover:text-[#0a0f18] hover:border-white transition-all duration-500 cursor-pointer overflow-hidden ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
-            style={{ transitionDelay: loaded ? "900ms" : "0ms" }}
-          >
-            <span className="relative z-10">ENTER</span>
-            <div className="absolute inset-0 bg-gradient-to-r from-gold/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-          </button>
-        </div>
-
-        {/* Scroll indicator */}
-        <div className={`absolute bottom-[80px] left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 transition-all duration-[1400ms] delay-[1200ms] ${loaded ? "opacity-100" : "opacity-0"}`}>
-          <span className="text-white/20 text-[9px] tracking-[3px] uppercase font-light">Scroll</span>
-          <div className="w-[1px] h-5 relative overflow-hidden">
-            <div className="absolute w-full h-full bg-gradient-to-b from-gold/40 to-transparent animate-[scrollLine_2s_ease-in-out_infinite]" />
+          {/* Massive typography */}
+          <div className={`mt-12 lg:mt-0 transition-all duration-[1200ms] ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
+            <h1 className="font-display text-paper leading-[0.92] tracking-[-0.02em] text-[14vw] sm:text-[12vw] lg:text-[8.5vw] xl:text-[140px]" style={{ fontWeight: 400 }}>
+              호수<br />
+              위에<br />
+              <span className="italic text-rust" style={{ fontWeight: 400 }}>새기다.</span>
+            </h1>
+            <p className="text-paper/55 text-[13.5px] lg:text-[14px] font-light leading-[1.9] mt-10 max-w-[440px]">
+              성성호수공원과 맞닿은 1,908세대 규모의 단지.<br />
+              대우건설 푸르지오 브랜드가 천안 업성동 위에 그리는<br />
+              새로운 주거의 좌표.
+            </p>
           </div>
-        </div>
 
-        {/* Bottom Nav */}
-        <div className={`absolute bottom-0 left-0 right-0 border-t border-white/[0.08] py-5 bg-black/20 backdrop-blur-sm transition-all duration-[1400ms] delay-[1100ms] ${loaded ? "opacity-100" : "opacity-0"}`}>
-          <div className="flex items-center justify-center gap-6 sm:gap-10 flex-wrap px-6">
+          {/* Bottom row — stats + cta */}
+          <div className={`mt-12 lg:mt-0 grid grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-10 transition-all duration-[1200ms] delay-300 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
             {[
-              { id: "business", en: "OVERVIEW" },
-              { id: "location", en: "LOCATION" },
-              { id: "premium", en: "PREMIUM" },
-              { id: "register", en: "REGISTER" },
-            ].map((item, i) => (
-              <button
-                key={i}
-                onClick={() => onTabChange?.(item.id)}
-                className="text-white/35 hover:text-gold transition-colors duration-300"
-              >
-                <span className="text-[10px] sm:text-[11px] tracking-[3px] uppercase font-light">{item.en}</span>
-              </button>
+              { num: "1,908", label: "Households" },
+              { num: "39", label: "Floors" },
+              { num: "11", label: "Buildings" },
+            ].map((s) => (
+              <div key={s.label} className="border-t border-paper/15 pt-3">
+                <p className="font-display text-paper text-[28px] lg:text-[34px] tabular-nums leading-none" style={{ fontWeight: 400 }}>
+                  {s.num}
+                </p>
+                <p className="text-mono text-[10px] tabular-nums text-paper/40 tracking-[2px] uppercase mt-2">
+                  {s.label}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* RIGHT — Image with overlay caption */}
+        <div className="relative lg:col-span-5 min-h-[280px] lg:min-h-0 group">
+          <Image
+            src="/images/hero-lake.jpg"
+            alt="성성호수공원 전경"
+            fill
+            className="object-cover"
+            sizes="(max-width: 1024px) 100vw, 42vw"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-ink/60 via-transparent to-ink/20" />
+
+          {/* Caption — bottom right */}
+          <div className="absolute bottom-6 right-6 lg:bottom-10 lg:right-10 text-right">
+            <p className="text-paper/70 text-[10px] tracking-[3px] uppercase mb-1">Site Photography</p>
+            <p className="text-mono text-[10px] tabular-nums text-paper/50">36.8541° N · 127.1518° E</p>
+          </div>
+
+          {/* Vertical text on left edge of image */}
+          <div className="hidden lg:block absolute top-1/2 left-4 -translate-y-1/2 vertical-rl text-paper/40 text-[10px] tracking-[6px] uppercase">
+            Lake Park View
+          </div>
+        </div>
+      </div>
+
+      {/* ═══════════════════════════════════════════════
+          MARQUEE — scrolling tags
+          ═══════════════════════════════════════════════ */}
+      <div className="bg-ink-soft border-y border-paper/10 overflow-hidden">
+        <div className="flex marquee-track w-max py-5">
+          {[...marqueeTags, ...marqueeTags].map((tag, i) => (
+            <div key={i} className="flex items-center gap-8 px-8">
+              <span className="font-display text-paper/80 text-[22px] tracking-tight" style={{ fontWeight: 400 }}>
+                {tag}
+              </span>
+              <span className="text-rust text-[18px]">✦</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* ═══════════════════════════════════════════════
+          VISION — Editorial 12-col grid
+          ═══════════════════════════════════════════════ */}
+      <div ref={vision.ref} className="relative">
+        <div className={`max-w-[1320px] mx-auto px-6 lg:pl-[88px] lg:pr-10 py-24 lg:py-36 grid grid-cols-12 gap-6 lg:gap-10 transition-all duration-1000 ${vision.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+
+          {/* Left: section eyebrow + huge index */}
+          <div className="col-span-12 lg:col-span-4">
+            <p className="text-mono text-[11px] tabular-nums text-rust tracking-[3px]">N°02 — VISION</p>
+            <p className="font-display text-ink text-[120px] lg:text-[180px] leading-none tracking-tighter mt-4" style={{ fontWeight: 400 }}>
+              02
+            </p>
+          </div>
+
+          {/* Right: heading + body, asymmetric */}
+          <div className="col-span-12 lg:col-span-8 lg:pl-10 lg:border-l lg:border-ink/10">
+            <h2 className="font-display text-ink text-[36px] lg:text-[54px] leading-[1.05] tracking-tight text-balance" style={{ fontWeight: 400 }}>
+              일상이 머무는 곳에<br />
+              <span className="italic text-rust">자연이 먼저 이어집니다.</span>
+            </h2>
+            <div className="mt-12 grid sm:grid-cols-2 gap-8 lg:gap-14">
+              {visionParagraphs.map((p, i) => (
+                <div key={i}>
+                  <p className="text-mono text-[10px] tabular-nums text-stone-light mb-3">— 0{i + 1}</p>
+                  <p className="text-ink/75 text-[14px] leading-[2] font-light">{p}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Decorative grid backdrop */}
+        <div className="absolute inset-0 pointer-events-none grid-lines opacity-50" />
+      </div>
+
+      {/* ═══════════════════════════════════════════════
+          FEATURES — Bento mosaic
+          ═══════════════════════════════════════════════ */}
+      <div ref={features.ref} className="bg-paper-deep">
+        <div className="max-w-[1400px] mx-auto px-6 lg:pl-[88px] lg:pr-10 py-24 lg:py-32">
+
+          <div className={`flex items-end justify-between mb-12 lg:mb-16 transition-all duration-700 ${features.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
+            <div>
+              <p className="text-mono text-[11px] tabular-nums text-rust tracking-[3px] mb-3">N°03 — FEATURES</p>
+              <h2 className="font-display text-ink text-[32px] lg:text-[46px] tracking-tight leading-tight" style={{ fontWeight: 400 }}>
+                네 가지 좌표,<br className="hidden lg:block" /> <span className="italic">하나의 일상.</span>
+              </h2>
+            </div>
+            <p className="hidden lg:block text-stone text-[12.5px] font-light max-w-[260px] text-right leading-relaxed">
+              자연 · 교통 · 교육 · 생활 인프라가 도보 생활권에서 만납니다.
+            </p>
+          </div>
+
+          {/* Bento grid: 12 cols, mixed sizes */}
+          <div className={`grid grid-cols-12 gap-3 lg:gap-4 transition-all duration-1000 ${features.visible ? "opacity-100" : "opacity-0"}`}>
+
+            {/* Big — Nature (col-span-7, row-span-2) */}
+            <article className="col-span-12 lg:col-span-7 lg:row-span-2 relative min-h-[440px] lg:min-h-[640px] overflow-hidden group bg-ink">
+              <Image src="/images/premium-lakeview.jpg" alt="자연 환경" fill className="object-cover transition-transform duration-[1400ms] group-hover:scale-[1.04] opacity-90" sizes="(max-width: 1024px) 100vw, 58vw" />
+              <div className="absolute inset-0 bg-gradient-to-tr from-ink/85 via-ink/30 to-transparent" />
+              <div className="absolute top-6 left-6 lg:top-8 lg:left-8 flex items-center gap-3">
+                <span className="text-mono text-[10px] tabular-nums text-rust">F.01</span>
+                <span className="w-6 h-[1px] bg-rust/60" />
+                <span className="text-paper/70 text-[10px] tracking-[3px] uppercase">Lake Park</span>
+              </div>
+              <div className="absolute bottom-6 left-6 right-6 lg:bottom-10 lg:left-10 lg:right-10">
+                <h3 className="font-display text-paper text-[32px] lg:text-[52px] leading-[1.05] tracking-tight" style={{ fontWeight: 400 }}>
+                  호수공원<br />
+                  <span className="italic text-rust">도보 1분.</span>
+                </h3>
+                <p className="text-paper/65 text-[13px] lg:text-[14px] font-light leading-[1.9] max-w-[420px] mt-5">
+                  성성호수공원과 맞닿은 입지. 사계절 수변 산책로와 탁 트인 호수 조망이 일상의 풍경이 됩니다.
+                </p>
+              </div>
+            </article>
+
+            {/* Med — Transport (col-span-5) */}
+            <article className="col-span-12 sm:col-span-6 lg:col-span-5 relative min-h-[300px] overflow-hidden group bg-ink">
+              <Image src="/images/premium-highway.jpg" alt="교통" fill className="object-cover transition-transform duration-[1400ms] group-hover:scale-[1.04] opacity-85" sizes="(max-width: 1024px) 50vw, 36vw" />
+              <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/20 to-transparent" />
+              <div className="absolute top-6 left-6 flex items-center gap-3">
+                <span className="text-mono text-[10px] tabular-nums text-rust">F.02</span>
+                <span className="text-paper/70 text-[10px] tracking-[3px] uppercase">Transport</span>
+              </div>
+              <div className="absolute bottom-6 left-6 right-6">
+                <h3 className="font-display text-paper text-[24px] lg:text-[30px] leading-[1.1] tracking-tight" style={{ fontWeight: 400 }}>멀티 교통망</h3>
+                <p className="text-paper/55 text-[12.5px] font-light mt-2">번영로·삼성대로·1호선 부성역</p>
+              </div>
+            </article>
+
+            {/* Med — Education (col-span-5, sits next to Nature lower row) */}
+            <article className="col-span-12 sm:col-span-6 lg:col-span-5 relative min-h-[300px] overflow-hidden group bg-ink">
+              <Image src="/images/premium-school.jpg" alt="교육" fill className="object-cover transition-transform duration-[1400ms] group-hover:scale-[1.04] opacity-85" sizes="(max-width: 1024px) 50vw, 36vw" />
+              <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/20 to-transparent" />
+              <div className="absolute top-6 left-6 flex items-center gap-3">
+                <span className="text-mono text-[10px] tabular-nums text-rust">F.03</span>
+                <span className="text-paper/70 text-[10px] tracking-[3px] uppercase">Education</span>
+              </div>
+              <div className="absolute bottom-6 left-6 right-6">
+                <h3 className="font-display text-paper text-[24px] lg:text-[30px] leading-[1.1] tracking-tight" style={{ fontWeight: 400 }}>학세권 교육환경</h3>
+                <p className="text-paper/55 text-[12.5px] font-light mt-2">천안업성초·중학교 도보 통학권</p>
+              </div>
+            </article>
+
+            {/* Wide bottom — Living (col-span-12) */}
+            <article className="col-span-12 relative min-h-[260px] lg:min-h-[300px] overflow-hidden group bg-ink">
+              <Image src="/images/premium-infra.jpg" alt="생활 인프라" fill className="object-cover transition-transform duration-[1400ms] group-hover:scale-[1.03] opacity-90" sizes="100vw" />
+              <div className="absolute inset-0 bg-gradient-to-r from-ink/90 via-ink/40 to-transparent" />
+              <div className="absolute inset-0 flex items-center px-8 lg:px-14">
+                <div>
+                  <div className="flex items-center gap-3 mb-5">
+                    <span className="text-mono text-[10px] tabular-nums text-rust">F.04</span>
+                    <span className="w-6 h-[1px] bg-rust/60" />
+                    <span className="text-paper/70 text-[10px] tracking-[3px] uppercase">Living</span>
+                  </div>
+                  <h3 className="font-display text-paper text-[28px] lg:text-[40px] leading-[1.1] tracking-tight" style={{ fontWeight: 400 }}>
+                    풍부한 생활 인프라
+                  </h3>
+                  <p className="text-paper/60 text-[13px] font-light leading-[1.9] max-w-[480px] mt-4">
+                    이마트·코스트코 등 대형마트 인접. 새도시 중심 상권의 풍부한 인프라가 가까이 있습니다.
+                  </p>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+
+      {/* ═══════════════════════════════════════════════
+          DATA SHEET — Big numbers strip (full-bleed dark)
+          ═══════════════════════════════════════════════ */}
+      <div ref={numbers.ref} className="relative bg-ink text-paper py-20 lg:py-28 overflow-hidden">
+        {/* Faint background image */}
+        <Image src="/images/lake-view.jpg" alt="" fill className="object-cover opacity-[0.12]" sizes="100vw" />
+        <div className="absolute inset-0 bg-ink/70" />
+
+        <div className="relative max-w-[1320px] mx-auto px-6 lg:pl-[88px] lg:pr-10">
+          <div className={`flex items-end justify-between mb-12 transition-all duration-700 ${numbers.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
+            <div>
+              <p className="text-mono text-[11px] tabular-nums text-rust tracking-[3px] mb-3">N°04 — DATA SHEET</p>
+              <h2 className="font-display text-paper text-[28px] lg:text-[40px] tracking-tight" style={{ fontWeight: 400 }}>
+                숫자로 읽는 단지.
+              </h2>
+            </div>
+            <p className="hidden lg:block text-paper/40 text-mono text-[10px] tabular-nums">
+              UPDATED · 2026.05
+            </p>
+          </div>
+
+          <div className={`grid grid-cols-2 lg:grid-cols-4 divide-y divide-paper/10 lg:divide-y-0 lg:divide-x lg:divide-paper/10 transition-all duration-1000 ${numbers.visible ? "opacity-100" : "opacity-0"}`}>
+            {[
+              { value: "1,908", unit: "세대", label: "총 세대수", note: "Households" },
+              { value: "1,460", unit: "세대", label: "금회 공급", note: "This phase" },
+              { value: "39", unit: "F", label: "최고 층수", note: "Top floor" },
+              { value: "11", unit: "동", label: "건축 동수", note: "Buildings" },
+            ].map((s, i) => (
+              <div key={i} className={`px-2 lg:px-8 py-8 ${i < 2 ? "border-r border-paper/10 lg:border-r-0" : ""}`}>
+                <p className="font-display tabular-nums text-paper text-[56px] lg:text-[88px] leading-none tracking-tighter" style={{ fontWeight: 400 }}>
+                  {s.value}<span className="text-rust text-[24px] lg:text-[32px] font-light ml-2">{s.unit}</span>
+                </p>
+                <p className="text-paper/70 text-[13px] mt-4 tracking-wide">{s.label}</p>
+                <p className="text-mono text-[9px] tabular-nums text-paper/30 tracking-[2px] uppercase mt-1">{s.note}</p>
+              </div>
             ))}
           </div>
         </div>
       </div>
 
-      {/* ══════════ BELOW THE FOLD ══════════ */}
-      <div id="home-content">
+      {/* ═══════════════════════════════════════════════
+          MAP TEASER — Location entry
+          ═══════════════════════════════════════════════ */}
+      <div ref={map.ref} className="bg-paper">
+        <div className={`max-w-[1320px] mx-auto px-6 lg:pl-[88px] lg:pr-10 py-24 lg:py-32 grid grid-cols-12 gap-6 lg:gap-10 transition-all duration-1000 ${map.visible ? "opacity-100" : "opacity-0"}`}>
 
-        {/* HERO CINEMATIC — fades from splash dark */}
-        <div ref={hero.ref} className="relative h-[80vh] min-h-[550px]">
-          <Image src="/images/hero-lake.jpg" alt="호수공원 전경" fill className="object-cover" sizes="100vw" />
-          {/* Stronger gradient for text readability */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0a1020]/90 via-navy/40 to-navy/25" />
-          {/* Top fade from dark — seamless from splash */}
-          <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-[#070b12] to-transparent" />
+          <div className="col-span-12 lg:col-span-5 lg:sticky lg:top-32 self-start">
+            <p className="text-mono text-[11px] tabular-nums text-rust tracking-[3px] mb-3">N°05 — LOCATION</p>
+            <h2 className="font-display text-ink text-[36px] lg:text-[52px] leading-[1.05] tracking-tight" style={{ fontWeight: 400 }}>
+              호수와 도시,<br />
+              <span className="italic text-rust">사이의 좌표.</span>
+            </h2>
+            <p className="text-stone text-[14px] leading-[2] font-light mt-8 max-w-[420px]">
+              {SITE.siteAddress}. 호수공원·교통·교육·생활 인프라가 도보 생활권 안에서 만납니다.
+            </p>
 
-          <div className={`absolute inset-0 flex items-end transition-all duration-[1000ms] ${hero.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
-            <div className="max-w-[1400px] mx-auto w-full px-8 lg:px-16 pb-16 lg:pb-24">
-              <p className="text-gold/70 text-[10px] tracking-[5px] uppercase mb-4 text-shadow-subtle">Upseong Prugio Lakecity</p>
-              <h2 className="text-white text-[36px] sm:text-[48px] lg:text-[60px] font-extralight leading-[1.1] tracking-tight mb-6 text-shadow-hero">
-                호수 위의<br />새로운 라이프
-              </h2>
-              <p className="text-white/60 text-[13px] sm:text-[15px] font-light leading-relaxed max-w-[420px] text-shadow-subtle">
-                천안 업성동, 호수공원 바로 앞<br />
-                대우건설이 선보이는 프리미엄 주거
-              </p>
-            </div>
+            <button
+              onClick={() => onTabChange?.("location")}
+              className="mt-10 group inline-flex items-center gap-3 text-ink"
+            >
+              <span className="text-[12.5px] tracking-[2px] uppercase border-b border-ink pb-1">
+                입지환경 자세히 보기
+              </span>
+              <span className="text-rust transition-transform group-hover:translate-x-1">→</span>
+            </button>
           </div>
 
-          {/* Stats — bottom right */}
-          <div className="absolute bottom-0 right-0 hidden lg:flex">
-            {[
-              { num: "1,908", label: "총 세대", suffix: "" },
-              { num: "39", label: "최고층", suffix: "F" },
-              { num: "72·84·95", label: "전용면적", suffix: "㎡" },
-            ].map((s, i) => (
-              <div key={i} className="w-[160px] py-8 text-center border-l border-white/10 bg-navy/50 backdrop-blur-md">
-                <p className="text-white text-[24px] font-extralight tracking-tight text-shadow-subtle">{s.num}<span className="text-gold/70 text-[14px] ml-0.5">{s.suffix}</span></p>
-                <p className="text-white/40 text-[10px] tracking-wider mt-1">{s.label}</p>
+          <div className="col-span-12 lg:col-span-7">
+            <div className="relative aspect-[4/5] sm:aspect-[3/4] lg:aspect-[4/5] overflow-hidden bg-ink">
+              <Image src="/images/about-lobby.jpg" alt="단지 개요" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 50vw" />
+              <div className="absolute inset-0 bg-gradient-to-t from-ink/40 via-transparent to-transparent" />
+              {/* Coordinate label */}
+              <div className="absolute top-6 right-6 text-right">
+                <p className="text-mono text-[10px] tabular-nums text-paper/80 tracking-wider">36.8541° N</p>
+                <p className="text-mono text-[10px] tabular-nums text-paper/80 tracking-wider">127.1518° E</p>
               </div>
-            ))}
-          </div>
-
-          {/* Bottom fade to white — seamless into About */}
-          <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white to-transparent" />
-        </div>
-
-        {/* ABOUT */}
-        <div ref={about.ref} className="bg-white">
-          <div className="max-w-[1400px] mx-auto">
-            <div className="grid lg:grid-cols-2 min-h-[70vh]">
-
-              {/* Text */}
-              <div className={`flex flex-col justify-center px-8 lg:px-20 py-20 lg:py-28 transition-all duration-[900ms] ${about.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-                <p className="text-gold text-[10px] tracking-[5px] font-medium uppercase mb-6">About the Project</p>
-                <h2 className="text-[30px] lg:text-[42px] font-extralight text-charcoal leading-[1.25] tracking-tight mb-6">
-                  일상이<br />새로워지다
-                </h2>
-                <div className="w-10 h-[1px] bg-gold/40 mb-8" />
-                <p className="text-cool-gray text-[14px] leading-[2.2] font-light mb-14 max-w-[440px]">
-                  업성 푸르지오 레이크시티는 호수공원 바로 앞에 위치하여
-                  탁 트인 호수 조망과 쾌적한 자연환경을 누릴 수 있습니다.
-                  대우건설 푸르지오 브랜드로 새로운 라이프스타일과
-                  프리미엄 주거 가치를 제공합니다.
-                </p>
-
-                <div className="flex items-start gap-10 lg:gap-14">
-                  {[
-                    { num: "1,908", label: "세대" },
-                    { num: "11", label: "개 동" },
-                    { num: "39", label: "최고층" },
-                  ].map((s, i) => (
-                    <div key={i}>
-                      <p className="text-navy text-[32px] lg:text-[36px] font-extralight tracking-tight leading-none">{s.num}</p>
-                      <p className="text-cool-gray/50 text-[10px] tracking-wider mt-2 font-light">{s.label}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Image */}
-              <div className={`relative min-h-[400px] lg:min-h-0 transition-all duration-[900ms] delay-200 ${about.visible ? "opacity-100" : "opacity-0"}`}>
-                <Image src="/images/about-lobby.jpg" alt="프리미엄 주거" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 50vw" />
-                <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-gold/40 via-gold/10 to-transparent hidden lg:block" />
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* About → Features transition */}
-        <div className="h-20 lg:h-28 bg-gradient-to-b from-white to-[#F8F7F4]" />
-
-        {/* FEATURES */}
-        <div ref={features.ref} className="bg-[#F8F7F4]">
-          <div className="max-w-[1400px] mx-auto px-6 lg:px-16 pt-8 lg:pt-12 pb-24 lg:pb-36">
-
-            {/* Section header */}
-            <div className={`flex flex-col lg:flex-row lg:items-end lg:justify-between mb-16 lg:mb-24 transition-all duration-700 ${features.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-              <div>
-                <p className="text-gold text-[10px] tracking-[5px] font-medium uppercase mb-4">Premium Value</p>
-                <h2 className="text-[28px] lg:text-[40px] font-extralight text-charcoal tracking-tight leading-tight">
-                  걸어서 누리는<br className="lg:hidden" /> 완성된 프리미엄
-                </h2>
-              </div>
-              <p className="text-cool-gray text-[13px] font-light mt-4 lg:mt-0 lg:max-w-[300px] leading-relaxed">
-                자연, 교통, 교육, 생활 — 모든 프리미엄이 도보 생활권 안에 완성됩니다.
-              </p>
-            </div>
-
-            {/* Feature grid */}
-            <div className="grid lg:grid-cols-12 gap-3">
-
-              {/* Feature 1: Nature */}
-              <div className={`lg:col-span-7 group relative min-h-[420px] lg:min-h-[560px] overflow-hidden transition-all duration-700 delay-100 ${features.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-                <Image src="/images/premium-lakeview.jpg" alt="자연중심" fill className="object-cover transition-transform duration-[1200ms] group-hover:scale-[1.03]" sizes="(max-width: 1024px) 100vw, 58vw" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-8 lg:p-12">
-                  <div className="flex items-center gap-3 mb-4">
-                    <span className="text-gold text-[28px] font-extralight text-shadow-subtle">01</span>
-                    <div className="w-8 h-[1px] bg-gold/40" />
-                    <span className="text-gold/70 text-[10px] tracking-[4px] uppercase font-medium">Nature</span>
-                  </div>
-                  <h3 className="text-white text-[26px] lg:text-[34px] font-extralight tracking-tight mb-3 text-shadow-hero">호수공원 도보 1분</h3>
-                  <p className="text-white/60 text-[13px] font-light max-w-[420px] leading-[1.8] text-shadow-subtle">
-                    호수공원 바로 앞! 탁 트인 호수 조망과 사계절 수변 산책로가 일상의 쉼터가 됩니다.
-                  </p>
-                </div>
-              </div>
-
-              {/* Right column: stacked 2 & 3 */}
-              <div className="lg:col-span-5 flex flex-col gap-3">
-                {[
-                  { img: "/images/premium-highway.jpg", num: "02", tag: "Transport", title: "멀티 교통망", desc: "번영로, 삼성대로, 1호선 부성역 인접" },
-                  { img: "/images/premium-infra.jpg", num: "03", tag: "Living", title: "풍부한 생활 인프라", desc: "이마트, 코스트코 등 대형마트 인접" },
-                ].map((f, i) => (
-                  <div
-                    key={i}
-                    className={`group relative min-h-[200px] lg:min-h-0 lg:flex-1 overflow-hidden transition-all duration-700 ${features.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
-                    style={{ transitionDelay: `${250 + i * 150}ms` }}
-                  >
-                    <Image src={f.img} alt={f.title} fill className="object-cover transition-transform duration-[1200ms] group-hover:scale-[1.03]" sizes="(max-width: 1024px) 100vw, 42vw" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent" />
-                    <div className="absolute bottom-0 left-0 right-0 p-6 lg:p-8">
-                      <div className="flex items-center gap-2 mb-2">
-                        <span className="text-gold text-[20px] font-extralight text-shadow-subtle">{f.num}</span>
-                        <div className="w-5 h-[1px] bg-gold/30" />
-                        <span className="text-gold/60 text-[9px] tracking-[3px] uppercase">{f.tag}</span>
-                      </div>
-                      <h3 className="text-white text-[20px] lg:text-[22px] font-extralight tracking-tight mb-1 text-shadow-hero">{f.title}</h3>
-                      <p className="text-white/55 text-[12px] font-light text-shadow-subtle">{f.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Feature 4: Education */}
-            <div className={`mt-3 group relative h-[280px] lg:h-[320px] overflow-hidden transition-all duration-700 delay-[500ms] ${features.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-              <Image src="/images/premium-school.jpg" alt="교육중심" fill className="object-cover transition-transform duration-[1200ms] group-hover:scale-[1.03]" sizes="100vw" />
-              <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent" />
-              <div className="absolute inset-0 flex items-center p-8 lg:p-14">
+              <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between">
                 <div>
-                  <div className="flex items-center gap-3 mb-4">
-                    <span className="text-gold text-[28px] font-extralight text-shadow-subtle">04</span>
-                    <div className="w-8 h-[1px] bg-gold/40" />
-                    <span className="text-gold/70 text-[10px] tracking-[4px] uppercase font-medium">Education</span>
-                  </div>
-                  <h3 className="text-white text-[26px] lg:text-[34px] font-extralight tracking-tight mb-3 text-shadow-hero">우수한 교육 환경</h3>
-                  <p className="text-white/55 text-[13px] font-light max-w-[420px] leading-[1.8] text-shadow-subtle">
-                    천안업성초·중학교 인접, 도보 통학권. 공주대·단국대 등 대학 인프라도 풍부합니다.
+                  <p className="text-paper/60 text-[10px] tracking-[3px] uppercase mb-1">Plan</p>
+                  <p className="font-display text-paper text-[22px] lg:text-[28px] leading-tight" style={{ fontWeight: 400 }}>
+                    업성3 도시개발지구<br />
+                    공동주택 부지 (1BL)
                   </p>
                 </div>
+                <span className="text-mono text-[10px] tabular-nums text-paper/50 hidden sm:block">/ 01</span>
               </div>
             </div>
           </div>
         </div>
+      </div>
 
-        {/* Features → Stats transition */}
-        <div className="h-16 lg:h-20 bg-gradient-to-b from-[#F8F7F4] to-white" />
-
-        {/* STATS STRIP */}
-        <div ref={stats.ref} className="bg-white">
-          <div className={`max-w-[1200px] mx-auto grid grid-cols-2 lg:grid-cols-4 transition-all duration-700 ${stats.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
-            {[
-              { value: "1,908", unit: "세대", desc: "대단지 프리미엄" },
-              { value: "39", unit: "층", desc: "최고층 랜드마크" },
-              { value: "11", unit: "개동", desc: "대규모 단지" },
-              { value: "1,460", unit: "세대", desc: "금회 공급" },
-            ].map((s, i) => (
-              <div key={i} className={`py-14 lg:py-20 text-center ${i < 3 ? "border-r border-gray-100" : ""}`}>
-                <p className="text-navy text-[32px] lg:text-[38px] font-extralight tracking-tight leading-none">
-                  {s.value}<span className="text-gold text-[16px] ml-1 font-light">{s.unit}</span>
-                </p>
-                <p className="text-cool-gray/50 text-[11px] tracking-wider mt-3 font-light">{s.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Stats → CTA transition */}
-        <div className="relative h-24 lg:h-32 overflow-hidden">
-          <Image src="/images/lake-view.jpg" alt="" fill className="object-cover" sizes="100vw" />
-          <div className="absolute inset-0 bg-gradient-to-b from-white via-navy/60 to-navy/85" />
-        </div>
-
-        {/* CTA */}
-        <div ref={cta.ref} className="relative py-28 lg:py-36 overflow-hidden">
-          <Image src="/images/lake-view.jpg" alt="" fill className="object-cover" sizes="100vw" />
-          <div className="absolute inset-0 bg-navy/85" />
-          <div className={`relative z-10 max-w-[600px] mx-auto px-6 text-center transition-all duration-700 ${cta.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-            <ContactCTA
-              variant="image"
-              heading="분양문의"
-              subheading={`${SITE.projectName}에 대해\n자세한 상담을 받아보세요.`}
-            />
-            <p className="text-white/15 text-[10px] mt-12 tracking-[3px] uppercase">시공 · {SITE.builder}</p>
-          </div>
+      {/* ═══════════════════════════════════════════════
+          CTA SLAB — Horizontal contact bar
+          ═══════════════════════════════════════════════ */}
+      <div ref={cta.ref} className="bg-ink text-paper">
+        <div className={`max-w-[1320px] mx-auto px-6 lg:pl-[88px] lg:pr-10 py-20 lg:py-28 transition-all duration-1000 ${cta.visible ? "opacity-100" : "opacity-0"}`}>
+          <ContactCTA
+            variant="slab"
+            heading="분양문의"
+            subheading={`${SITE.projectName}에 대한 자세한 안내를 받아보실 수 있습니다.`}
+            secondaryCta={{ label: "관심고객 사전등록", onClick: () => onTabChange?.("register") }}
+          />
         </div>
       </div>
     </section>

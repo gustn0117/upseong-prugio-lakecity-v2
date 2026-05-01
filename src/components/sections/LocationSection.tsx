@@ -35,110 +35,106 @@ const nearbySpots = [
 ];
 
 export default function LocationSection() {
-  const hero = useInView();
   const adv = useInView();
   const map = useInView();
   const infra = useInView();
 
   return (
-    <section className="pt-[72px]">
-      {/* ══════════ HERO ══════════ */}
-      <div className="relative h-[50vh] min-h-[340px]">
-        <Image src="/images/banner-location.jpg" alt="" fill className="object-cover" sizes="100vw" priority />
-        <div className="absolute inset-0 bg-black/55" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-black/20" />
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="text-center">
-            <p className="text-gold/80 text-[10px] tracking-[5px] font-medium uppercase mb-4 text-shadow-subtle">Location</p>
-            <h1 className="text-white text-[36px] lg:text-[52px] font-extralight tracking-tight text-shadow-banner">입지환경</h1>
+    <section className="pt-[56px] bg-paper">
+
+      {/* ── EDITORIAL HEADER ── */}
+      <div className="bg-ink text-paper relative overflow-hidden">
+        <div className="max-w-[1400px] mx-auto px-6 lg:pl-[88px] lg:pr-10 py-16 lg:py-24 grid grid-cols-12 gap-8 lg:gap-12 items-end">
+          <div className="col-span-12 lg:col-span-7">
+            <p className="text-mono text-[11px] tabular-nums text-rust tracking-[3px] mb-4">N°02 — LOCATION</p>
+            <h1 className="font-display text-paper text-[48px] lg:text-[88px] leading-[0.95] tracking-tight" style={{ fontWeight: 400 }}>
+              입지환경<br />
+              <span className="italic text-rust">Site Map.</span>
+            </h1>
+          </div>
+          <div className="col-span-12 lg:col-span-5 lg:border-l lg:border-paper/15 lg:pl-12">
+            <p className="text-paper/55 text-[14px] font-light leading-[2]">
+              호수공원 도보 1분, KTX 역세권, 직주근접의 산업 인프라.
+              자연과 도시가 균형을 이루는 좌표 위에서 새로운 주거의 가능성이 시작됩니다.
+            </p>
           </div>
         </div>
       </div>
 
-      {/* ══════════ HEADLINE ══════════ */}
-      <div ref={hero.ref} className="bg-white">
-        <div className={`max-w-[900px] mx-auto px-6 lg:px-16 py-20 lg:py-28 text-center transition-all duration-700 ${hero.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-          <h2 className="text-[26px] lg:text-[38px] font-extralight text-charcoal leading-snug tracking-tight">
-            호수공원을 품은 프리미엄,
-            <br />
-            주거의 품격을 새롭게 세우다
-          </h2>
-          <div className="w-10 h-[1px] bg-gold/40 mx-auto mt-8 mb-8" />
-          <p className="text-cool-gray text-[14px] leading-[2] font-light max-w-[480px] mx-auto">
-            호수공원과 교육, 산업단지를 아우르는 입지 위에
-            주거의 가치가 균형 있게 완성됩니다.
-          </p>
-        </div>
-      </div>
-
-      {/* ══════════ ADVANTAGES — Horizontal List ══════════ */}
-      <div ref={adv.ref} className="bg-off-white border-y border-gray-100">
-        <div className="max-w-[1200px] mx-auto px-6 lg:px-16">
-          <div className="divide-y divide-gray-200">
+      {/* ── ADVANTAGES ── */}
+      <div ref={adv.ref} className="bg-paper-deep border-y border-ink/[0.08]">
+        <div className="max-w-[1400px] mx-auto px-6 lg:pl-[88px] lg:pr-10">
+          <div className="divide-y divide-ink/10">
             {advantages.map((item, i) => (
               <div
                 key={i}
-                className={`flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-0 py-8 sm:py-10 transition-all duration-500 ${adv.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
+                className={`grid grid-cols-12 gap-3 sm:gap-6 items-center py-7 sm:py-9 transition-all duration-500 ${adv.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
                 style={{ transitionDelay: `${i * 100}ms` }}
               >
-                <span className="text-gold text-[10px] tracking-[4px] font-medium uppercase w-[120px] flex-shrink-0">{item.tag}</span>
-                <h3 className="text-charcoal text-[20px] lg:text-[24px] font-light tracking-tight w-[200px] flex-shrink-0">{item.title}</h3>
-                <p className="text-cool-gray text-[13px] font-light flex-1">{item.desc}</p>
-                <span className="text-navy text-[13px] font-medium tracking-wider flex-shrink-0">{item.time}</span>
+                <span className="col-span-2 sm:col-span-1 text-mono text-[11px] tabular-nums text-rust tracking-wider">/0{i + 1}</span>
+                <span className="hidden sm:block sm:col-span-2 text-stone-light text-[10px] tracking-[3px] uppercase">{item.tag}</span>
+                <h3 className="col-span-7 sm:col-span-3 font-display text-ink text-[20px] lg:text-[26px] tracking-tight" style={{ fontWeight: 400 }}>{item.title}</h3>
+                <p className="col-span-12 sm:col-span-4 text-stone text-[13px] font-light leading-relaxed">{item.desc}</p>
+                <span className="col-span-3 sm:col-span-2 text-mono text-[12px] tabular-nums text-ink text-right tracking-wider">{item.time}</span>
               </div>
             ))}
           </div>
         </div>
       </div>
 
-      {/* ══════════ MAP ══════════ */}
-      <div ref={map.ref} className="bg-white">
-        <div className={`max-w-[1200px] mx-auto px-6 lg:px-16 py-20 lg:py-28 transition-all duration-700 ${map.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+      {/* ── MAP ── */}
+      <div ref={map.ref} className="bg-paper">
+        <div className={`max-w-[1400px] mx-auto px-6 lg:pl-[88px] lg:pr-10 py-24 lg:py-32 transition-all duration-700 ${map.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 mb-12">
             <div>
-              <p className="text-gold text-[10px] tracking-[5px] font-medium uppercase mb-4">Location Map</p>
-              <h2 className="text-[28px] lg:text-[36px] font-extralight text-charcoal tracking-tight">입지 안내</h2>
+              <p className="text-mono text-[11px] tabular-nums text-rust tracking-[3px] mb-3">N°03 — MAP</p>
+              <h2 className="font-display text-ink text-[32px] lg:text-[46px] tracking-tight" style={{ fontWeight: 400 }}>입지 안내.</h2>
             </div>
-            <p className="text-cool-gray text-[11px] font-light">* 본 이미지는 소비자의 이해를 돕기 위한 것으로 실제와 차이가 있을 수 있습니다.</p>
+            <p className="text-stone-light text-[11px] font-light">
+              * 본 이미지는 소비자의 이해를 돕기 위한 것으로 실제와 차이가 있을 수 있습니다.
+            </p>
           </div>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/images/location.jpg"
-            alt="업성 푸르지오 레이크시티 입지 안내도"
-            className="w-full h-auto block"
-          />
+          <div className="border border-ink/10 p-2 bg-paper-deep">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/location.jpg"
+              alt="업성 푸르지오 레이크시티 입지 안내도"
+              className="w-full h-auto block"
+            />
+          </div>
         </div>
       </div>
 
-      {/* ══════════ INFRASTRUCTURE — Clean Grid ══════════ */}
-      <div ref={infra.ref} className="bg-off-white border-t border-gray-100">
-        <div className={`max-w-[1200px] mx-auto px-6 lg:px-16 py-20 lg:py-28 transition-all duration-700 ${infra.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-          <p className="text-gold text-[10px] tracking-[5px] font-medium uppercase mb-4">Infrastructure</p>
-          <h2 className="text-[28px] lg:text-[36px] font-extralight text-charcoal tracking-tight mb-16">주변 인프라</h2>
+      {/* ── INFRASTRUCTURE ── */}
+      <div ref={infra.ref} className="bg-paper-deep border-t border-ink/[0.08]">
+        <div className={`max-w-[1400px] mx-auto px-6 lg:pl-[88px] lg:pr-10 py-24 lg:py-32 transition-all duration-700 ${infra.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+          <p className="text-mono text-[11px] tabular-nums text-rust tracking-[3px] mb-3">N°04 — INFRA</p>
+          <h2 className="font-display text-ink text-[32px] lg:text-[46px] tracking-tight mb-16" style={{ fontWeight: 400 }}>주변 인프라.</h2>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-ink/15">
             {nearbySpots.map((group, gi) => (
-              <div key={gi}>
-                <h4 className="text-navy text-[14px] font-semibold tracking-wider mb-5 pb-3 border-b border-navy/20">{group.category}</h4>
+              <div key={gi} className="bg-paper p-7 lg:p-8 min-h-[240px]">
+                <p className="text-mono text-[10px] tabular-nums text-rust tracking-[3px] mb-2">CATEGORY / {String(gi + 1).padStart(2, "0")}</p>
+                <h4 className="font-display text-ink text-[24px] tracking-tight mb-6" style={{ fontWeight: 400 }}>{group.category}</h4>
                 <ul className="space-y-3">
                   {group.items.map((item, ii) => (
-                    <li key={ii} className="text-cool-gray text-[13px] font-light leading-relaxed">{item}</li>
+                    <li key={ii} className="text-stone text-[12.5px] font-light leading-relaxed">— {item}</li>
                   ))}
                 </ul>
               </div>
             ))}
           </div>
 
-          <p className="text-cool-gray text-[11px] mt-14 font-light">
+          <p className="text-stone-light text-[11px] mt-10 font-light">
             * 거리 및 소요시간은 네이버 지도 기준이며, 교통 상황에 따라 달라질 수 있습니다.
           </p>
         </div>
       </div>
 
-      {/* ══════════ CTA ══════════ */}
-      <div className="bg-navy py-20">
-        <div className="max-w-[600px] mx-auto px-6 text-center">
-          <ContactCTA variant="navy" heading="입지 관련 상담 문의" />
+      {/* ── CTA ── */}
+      <div className="bg-ink text-paper">
+        <div className="max-w-[1400px] mx-auto px-6 lg:pl-[88px] lg:pr-10 py-20 lg:py-24">
+          <ContactCTA variant="slab" heading="입지 안내" subheading="현장 위치 및 주변 인프라에 대해 자세한 안내를 받아보실 수 있습니다." />
         </div>
       </div>
     </section>
