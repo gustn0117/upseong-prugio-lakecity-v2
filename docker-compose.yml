@@ -1,0 +1,18 @@
+services:
+  app:
+    build: .
+    container_name: upseong-prugio-lakecity-v2
+    ports:
+      - "3142:3000"
+    volumes:
+      - prugio-v2-data:/app/data
+    environment:
+      - NODE_ENV=production
+      - ADMIN_PASSWORD=1234
+      - AUTH_SECRET=prugio-v2-admin-secret-2026
+      - DB_PATH=/app/data/registrations.db
+    restart: unless-stopped
+
+volumes:
+  prugio-v2-data:
+    driver: local

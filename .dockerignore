@@ -1,0 +1,8 @@
+node_modules
+.next
+.git
+.vercel
+.DS_Store
+.env*.local
+data/
+*.md
