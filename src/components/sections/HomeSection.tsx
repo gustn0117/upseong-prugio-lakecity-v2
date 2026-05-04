@@ -45,56 +45,103 @@ export default function HomeSection({ onTabChange }: HomeSectionProps) {
     <section className="bg-paper">
 
       {/* ─────── HERO ─────── */}
-      <div className="relative h-screen min-h-[640px]">
+      <div className="relative h-screen min-h-[700px] overflow-hidden">
         <Image
           src="/images/hero-main.png"
           alt="업성 푸르지오 레이크시티"
           fill
           priority
           sizes="100vw"
-          className="object-cover"
+          className="object-cover scale-[1.02]"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-ink/60 via-ink/35 to-ink/70" />
 
-        <div className="relative h-full max-w-[1400px] mx-auto px-6 lg:pl-[88px] lg:pr-10 flex flex-col justify-end pb-16 lg:pb-24 pt-32">
+        {/* Layered gradients — directional darkness for text legibility */}
+        <div className="absolute inset-0 bg-gradient-to-r from-ink/85 via-ink/45 to-ink/25" />
+        <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-ink/35" />
 
-          {/* Top eyebrow */}
-          <p className={`text-[11px] tracking-[3px] uppercase text-paper/65 mb-6 transition-opacity duration-700 ${loaded ? "opacity-100" : "opacity-0"}`}>
-            대우건설 · 푸르지오
-          </p>
+        {/* Top-right meta */}
+        <div className={`absolute top-[100px] right-6 lg:right-10 text-right transition-opacity duration-1000 delay-500 ${loaded ? "opacity-100" : "opacity-0"}`}>
+          <p className="text-paper/55 text-[10px] tracking-[3px] uppercase mb-1">36.85°N · 127.15°E</p>
+          <p className="text-paper/35 text-[10px] tabular-nums tracking-wider">UPDATED · {SITE.lastUpdated}</p>
+        </div>
+
+        {/* Subtle vertical accent line on left edge of content */}
+        <div className={`hidden lg:block absolute top-[120px] left-[88px] w-px bg-rust transition-all duration-[1400ms] ${loaded ? "h-16 opacity-100" : "h-0 opacity-0"}`} />
+
+        <div className="relative h-full max-w-[1400px] mx-auto px-6 lg:pl-[88px] lg:pr-10 flex flex-col justify-end pb-16 lg:pb-20 pt-32">
+
+          {/* Status pill — current sales phase */}
+          <div className={`mb-7 self-start inline-flex items-center gap-2.5 border border-rust/60 bg-rust/15 backdrop-blur-md px-3.5 py-2 transition-all duration-[1000ms] ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"}`}>
+            <span className="relative flex w-1.5 h-1.5">
+              <span className="absolute inset-0 rounded-full bg-rust opacity-60 animate-ping" />
+              <span className="relative w-1.5 h-1.5 rounded-full bg-rust" />
+            </span>
+            <span className="text-paper text-[11px] tracking-wider">
+              {SITE.currentPhase} · 2026.05.04 ~ 05.07
+            </span>
+          </div>
+
+          {/* Eyebrow with brand + year */}
+          <div className={`flex items-center gap-3 mb-6 transition-all duration-1000 delay-100 ${loaded ? "opacity-100" : "opacity-0"}`}>
+            <span className="text-paper/65 text-[10.5px] tracking-[3px] uppercase">대우건설 푸르지오</span>
+            <span className="w-8 h-px bg-paper/35" />
+            <span className="text-paper/45 text-[10.5px] tracking-[3px] uppercase tabular-nums">est. 2026</span>
+          </div>
 
           {/* Main heading */}
-          <h1 className={`text-paper text-[40px] sm:text-[56px] lg:text-[72px] leading-[1.1] tracking-tight max-w-[820px] transition-all duration-1000 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"}`}
+          <h1 className={`text-paper text-[42px] sm:text-[60px] lg:text-[80px] leading-[1.02] tracking-tight max-w-[900px] transition-all duration-[1100ms] delay-150 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"}`}
               style={{ fontWeight: 300 }}>
-            업성 푸르지오 레이크시티
+            업성 푸르지오<br />레이크시티
           </h1>
-          <p className={`text-paper/75 text-[14px] lg:text-[16px] leading-[1.95] font-light mt-6 max-w-[560px] transition-all duration-1000 delay-200 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"}`}>
+
+          <p className={`text-paper/80 text-[14px] lg:text-[16px] leading-[1.95] font-light mt-7 max-w-[560px] transition-all duration-1000 delay-300 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"}`}>
             푸르지오가 완성하는 성성호수 앞 프리미엄 도시.<br className="hidden sm:block" />
             성성호수 새도시가 기다린 업성의 새중심, 천안의 주거명작.
           </p>
 
-          {/* Bottom row — quick facts strip */}
-          <div className={`mt-12 lg:mt-16 grid grid-cols-2 sm:grid-cols-4 gap-6 lg:gap-12 max-w-[820px] transition-all duration-1000 delay-300 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
+          {/* CTA buttons */}
+          <div className={`mt-10 flex flex-wrap gap-3 transition-all duration-1000 delay-[450ms] ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"}`}>
+            <button
+              onClick={() => onTabChange?.("register")}
+              className="group inline-flex items-center gap-2 px-6 py-3.5 bg-paper text-ink text-[13px] tracking-wider hover:bg-rust hover:text-paper transition-colors"
+            >
+              관심고객 등록
+              <span className="text-rust group-hover:text-paper transition-colors">→</span>
+            </button>
+            <button
+              onClick={() => onTabChange?.("business")}
+              className="inline-flex items-center gap-2 px-6 py-3.5 border border-paper/35 text-paper text-[13px] tracking-wider hover:bg-paper/10 hover:border-paper/60 transition-colors"
+            >
+              사업개요 자세히
+              <span className="text-paper/60">↓</span>
+            </button>
+          </div>
+
+          {/* Stat strip */}
+          <div className={`mt-14 lg:mt-16 grid grid-cols-2 sm:grid-cols-4 max-w-[820px] divide-x divide-paper/15 border-t border-paper/15 transition-all duration-1000 delay-[600ms] ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
             {[
-              { v: "1,908", l: "총 세대" },
-              { v: "39", l: "최고 층수" },
-              { v: "11", l: "동" },
-              { v: "72·84·95", l: "전용 (㎡)" },
-            ].map((s) => (
-              <div key={s.l} className="border-t border-paper/25 pt-3">
-                <p className="text-paper text-[24px] lg:text-[28px] tabular-nums tracking-tight" style={{ fontWeight: 300 }}>
+              { v: "1,908", l: "총 세대", note: "Households" },
+              { v: "39", l: "최고 층수", note: "Top Floor" },
+              { v: "11", l: "동", note: "Buildings" },
+              { v: "72·84·95", l: "전용 (㎡)", note: "Type" },
+            ].map((s, i) => (
+              <div key={s.l} className={`pt-4 ${i === 0 ? "pl-0 pr-5" : "px-5"}`}>
+                <p className="text-paper text-[24px] lg:text-[28px] tabular-nums tracking-tight leading-none" style={{ fontWeight: 300 }}>
                   {s.v}
                 </p>
-                <p className="text-paper/55 text-[11.5px] tracking-wider mt-1.5">{s.l}</p>
+                <p className="text-paper/65 text-[11.5px] tracking-wider mt-2">{s.l}</p>
+                <p className="text-paper/30 text-[9.5px] tabular-nums tracking-[2px] uppercase mt-0.5">{s.note}</p>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Scroll cue */}
-        <div className={`absolute bottom-7 left-1/2 -translate-x-1/2 flex items-center gap-2 text-paper/45 text-[10px] tracking-[3px] uppercase transition-opacity duration-1000 delay-700 ${loaded ? "opacity-100" : "opacity-0"}`}>
-          <span>Scroll</span>
-          <span className="w-6 h-px bg-paper/30" />
+        {/* Animated scroll cue */}
+        <div className={`absolute bottom-7 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2.5 transition-opacity duration-1000 delay-[800ms] ${loaded ? "opacity-100" : "opacity-0"}`}>
+          <span className="text-paper/45 text-[9.5px] tracking-[4px] uppercase">Scroll</span>
+          <div className="relative w-px h-10 bg-paper/15 overflow-hidden">
+            <div className="absolute inset-x-0 top-0 h-3 bg-paper/70 scroll-line origin-top" />
+          </div>
         </div>
       </div>
 
