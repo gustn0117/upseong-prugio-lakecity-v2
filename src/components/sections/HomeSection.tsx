@@ -272,16 +272,17 @@ export default function HomeSection({ onTabChange }: HomeSectionProps) {
           </div>
 
           <div className="col-span-12 lg:col-span-7">
-            <div className="relative aspect-[4/3] lg:aspect-[5/4] overflow-hidden bg-ink">
-              <Image src="/images/exterior-balconies.jpg" alt="단지 주변 환경" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 50vw" />
-              <div className="absolute inset-0 bg-gradient-to-t from-ink/35 via-transparent to-transparent" />
-              <div className="absolute bottom-6 left-6 right-6">
-                <p className="text-paper/65 text-[10px] tracking-[3px] uppercase mb-1.5">사업 위치</p>
-                <p className="text-paper text-[16px] lg:text-[18px] leading-tight" style={{ fontWeight: 400 }}>
-                  업성3 도시개발지구 공동주택 부지 (1BL)
-                </p>
-              </div>
+            <div className="border border-ink/10 bg-paper-deep p-2 lg:p-3">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/crawled/map.jpg"
+                alt="업성 푸르지오 레이크시티 입지 안내도"
+                className="w-full h-auto block"
+              />
             </div>
+            <p className="text-stone-light text-[10.5px] mt-3 font-light">
+              * 본 이미지는 소비자의 이해를 돕기 위한 것으로 실제와 차이가 있을 수 있습니다.
+            </p>
           </div>
         </div>
       </div>
