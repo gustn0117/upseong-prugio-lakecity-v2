@@ -20,17 +20,45 @@ function useInView(threshold = 0.15) {
 }
 
 const advantages = [
-  { tag: "Lake Park", title: "성성호수공원", time: "도보 1분", desc: "호수공원 바로 앞, 자연과 함께하는 프리미엄 생활" },
-  { tag: "Education", title: "교육 인프라", time: "학세권", desc: "천안업성초·중 인접, 공주대 천안캠퍼스·단국대 근접" },
-  { tag: "Transport", title: "광역 교통", time: "KTX 역세권", desc: "천안아산역 KTX/SRT, 경부고속도로·1호선 인접" },
-  { tag: "Industry", title: "산업 · 생활", time: "직주근접", desc: "삼성SDI·삼성디스플레이 인접, 대형마트 등 생활 편의" },
+  { tag: "Class UP", title: "성성호수공원 레이크뷰", time: "도보 1분", desc: "성성호수공원을 품은 새도시, 남향으로 펼쳐지는 명품 레이크 뷰" },
+  { tag: "Smart UP", title: "원스톱 교육환경", time: "학세권", desc: "1블록 옆 고교(예정), 2블록 앞 초·중교(예정), 성성지구 학원가" },
+  { tag: "Life UP", title: "멀티 생활 인프라", time: "직주근접", desc: "이마트·코스트코, 성성지구 중심상권, 삼성SDI 등 직주근접 생활권" },
+  { tag: "Speed UP", title: "쾌속 광역교통", time: "역세권(예정)", desc: "1호선 부성역(예정), 번영로·삼성대로·천안대로, 경부고속도로 천안IC" },
 ];
 
 const nearbySpots = [
-  { category: "자연", items: ["성성호수공원 — 도보 1분", "노태근린공원 — 도보 5분", "어린이공원 — 도보 3분"] },
-  { category: "교육", items: ["천안업성초등학교 — 도보 5분", "중학교(예정) — 도보 3분", "가람초·가람중 — 차량 5분"] },
-  { category: "교통", items: ["천안아산역(KTX) — 차량 15분", "1호선(정차역) — 차량 10분", "경부고속도로 — 차량 10분"] },
-  { category: "생활", items: ["삼성디스플레이시티 — 차량 5분", "이마트·롯데마트 — 차량 10분", "천안시청 — 차량 15분"] },
+  {
+    category: "자연",
+    items: [
+      "성성호수공원 — 도보 1분 (남향 레이크뷰)",
+      "노태근린공원 — 도보 5분",
+      "단지 내 초대형 광장·힐링조경",
+    ],
+  },
+  {
+    category: "교육",
+    items: [
+      "고등학교(예정) — 1블록 옆",
+      "초·중학교(예정) — 2블록 앞",
+      "성성지구 학원가 인근",
+    ],
+  },
+  {
+    category: "교통",
+    items: [
+      "1호선 부성역(예정) — 신설 협약 체결",
+      "번영로·삼성대로·천안대로 광역 도로망",
+      "경부고속도로 천안IC 인접",
+    ],
+  },
+  {
+    category: "생활",
+    items: [
+      "이마트·코스트코 등 대형마트",
+      "성성지구 내 중심상권",
+      "삼성SDI 등 직주근접 산업단지",
+    ],
+  },
 ];
 
 export default function LocationSection() {
@@ -52,8 +80,8 @@ export default function LocationSection() {
           </div>
           <div className="col-span-12 lg:col-span-5 lg:border-l lg:border-paper/15 lg:pl-10">
             <p className="text-paper/65 text-[13.5px] font-light leading-[1.95]">
-              호수공원 도보 1분, KTX 역세권, 직주근접의 산업 인프라.
-              자연과 도시가 균형을 이루는 좌표 위에 있습니다.
+              성성호수공원 도보 1분, 1호선 부성역(예정) 인접, 직주근접의 산업 인프라.
+              자연과 도시가 균형을 이루는 성성호수 새도시의 새중심.
             </p>
           </div>
         </div>
@@ -130,8 +158,11 @@ export default function LocationSection() {
             ))}
           </div>
 
-          <p className="text-stone-light text-[11px] mt-8 font-light">
-            * 거리 및 소요시간은 네이버 지도 기준이며, 교통 상황에 따라 달라질 수 있습니다.
+          <p className="text-stone-light text-[11px] mt-8 font-light leading-relaxed">
+            * 부성역(예정)은 국가철도공단 [보도] 수도권전철 1호선 부성역 신설 위·수탁 협약 기준,
+            교육시설(예정)은 충청남도천안교육지원청 고시 제2024-449호, 천안시 고시 제2024-962호·제2025-2386호 기준입니다.
+            <br />
+            * 상기 지역도 및 교통·각종 개발계획·학군 배정 등은 사업주체나 해당기관의 사정에 따라 변경 또는 연기·취소될 수 있습니다.
           </p>
         </div>
       </div>

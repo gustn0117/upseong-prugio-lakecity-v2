@@ -1,67 +1,123 @@
 "use client";
 
-import { useState } from "react";
-import SectionBanner from "../SectionBanner";
+import { useEffect, useRef, useState } from "react";
+import ContactCTA from "@/components/ContactCTA";
+import { PRESS } from "@/lib/site";
 
-const subTabs = [
-  { id: "news", label: "언론보도" },
-  { id: "video", label: "홍보영상" },
-];
+function useInView(threshold = 0.1) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([e]) => { if (e.isIntersecting) { setVisible(true); obs.disconnect(); } },
+      { threshold }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, [threshold]);
+  return { ref, visible };
+}
 
 interface PRSectionProps {
   initialSubTab?: string;
 }
 
-function ComingSoon() {
-  return (
-    <div className="flex flex-col items-center justify-center py-32 lg:py-40">
-      <div className="w-16 h-16 rounded-full bg-prugio-cream flex items-center justify-center mb-6">
-        <svg className="w-7 h-7 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-        </svg>
-      </div>
-      <p className="text-gray-400 text-[15px] font-medium tracking-wide">준비중입니다</p>
-      <p className="text-gray-300 text-[13px] mt-2">확정 후 업데이트 예정</p>
-    </div>
-  );
-}
-
 export default function PRSection({ initialSubTab }: PRSectionProps) {
+  const list = useInView();
   const [activeSubTab, setActiveSubTab] = useState(initialSubTab || "news");
 
   return (
-    <section className="pt-[80px]">
-      <SectionBanner
-        title="홍 보 센 터"
-        subtitle="업성 푸르지오 레이크시티의 최신 소식을 만나보세요."
-        fallbackGradient="bg-gradient-to-r from-emerald-900 via-emerald-800 to-emerald-700"
-      />
+    <section className="pt-[92px] bg-paper">
 
-      {/* Sub Navigation */}
-      <div className="bg-white border-b border-gray-200">
-        <div className="max-w-[1200px] mx-auto flex items-center justify-center overflow-x-auto">
-          {subTabs.map((tab) => (
+      {/* ── PAGE HEADER ── */}
+      <div className="bg-ink text-paper">
+        <div className="max-w-[1280px] mx-auto px-6 lg:pl-[88px] lg:pr-10 py-14 lg:py-20 grid grid-cols-12 gap-8 lg:gap-12 items-end">
+          <div className="col-span-12 lg:col-span-7">
+            <p className="text-[10.5px] tracking-[3px] uppercase text-rust mb-3">News</p>
+            <h1 className="text-paper text-[34px] lg:text-[52px] leading-[1.15] tracking-tight" style={{ fontWeight: 300 }}>
+              홍보센터
+            </h1>
+          </div>
+          <div className="col-span-12 lg:col-span-5 lg:border-l lg:border-paper/15 lg:pl-10">
+            <p className="text-paper/65 text-[13.5px] font-light leading-[1.95]">
+              업성 푸르지오 레이크시티의 최신 소식과 언론보도를 한곳에서 확인하실 수 있습니다.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* ── SUB NAV ── */}
+      <div className="bg-paper border-b border-ink/[0.08]">
+        <div className="max-w-[1280px] mx-auto px-6 lg:pl-[88px] lg:pr-10 flex items-center gap-8">
+          {[
+            { id: "news", label: "언론보도" },
+            { id: "video", label: "홍보영상" },
+          ].map((tab) => (
             <button
               key={tab.id}
               onClick={() => setActiveSubTab(tab.id)}
-              className={`relative px-8 py-4 text-[13px] tracking-[0.5px] font-medium transition-all duration-300 whitespace-nowrap
-                ${activeSubTab === tab.id
-                  ? "text-navy font-bold"
-                  : "text-gray-400 hover:text-gray-600"
-                }
-              `}
+              className={`relative py-5 text-[12px] tracking-[2px] uppercase transition-colors ${
+                activeSubTab === tab.id ? "text-ink" : "text-stone-light hover:text-stone"
+              }`}
             >
               {tab.label}
               {activeSubTab === tab.id && (
-                <span className="absolute bottom-0 left-4 right-4 h-[2px] bg-gold rounded-full" />
+                <span className="absolute bottom-0 left-0 right-0 h-[1.5px] bg-rust" />
               )}
             </button>
           ))}
         </div>
       </div>
 
-      <div className="max-w-[1200px] mx-auto px-6">
-        <ComingSoon />
+      {/* ── CONTENT ── */}
+      {activeSubTab === "news" ? (
+        <div ref={list.ref} className="bg-paper">
+          <div className={`max-w-[1280px] mx-auto px-6 lg:pl-[88px] lg:pr-10 py-20 lg:py-24 transition-all duration-700 ${list.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
+            <div className="border-t border-ink/15">
+              {PRESS.map((item, i) => (
+                <article
+                  key={i}
+                  className="grid grid-cols-12 gap-3 sm:gap-6 items-start py-8 sm:py-10 border-b border-ink/[0.08]"
+                >
+                  <span className="col-span-12 sm:col-span-2 text-[10.5px] tracking-[3px] uppercase text-rust pt-1">
+                    {item.outlet}
+                  </span>
+                  <div className="col-span-12 sm:col-span-10 lg:col-span-9">
+                    <h3 className="text-ink text-[16px] lg:text-[19px] tracking-tight leading-[1.45] mb-3" style={{ fontWeight: 500 }}>
+                      {item.title}
+                    </h3>
+                    <p className="text-stone text-[13.5px] font-light leading-[1.95]">
+                      {item.excerpt}
+                    </p>
+                  </div>
+                  <span className="hidden lg:block lg:col-span-1 text-stone-light text-[10.5px] tracking-wider text-right tabular-nums pt-2">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                </article>
+              ))}
+            </div>
+
+            <p className="text-stone-light text-[11px] mt-8 font-light">
+              * 발췌 자료는 공식 홈페이지(prugio-lakecity.com) 언론보도 섹션을 기준으로 정리되었습니다.
+            </p>
+          </div>
+        </div>
+      ) : (
+        <div className="bg-paper">
+          <div className="max-w-[1280px] mx-auto px-6 lg:pl-[88px] lg:pr-10 py-32 text-center">
+            <p className="text-stone-light text-[12px] tracking-[3px] uppercase mb-3">Coming Soon</p>
+            <p className="text-stone text-[14px] font-light">홍보영상은 추후 공개됩니다.</p>
+          </div>
+        </div>
+      )}
+
+      {/* ── CTA ── */}
+      <div className="bg-ink text-paper">
+        <div className="max-w-[1280px] mx-auto px-6 lg:pl-[88px] lg:pr-10 py-20 lg:py-24">
+          <ContactCTA variant="slab" heading="분양문의" subheading="언론보도 외 자세한 안내가 필요하신 경우 분양 상담을 통해 확인하실 수 있습니다." />
+        </div>
       </div>
     </section>
   );

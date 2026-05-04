@@ -24,50 +24,50 @@ const premium7 = [
   {
     num: "01",
     tag: "Lake View",
-    title: "수려한 남향 호수뷰",
-    desc: "성성호수공원의 탁 트인 수변 조망. 남향 배치로 사계절 풍경을 즐길 수 있습니다.",
+    title: "명품 레이크 뷰 + 남향 배치",
+    desc: "성성호수공원을 품은 새도시. 남향으로 펼쳐지는 힐링 라이프와 사계절 수변 조망(일부세대 제외).",
     img: "/images/premium-nature.jpg",
   },
   {
     num: "02",
-    tag: "Landmark",
-    title: "푸르지오 랜드마크",
-    desc: "총 6,723세대 규모의 푸르지오 브랜드 타운. 대규모 단지의 프리미엄.",
+    tag: "Sky Lounge",
+    title: "39층 최상층 스카이라운지",
+    desc: "파노라마로 펼쳐진 명품 전망. 성성호수가 한눈에 들어오는 39층 스카이라운지 & 게스트하우스.",
     img: "/images/premium-landmark.jpg",
   },
   {
     num: "03",
-    tag: "Design",
-    title: "특화 설계",
-    desc: "실내수영장·스카이라운지·힐링 단지조경 등 대단지 차별화 설계.",
+    tag: "Pool & Spa",
+    title: "25m 4레인 실내수영장",
+    desc: "리조트보다 즐거운 홈캉스. 유아 풀장과 사우나까지 갖춘 25m, 4레인 규모 실내수영장.",
     img: "/images/premium-amenity.jpg",
   },
   {
     num: "04",
-    tag: "Education",
-    title: "안심 교육환경",
-    desc: "도보 통학권 초·중학교 인접. 학원가 또한 가까운 거리에 위치합니다.",
+    tag: "Landscape",
+    title: "수목원급 단지조경",
+    desc: "수공간을 품은 초대형 광장과 다채롭고 예술적인 힐링조경. 수목원만큼 푸르른 단지 공원.",
     img: "/images/premium-edu.jpg",
   },
   {
     num: "05",
-    tag: "Living",
-    title: "생활 인프라",
-    desc: "이마트·코스트코 등 대형마트 인접. 새도시 중심 상권의 풍부한 인프라.",
+    tag: "Distance",
+    title: "최대 125m 동간거리",
+    desc: "막힘없이 탁 트인 창밖 풍경. 최대 125m 동간거리로 누리는 레이크 뷰 그 이상의 특급조망.",
     img: "/images/premium-life.jpg",
   },
   {
     num: "06",
     tag: "Transport",
-    title: "광역 교통망",
-    desc: "번영로·삼성대로·천안대로 광역 도로망과 1호선 부성역 인접.",
+    title: "1호선 부성역(예정) 광역교통",
+    desc: "수도권전철 1호선 부성역(예정) 신설 협약 체결. 번영로·삼성대로·천안대로·천안IC 쾌속교통.",
     img: "/images/premium-transport-new.jpg",
   },
   {
     num: "07",
-    tag: "Future",
-    title: "미래 비전",
-    desc: "2만 5천여 세대 신주거타운. 성성호수 새도시의 미래 가치.",
+    tag: "Education",
+    title: "원스톱 교육환경",
+    desc: "1블록 옆 고교(예정), 2블록 앞 초·중교(예정), 성성지구 학원가 — 한 번에 누리는 학군 인프라.",
     img: "/images/premium-future.jpg",
   },
 ];
@@ -89,8 +89,8 @@ export default function PremiumSection() {
           </div>
           <div className="col-span-12 lg:col-span-5 lg:border-l lg:border-paper/15 lg:pl-10">
             <p className="text-paper/65 text-[13.5px] font-light leading-[1.95]">
-              호수뷰·랜드마크·특화설계·교육·인프라·교통·미래가치까지,
-              7가지 프리미엄이 하나의 단지에서 완성됩니다.
+              호수뷰·스카이라운지·실내수영장·단지조경·동간거리·교통·교육까지,
+              일곱 가지 프리미엄이 하나의 단지에서 완성됩니다.
             </p>
           </div>
         </div>

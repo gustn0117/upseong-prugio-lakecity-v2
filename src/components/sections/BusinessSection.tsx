@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
 import ContactCTA from "@/components/ContactCTA";
+import { SUPPLY_DETAIL } from "@/lib/site";
 
 function useInView(threshold = 0.15) {
   const ref = useRef<HTMLDivElement>(null);
@@ -21,15 +21,16 @@ function useInView(threshold = 0.15) {
 }
 
 const typeInfo = [
-  { type: "72㎡", variants: "A·B·C·D", desc: "효율적인 공간 구성의 실속형 타입" },
-  { type: "84㎡", variants: "A·B·C·D", desc: "가장 인기 있는 국민 평형 타입" },
-  { type: "95㎡", variants: "A·B", desc: "넉넉한 공간의 프리미엄 타입" },
+  { type: "72㎡", variants: "A·B·C·D", desc: "효율적인 공간 구성의 실속형 — 총 749세대 공급" },
+  { type: "84㎡", variants: "A·B·C·D", desc: "가장 인기 있는 국민 평형 — 총 409세대 공급" },
+  { type: "95㎡", variants: "A·B", desc: "넉넉한 공간의 프리미엄 — 총 302세대 공급" },
 ];
 
 export default function BusinessSection() {
   const hero = useInView();
   const info = useInView();
   const types = useInView();
+  const supply = useInView();
 
   return (
     <section className="pt-[92px] bg-paper">
@@ -91,10 +92,15 @@ export default function BusinessSection() {
               <tbody>
                 {[
                   { label: "현장명", value: "업성 푸르지오 레이크시티" },
-                  { label: "대지위치", value: "천안 업성3 도시개발지구 내 공동주택 부지 (1BL)" },
+                  { label: "대지위치", value: "충청남도 천안시 서북구 업성동 업성3도시개발구역 A1BL" },
                   { label: "건축규모", value: "총 1,908세대 중 금회공급 1블록 1,460세대\n지하 2층 ~ 지상 39층, 11개동" },
-                  { label: "주택형", value: "전용 72㎡ (A·B·C·D) / 84㎡ (A·B·C·D) / 95㎡ (A·B)" },
-                  { label: "시공사", value: "대우건설" },
+                  { label: "주택형", value: "전용 72㎡ (A·B·C·D) / 84㎡ (A·B·C·D) / 95㎡ (A·B) — 3개 평형 10개 타입" },
+                  { label: "공급세대", value: "특별공급 654세대 + 일반공급 806세대 (최하층 우선배정 39세대 포함)" },
+                  { label: "주택관리번호", value: "2026000086" },
+                  { label: "입주시기", value: "2029년 9월 예정" },
+                  { label: "시행사", value: "교보자산신탁(주)" },
+                  { label: "시공사", value: "(주)대우건설" },
+                  { label: "분양문의", value: "1668-3535" },
                 ].map((row) => (
                   <tr key={row.label} className="border-b border-ink/[0.08]">
                     <th className="text-left text-stone text-[12.5px] font-normal py-5 pr-6 align-top w-[120px] lg:w-[140px]">
@@ -141,6 +147,60 @@ export default function BusinessSection() {
 
           <p className="text-stone-light text-[11px] mt-8 font-light">
             * 상기 내용은 인허가 과정에서 변경될 수 있습니다.
+          </p>
+        </div>
+      </div>
+
+      {/* ── SUPPLY DETAIL TABLE ── */}
+      <div ref={supply.ref} className="bg-paper border-t border-ink/[0.08]">
+        <div className={`max-w-[1280px] mx-auto px-6 lg:pl-[88px] lg:pr-10 py-24 lg:py-28 transition-all duration-700 ${supply.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+          <div className="grid grid-cols-12 gap-6 mb-10">
+            <div className="col-span-12 lg:col-span-4">
+              <p className="text-[10.5px] tracking-[3px] uppercase text-rust mb-3">Supply</p>
+              <h2 className="text-ink text-[26px] lg:text-[32px] tracking-tight" style={{ fontWeight: 300 }}>공급세대 상세</h2>
+            </div>
+            <p className="col-span-12 lg:col-span-8 lg:pl-12 lg:border-l lg:border-ink/10 text-stone text-[13.5px] leading-[2] font-light max-w-[560px]">
+              주택형별 공급 세대수 및 특별공급·일반공급 배정 안내입니다.
+              총 1,460세대 중 특별공급 654세대(기관추천 111 / 다자녀 140 / 신혼부부 262 / 노부모부양 40 / 생애최초 101), 일반공급 806세대로 구성됩니다.
+            </p>
+          </div>
+
+          <div className="overflow-x-auto border border-ink/10">
+            <table className="w-full text-[12.5px] tabular-nums">
+              <thead className="bg-paper-deep">
+                <tr className="text-stone text-[11px] tracking-wider">
+                  <th className="text-left font-normal px-4 py-3 border-b border-ink/10">주택형</th>
+                  <th className="text-right font-normal px-4 py-3 border-b border-ink/10">전용면적(㎡)</th>
+                  <th className="text-right font-normal px-4 py-3 border-b border-ink/10">총공급</th>
+                  <th className="text-right font-normal px-4 py-3 border-b border-ink/10">특별공급</th>
+                  <th className="text-right font-normal px-4 py-3 border-b border-ink/10">일반공급</th>
+                  <th className="text-right font-normal px-4 py-3 border-b border-ink/10">최하층</th>
+                </tr>
+              </thead>
+              <tbody>
+                {SUPPLY_DETAIL.units.map((u) => (
+                  <tr key={u.code} className="border-b border-ink/[0.06]">
+                    <td className="text-ink px-4 py-3 font-medium">{u.code}</td>
+                    <td className="text-ink/80 px-4 py-3 text-right font-light">{u.area.toFixed(4)}</td>
+                    <td className="text-ink px-4 py-3 text-right">{u.total}</td>
+                    <td className="text-stone px-4 py-3 text-right font-light">{u.special}</td>
+                    <td className="text-stone px-4 py-3 text-right font-light">{u.general}</td>
+                    <td className="text-stone-light px-4 py-3 text-right font-light">{u.bottom}</td>
+                  </tr>
+                ))}
+                <tr className="bg-paper-deep">
+                  <td className="text-ink px-4 py-3 font-medium" colSpan={2}>합계</td>
+                  <td className="text-ink px-4 py-3 text-right font-medium">{SUPPLY_DETAIL.total.toLocaleString()}</td>
+                  <td className="text-ink px-4 py-3 text-right">{SUPPLY_DETAIL.specialTotal}</td>
+                  <td className="text-ink px-4 py-3 text-right">{SUPPLY_DETAIL.generalTotal}</td>
+                  <td className="text-ink px-4 py-3 text-right">{SUPPLY_DETAIL.reservedBottom}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p className="text-stone-light text-[11px] mt-6 font-light leading-relaxed">
+            * 단위: ㎡, 세대 / 자료: 입주자 모집공고 (주택관리번호 2026000086) 기준 발췌. 정확한 사항은 공식 공고문을 확인해 주시기 바랍니다.
           </p>
         </div>
       </div>

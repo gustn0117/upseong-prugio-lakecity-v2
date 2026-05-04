@@ -23,7 +23,7 @@ export default function BrandIdentityStrip() {
 
   const placeholder = "추후공지";
 
-  const items = [
+  const items: { label: string; value: string }[] = [
     { label: "시공", value: SITE.builder },
     { label: "시행", value: SITE.company.developer || placeholder },
     { label: "분양", value: SITE.company.salesAgency || placeholder },

@@ -6,7 +6,7 @@ import ContactCTA from "@/components/ContactCTA";
 import NoticeBoard from "@/components/NoticeBoard";
 import SalesTimeline from "@/components/SalesTimeline";
 import BrandIdentityStrip from "@/components/BrandIdentityStrip";
-import { SITE } from "@/lib/site";
+import { SITE, FOUR_UP } from "@/lib/site";
 
 function useInView(threshold = 0.1) {
   const ref = useRef<HTMLDivElement>(null);
@@ -68,9 +68,9 @@ export default function HomeSection({ onTabChange }: HomeSectionProps) {
               style={{ fontWeight: 300 }}>
             업성 푸르지오 레이크시티
           </h1>
-          <p className={`text-paper/75 text-[14px] lg:text-[16px] leading-[1.95] font-light mt-6 max-w-[520px] transition-all duration-1000 delay-200 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"}`}>
-            성성호수공원 도보 1분, 천안 업성동에 들어서는<br className="hidden sm:block" />
-            총 1,908세대 규모의 푸르지오 주거단지.
+          <p className={`text-paper/75 text-[14px] lg:text-[16px] leading-[1.95] font-light mt-6 max-w-[560px] transition-all duration-1000 delay-200 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"}`}>
+            푸르지오가 완성하는 성성호수 앞 프리미엄 도시.<br className="hidden sm:block" />
+            성성호수 새도시가 기다린 업성의 새중심, 천안의 주거명작.
           </p>
 
           {/* Bottom row — quick facts strip */}
@@ -105,20 +105,21 @@ export default function HomeSection({ onTabChange }: HomeSectionProps) {
           <div className="col-span-12 lg:col-span-4">
             <p className="text-[10.5px] tracking-[3px] uppercase text-rust mb-3">Vision</p>
             <h2 className="text-ink text-[28px] lg:text-[36px] leading-[1.25] tracking-tight" style={{ fontWeight: 300 }}>
-              일상이 머무는 곳에<br />
-              자연이 먼저 이어집니다
+              전망 좋은 레이크뷰,<br />
+              선망 받는 푸르지오
             </h2>
           </div>
 
           <div className="col-span-12 lg:col-span-8 lg:pl-12 lg:border-l lg:border-ink/10">
             <div className="grid sm:grid-cols-2 gap-8 lg:gap-12">
               <p className="text-stone text-[14px] leading-[2] font-light">
-                충청남도 천안시 서북구 업성동에 들어서는 1,908세대 규모의 푸르지오 주거단지.
+                충청남도 천안시 서북구 업성동, 업성3 도시개발지구에 들어서는 1,460세대 규모의 푸르지오 주거단지.
                 성성호수공원과 맞닿은 입지 위에 호수 조망과 도시 인프라가 균형 있게 자리 잡습니다.
               </p>
               <p className="text-stone text-[14px] leading-[2] font-light">
-                11개 동, 최고 39층의 단지 구성. 전용 72·84·95㎡ 의 다양한 평형이 가족 구성에 따라 선택의 폭을 제공하며,
-                푸르지오 특유의 단지 조경과 커뮤니티 시설이 함께 설계됩니다.
+                지하 2층 ~ 지상 39층, 11개동의 단지 구성. 전용 72·84·95㎡ 3개 평형 10개 타입이
+                가족 구성에 따라 선택의 폭을 제공하며, 39층 스카이라운지와 25m 4레인 실내수영장 등
+                푸르지오 특유의 특화 설계가 함께합니다.
               </p>
             </div>
           </div>
@@ -131,41 +132,45 @@ export default function HomeSection({ onTabChange }: HomeSectionProps) {
 
           <div className={`grid grid-cols-12 gap-6 mb-14 lg:mb-20 transition-all duration-700 ${features.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
             <div className="col-span-12 lg:col-span-4">
-              <p className="text-[10.5px] tracking-[3px] uppercase text-rust mb-3">Features</p>
+              <p className="text-[10.5px] tracking-[3px] uppercase text-rust mb-3">4 UP</p>
               <h2 className="text-ink text-[28px] lg:text-[36px] leading-[1.25] tracking-tight" style={{ fontWeight: 300 }}>
-                네 가지 좌표,<br />하나의 일상
+                네 가지 가치로<br />업그레이드되는 일상
               </h2>
             </div>
             <p className="col-span-12 lg:col-span-8 lg:pl-12 lg:border-l lg:border-ink/10 text-stone text-[14px] leading-[2] font-light max-w-[560px]">
-              자연·교통·교육·생활 인프라가 도보 생활권 안에서 자연스럽게 이어집니다.
+              호수뷰로 클래스, 학교로 스마트, 생활로 라이프, 교통으로 스피드 —
+              네 가지 코어 가치가 한 단지 안에서 동시에 완성됩니다.
             </p>
           </div>
 
           <div className={`grid grid-cols-1 md:grid-cols-2 gap-3 lg:gap-4 transition-all duration-1000 ${features.visible ? "opacity-100" : "opacity-0"}`}>
-            {[
-              { tag: "Lake Park", title: "성성호수공원 도보 1분", desc: "사계절 수변 산책로와 탁 트인 호수 조망", img: "/images/nature-park.jpg" },
-              { tag: "Transport", title: "광역 교통 인프라", desc: "번영로·삼성대로·1호선 부성역 인접", img: "/images/premium-transport-new.jpg" },
-              { tag: "Education", title: "안심 교육환경", desc: "천안업성초·중학교 도보 통학권", img: "/images/premium-education.jpg" },
-              { tag: "Living", title: "풍부한 생활 인프라", desc: "이마트·코스트코 등 대형마트 인접", img: "/images/premium-living.jpg" },
-            ].map((f) => (
-              <article key={f.tag} className="relative aspect-[4/3] overflow-hidden bg-ink group">
-                <Image
-                  src={f.img}
-                  alt={f.title}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover transition-transform duration-[1200ms] group-hover:scale-[1.03]"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/20 to-transparent" />
-                <div className="absolute bottom-7 left-7 right-7">
-                  <p className="text-paper/65 text-[10px] tracking-[3px] uppercase mb-3">{f.tag}</p>
-                  <h3 className="text-paper text-[20px] lg:text-[24px] tracking-tight leading-tight" style={{ fontWeight: 400 }}>
-                    {f.title}
-                  </h3>
-                  <p className="text-paper/65 text-[12.5px] font-light mt-2 leading-relaxed">{f.desc}</p>
-                </div>
-              </article>
-            ))}
+            {FOUR_UP.map((f, i) => {
+              const imgs = [
+                "/images/nature-park.jpg",
+                "/images/premium-education.jpg",
+                "/images/premium-living.jpg",
+                "/images/premium-transport-new.jpg",
+              ];
+              return (
+                <article key={f.label} className="relative aspect-[4/3] overflow-hidden bg-ink group">
+                  <Image
+                    src={imgs[i]}
+                    alt={f.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover transition-transform duration-[1200ms] group-hover:scale-[1.03]"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/20 to-transparent" />
+                  <div className="absolute bottom-7 left-7 right-7">
+                    <p className="text-paper/65 text-[10px] tracking-[3px] uppercase mb-3">{f.label}</p>
+                    <h3 className="text-paper text-[20px] lg:text-[24px] tracking-tight leading-tight" style={{ fontWeight: 400 }}>
+                      {f.title}
+                    </h3>
+                    <p className="text-paper/65 text-[12.5px] font-light mt-2 leading-relaxed">{f.desc}</p>
+                  </div>
+                </article>
+              );
+            })}
           </div>
         </div>
       </div>
