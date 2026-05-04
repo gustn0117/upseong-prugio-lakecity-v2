@@ -148,7 +148,7 @@ export default function HomeSection({ onTabChange }: HomeSectionProps) {
               const imgs = [
                 "/images/lakefront-bldg.jpg",
                 "/images/classroom.jpg",
-                "/images/city-night.jpg",
+                "/images/skyline-residential.jpg",
                 "/images/highway-aerial.jpg",
               ];
               return (

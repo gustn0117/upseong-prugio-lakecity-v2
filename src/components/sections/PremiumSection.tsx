@@ -33,7 +33,7 @@ const premium7 = [
     tag: "Sky Lounge",
     title: "39층 최상층 스카이라운지",
     desc: "파노라마로 펼쳐진 명품 전망. 성성호수가 한눈에 들어오는 39층 스카이라운지 & 게스트하우스.",
-    img: "/images/lounge-night.jpg",
+    img: "/images/skyline-sunset.jpg",
   },
   {
     num: "03",
@@ -54,7 +54,7 @@ const premium7 = [
     tag: "Distance",
     title: "최대 125m 동간거리",
     desc: "막힘없이 탁 트인 창밖 풍경. 최대 125m 동간거리로 누리는 레이크 뷰 그 이상의 특급조망.",
-    img: "/images/exterior-windows.jpg",
+    img: "/images/highrise-facade.jpg",
   },
   {
     num: "06",
