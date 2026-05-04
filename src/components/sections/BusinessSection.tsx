@@ -205,43 +205,99 @@ export default function BusinessSection() {
         </div>
       </div>
 
-      {/* ── SCHEDULE CALENDAR ── */}
+      {/* ── SCHEDULE TABLE ── */}
       <div className="bg-paper-deep border-t border-ink/[0.08]">
         <div className="max-w-[1280px] mx-auto px-6 lg:pl-[88px] lg:pr-10 py-20 lg:py-24">
           <div className="grid grid-cols-12 gap-6 mb-10">
             <div className="col-span-12 lg:col-span-4">
               <p className="text-[10.5px] tracking-[3px] uppercase text-rust mb-3">Calendar</p>
-              <h2 className="text-ink text-[26px] lg:text-[32px] tracking-tight" style={{ fontWeight: 300 }}>분양 일정 캘린더</h2>
+              <h2 className="text-ink text-[26px] lg:text-[32px] tracking-tight" style={{ fontWeight: 300 }}>분양 일정</h2>
             </div>
             <p className="col-span-12 lg:col-span-8 lg:pl-12 lg:border-l lg:border-ink/10 text-stone text-[13.5px] leading-[2] font-light max-w-[520px]">
-              4월 13일 특별공급 → 4월 14·15일 1·2순위 → 4월 22일 당첨자 발표 → 4월 24일~5월 1일 서류접수 → 5월 4~7일 정당계약 체결.
+              모델하우스 OPEN부터 입주까지의 핵심 일정을 한눈에. 정당계약은 5월 4일(월) ~ 5월 7일(목) 모델하우스에서 진행됩니다.
             </p>
           </div>
 
-          <div className="border border-ink/10 bg-paper p-2">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/images/crawled/schedule.jpg" alt="분양 일정 캘린더" className="w-full h-auto block" />
+          <div className="border border-ink/10 bg-paper">
+            <table className="w-full text-[13.5px]">
+              <tbody>
+                {[
+                  { label: "모델하우스 OPEN", date: "2026.04.10 (금)", note: "그랜드 오픈" },
+                  { label: "입주자 모집공고", date: "2026.04.07", note: "주택관리번호 2026000086" },
+                  { label: "특별공급 청약", date: "2026.04.13 (월)", note: "기관추천·다자녀·신혼부부·노부모부양·생애최초" },
+                  { label: "1순위 청약", date: "2026.04.14 (화)", note: "청약Home 인터넷 접수" },
+                  { label: "2순위 청약", date: "2026.04.15 (수)", note: "청약Home 인터넷 접수" },
+                  { label: "당첨자 발표", date: "2026.04.22 (수)", note: "청약Home" },
+                  { label: "당첨자 서류접수", date: "2026.04.24 ~ 05.01", note: "모델하우스 방문 접수" },
+                  { label: "정당계약 체결", date: "2026.05.04 ~ 05.07", note: "모델하우스" },
+                  { label: "입주", date: "2029.09 예정", note: "정확한 입주일자 추후 통보" },
+                ].map((row, i) => (
+                  <tr key={i} className="border-b border-ink/[0.06] last:border-b-0">
+                    <th className="text-left text-stone text-[12.5px] font-normal py-4 px-5 align-top w-[180px]">
+                      {row.label}
+                    </th>
+                    <td className="text-ink text-[14px] py-4 px-5 align-top tabular-nums" style={{ fontWeight: 500 }}>
+                      {row.date}
+                    </td>
+                    <td className="text-stone-light text-[12.5px] py-4 px-5 align-top font-light hidden md:table-cell">
+                      {row.note}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
 
-      {/* ── OFFICIAL SUPPLY DOC ── */}
+      {/* ── CONTRACT PAYMENT SCHEDULE ── */}
       <div className="bg-paper border-t border-ink/[0.08]">
         <div className="max-w-[1280px] mx-auto px-6 lg:pl-[88px] lg:pr-10 py-20 lg:py-24">
           <div className="grid grid-cols-12 gap-6 mb-10">
             <div className="col-span-12 lg:col-span-4">
-              <p className="text-[10.5px] tracking-[3px] uppercase text-rust mb-3">Notice</p>
-              <h2 className="text-ink text-[26px] lg:text-[32px] tracking-tight" style={{ fontWeight: 300 }}>공급안내 (공식)</h2>
+              <p className="text-[10.5px] tracking-[3px] uppercase text-rust mb-3">Payment</p>
+              <h2 className="text-ink text-[26px] lg:text-[32px] tracking-tight" style={{ fontWeight: 300 }}>대금 납부 일정</h2>
             </div>
             <p className="col-span-12 lg:col-span-8 lg:pl-12 lg:border-l lg:border-ink/10 text-stone text-[13.5px] leading-[2] font-light max-w-[520px]">
-              공식 입주자 모집공고에서 발췌한 공급대상·공급금액·납부일정 안내입니다. 정확한 내용은 청약Home의 공식 공고문을 확인해 주시기 바랍니다.
+              계약금 5% (1차 + 2차) → 중도금 60% (6회 분할) → 잔금 35% (입주지정일).
+              자세한 금액은 입주자 모집공고 공급금액 표를 확인해 주시기 바랍니다.
             </p>
           </div>
 
-          <div className="border border-ink/10 bg-paper p-2 max-w-[1100px] mx-auto">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/images/crawled/supply_info.jpg" alt="공식 공급안내" className="w-full h-auto block" />
+          <div className="overflow-x-auto border border-ink/10">
+            <table className="w-full text-[12.5px] tabular-nums">
+              <thead className="bg-paper-deep">
+                <tr className="text-stone text-[11px] tracking-wider">
+                  <th className="text-left font-normal px-4 py-3 border-b border-ink/10">구분</th>
+                  <th className="text-right font-normal px-4 py-3 border-b border-ink/10">비율</th>
+                  <th className="text-right font-normal px-4 py-3 border-b border-ink/10">납부일</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  { label: "계약금 1차", ratio: "5%", date: "2026.05 (계약시)" },
+                  { label: "계약금 2차", ratio: "—", date: "계약 1개월 이내" },
+                  { label: "중도금 1차", ratio: "10%", date: "2026.09.11" },
+                  { label: "중도금 2차", ratio: "10%", date: "2027.03.12" },
+                  { label: "중도금 3차", ratio: "10%", date: "2027.09.10" },
+                  { label: "중도금 4차", ratio: "10%", date: "2028.05.12" },
+                  { label: "중도금 5차", ratio: "10%", date: "2028.10.13" },
+                  { label: "중도금 6차", ratio: "10%", date: "2029.03.09" },
+                  { label: "잔금", ratio: "35%", date: "입주지정일 (2029.09 예정)" },
+                ].map((row, i) => (
+                  <tr key={i} className="border-b border-ink/[0.06] last:border-b-0">
+                    <td className="text-ink px-4 py-3 font-medium">{row.label}</td>
+                    <td className="text-stone px-4 py-3 text-right font-light">{row.ratio}</td>
+                    <td className="text-stone px-4 py-3 text-right font-light">{row.date}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
+
+          <p className="text-stone-light text-[11px] mt-6 font-light leading-relaxed">
+            * 자료: 입주자 모집공고 공급금액 및 납부일정 (주택관리번호 2026000086) 발췌. 정확한 금액 및 일정은 공식 공고문을 확인해 주시기 바랍니다.
+          </p>
         </div>
       </div>
 

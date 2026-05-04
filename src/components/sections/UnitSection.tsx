@@ -5,16 +5,16 @@ import ContactCTA from "@/components/ContactCTA";
 import { SUPPLY_DETAIL } from "@/lib/site";
 
 const types = [
-  { id: "72A", img: "/images/crawled/type_info_72a.jpg", area: "72.7578㎡" },
-  { id: "72B", img: "/images/crawled/type_info_72b.jpg", area: "72.8526㎡" },
-  { id: "72C", img: "/images/crawled/type_info_72c.jpg", area: "72.8920㎡" },
-  { id: "72D", img: "/images/crawled/type_info_72d.jpg", area: "72.8938㎡" },
-  { id: "84A", img: "/images/crawled/type_info_84a.jpg", area: "84.9631㎡" },
-  { id: "84B", img: "/images/crawled/type_info_84b.jpg", area: "84.9637㎡" },
-  { id: "84C", img: "/images/crawled/type_info_84c.jpg", area: "84.9789㎡" },
-  { id: "84D", img: "/images/crawled/type_info_84d.jpg", area: "84.9924㎡" },
-  { id: "95A", img: "/images/crawled/type_info_95a.jpg", area: "95.7927㎡" },
-  { id: "95B", img: "/images/crawled/type_info_95b.jpg", area: "95.7890㎡" },
+  { id: "72A", category: "72㎡", desc: "효율적인 공간 구성의 실속형. 가장 많은 484세대가 공급되는 핵심 평형." },
+  { id: "72B", category: "72㎡", desc: "거주성과 채광을 균형 있게 살린 72㎡ B타입." },
+  { id: "72C", category: "72㎡", desc: "공용면적이 다소 넉넉한 72㎡ C타입." },
+  { id: "72D", category: "72㎡", desc: "거실 중심 동선을 살린 72㎡ D타입." },
+  { id: "84A", category: "84㎡", desc: "가장 인기 있는 국민 평형 — 84㎡ A타입. 184세대 공급." },
+  { id: "84B", category: "84㎡", desc: "거실과 침실 분리감을 살린 84㎡ B타입." },
+  { id: "84C", category: "84㎡", desc: "공용면적이 가장 넓은 84㎡ C타입. 113세대 공급." },
+  { id: "84D", category: "84㎡", desc: "효율과 채광 사이의 균형을 갖춘 84㎡ D타입." },
+  { id: "95A", category: "95㎡", desc: "넉넉한 공간의 프리미엄 — 95㎡ A타입. 227세대로 95㎡ 평형 중 최다 공급." },
+  { id: "95B", category: "95㎡", desc: "패밀리 라이프를 위한 95㎡ B타입." },
 ];
 
 interface UnitSectionProps {
@@ -59,7 +59,7 @@ export default function UnitSection({ initialSubTab }: UnitSectionProps) {
           </div>
           <div className="col-span-12 lg:col-span-5 lg:border-l lg:border-paper/15 lg:pl-10">
             <p className="text-paper/65 text-[13.5px] font-light leading-[1.95]">
-              전용 72㎡ A·B·C·D / 84㎡ A·B·C·D / 95㎡ A·B — 3개 평형 10개 타입의 평면안내입니다.
+              전용 72㎡ A·B·C·D / 84㎡ A·B·C·D / 95㎡ A·B — 3개 평형 10개 타입의 면적·공급 안내입니다.
             </p>
           </div>
         </div>
@@ -84,53 +84,76 @@ export default function UnitSection({ initialSubTab }: UnitSectionProps) {
         </div>
       </div>
 
-      {/* ── FLOOR PLAN ── */}
+      {/* ── CURRENT TYPE DETAIL ── */}
       <div ref={content.ref} className={`bg-paper transition-opacity duration-500 ${content.visible ? "opacity-100" : "opacity-0"}`}>
         <div className="max-w-[1280px] mx-auto px-6 lg:pl-[88px] lg:pr-10 py-16 lg:py-20">
 
-          <div className="grid grid-cols-12 gap-10 lg:gap-12">
+          <div className="grid grid-cols-12 gap-10 lg:gap-16">
+
             {/* meta */}
-            <div className="col-span-12 lg:col-span-3 lg:sticky lg:top-[140px] self-start">
+            <div className="col-span-12 lg:col-span-5">
               <p className="text-rust text-[11px] tracking-[3px] uppercase mb-3">Type {current.id}</p>
-              <p className="text-ink text-[44px] lg:text-[56px] leading-none tracking-tight tabular-nums" style={{ fontWeight: 300 }}>
-                {current.id.replace(/[A-D]/, "")}㎡
+              <p className="text-ink text-[60px] lg:text-[84px] leading-none tracking-tight tabular-nums" style={{ fontWeight: 300 }}>
+                {current.category}
               </p>
-              <p className="text-stone text-[13px] font-light mt-3">전용 {current.area}</p>
+              <p className="text-stone text-[14px] font-light mt-5 leading-[1.95] max-w-[380px]">
+                {current.desc}
+              </p>
 
               {supplyData && (
-                <div className="mt-8 border-t border-ink/15 pt-6 space-y-4">
-                  <div>
-                    <p className="text-stone-light text-[10.5px] tracking-[2px] uppercase mb-1.5">총 공급</p>
-                    <p className="text-ink text-[20px] tabular-nums" style={{ fontWeight: 400 }}>{supplyData.total}세대</p>
-                  </div>
-                  <div className="grid grid-cols-3 gap-3 pt-1">
+                <div className="mt-10 border-t border-ink/15 pt-8">
+                  <p className="text-rust text-[10.5px] tracking-[3px] uppercase mb-5">Supply</p>
+                  <div className="grid grid-cols-4 gap-3 mb-6">
                     <div>
-                      <p className="text-stone-light text-[10px] tracking-wider mb-1">특별</p>
-                      <p className="text-stone text-[14.5px] tabular-nums font-light">{supplyData.special}</p>
+                      <p className="text-stone-light text-[10.5px] tracking-wider mb-1.5">총 공급</p>
+                      <p className="text-ink text-[22px] tabular-nums" style={{ fontWeight: 400 }}>{supplyData.total}</p>
                     </div>
                     <div>
-                      <p className="text-stone-light text-[10px] tracking-wider mb-1">일반</p>
-                      <p className="text-stone text-[14.5px] tabular-nums font-light">{supplyData.general}</p>
+                      <p className="text-stone-light text-[10.5px] tracking-wider mb-1.5">특별</p>
+                      <p className="text-stone text-[18px] tabular-nums font-light">{supplyData.special}</p>
                     </div>
                     <div>
-                      <p className="text-stone-light text-[10px] tracking-wider mb-1">최하층</p>
-                      <p className="text-stone text-[14.5px] tabular-nums font-light">{supplyData.bottom}</p>
+                      <p className="text-stone-light text-[10.5px] tracking-wider mb-1.5">일반</p>
+                      <p className="text-stone text-[18px] tabular-nums font-light">{supplyData.general}</p>
+                    </div>
+                    <div>
+                      <p className="text-stone-light text-[10.5px] tracking-wider mb-1.5">최하층</p>
+                      <p className="text-stone text-[18px] tabular-nums font-light">{supplyData.bottom}</p>
                     </div>
                   </div>
                 </div>
               )}
-
-              <p className="text-stone-light text-[11px] mt-8 font-light leading-relaxed">
-                * 본 평면도는 소비자의 이해를 돕기 위해 제작된 것으로 인·허가 과정이나 실제 시공 시 현장 여건에 따라 상이할 수 있습니다.
-              </p>
             </div>
 
-            {/* image */}
-            <div className="col-span-12 lg:col-span-9">
-              <div className="border border-ink/10 bg-paper p-2">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={current.img} alt={`${current.id} 평면도`} className="w-full h-auto block" />
-              </div>
+            {/* area spec table */}
+            <div className="col-span-12 lg:col-span-7">
+              <p className="text-rust text-[10.5px] tracking-[3px] uppercase mb-5">Area Spec</p>
+              {supplyData && (
+                <table className="w-full text-[13.5px]">
+                  <tbody>
+                    {[
+                      { label: "주거전용면적", value: `${supplyData.area.toFixed(4)} ㎡` },
+                      { label: "주거공용면적", value: `${supplyData.areaPub.toFixed(4)} ㎡` },
+                      { label: "공급면적 소계", value: `${supplyData.areaSum.toFixed(4)} ㎡` },
+                      { label: "기타공용면적", value: `${supplyData.areaOther.toFixed(4)} ㎡` },
+                      { label: "계약면적", value: `${supplyData.areaContract.toFixed(4)} ㎡` },
+                      { label: "세대별 대지지분", value: `${supplyData.landShare.toFixed(4)} ㎡` },
+                    ].map((row) => (
+                      <tr key={row.label} className="border-b border-ink/[0.08]">
+                        <th className="text-left text-stone text-[12.5px] font-normal py-4 pr-6 align-top w-[160px]">
+                          {row.label}
+                        </th>
+                        <td className="text-ink text-[14px] font-light tabular-nums py-4">
+                          {row.value}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              )}
+              <p className="text-stone-light text-[11px] mt-6 font-light leading-relaxed">
+                * 자료: 입주자 모집공고 공급대상 (주택관리번호 2026000086) 기준 발췌. 인·허가 과정이나 실제 시공 시 현장 여건에 따라 상이할 수 있습니다.
+              </p>
             </div>
           </div>
         </div>
@@ -145,33 +168,61 @@ export default function UnitSection({ initialSubTab }: UnitSectionProps) {
               <h2 className="text-ink text-[26px] lg:text-[32px] tracking-tight" style={{ fontWeight: 300 }}>10개 타입 한눈에</h2>
             </div>
             <p className="col-span-12 lg:col-span-8 lg:pl-12 lg:border-l lg:border-ink/10 text-stone text-[13.5px] leading-[2] font-light max-w-[520px]">
-              평형별 썸네일을 클릭하시면 해당 타입의 평면도를 확인하실 수 있습니다.
+              평형별 면적 및 공급세대수를 한 표에 정리했습니다. 행을 클릭하면 해당 타입 상세로 이동합니다.
             </p>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-            {types.map((t) => (
-              <button
-                key={t.id}
-                onClick={() => {
-                  setActiveType(t.id);
-                  window.scrollTo({ top: 0, behavior: "smooth" });
-                }}
-                className={`group text-left border transition-all ${
-                  activeType === t.id ? "border-rust bg-paper" : "border-ink/10 bg-paper hover:border-ink/30"
-                }`}
-              >
-                <div className="aspect-[1100/1077] bg-paper overflow-hidden border-b border-ink/[0.06]">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={t.img} alt={`${t.id} 미리보기`} className="w-full h-full object-cover" />
-                </div>
-                <div className="px-4 py-3 flex items-baseline justify-between">
-                  <span className="text-ink text-[14px] tabular-nums" style={{ fontWeight: 500 }}>{t.id}</span>
-                  <span className="text-stone-light text-[10.5px] tabular-nums">{t.area.replace("㎡", "")}㎡</span>
-                </div>
-              </button>
-            ))}
+          <div className="overflow-x-auto border border-ink/10 bg-paper">
+            <table className="w-full text-[12.5px] tabular-nums">
+              <thead className="bg-paper-deep">
+                <tr className="text-stone text-[11px] tracking-wider">
+                  <th className="text-left font-normal px-4 py-3 border-b border-ink/10">타입</th>
+                  <th className="text-right font-normal px-4 py-3 border-b border-ink/10">전용면적</th>
+                  <th className="text-right font-normal px-4 py-3 border-b border-ink/10">공급면적 소계</th>
+                  <th className="text-right font-normal px-4 py-3 border-b border-ink/10">계약면적</th>
+                  <th className="text-right font-normal px-4 py-3 border-b border-ink/10">총공급</th>
+                  <th className="text-right font-normal px-4 py-3 border-b border-ink/10">특별</th>
+                  <th className="text-right font-normal px-4 py-3 border-b border-ink/10">일반</th>
+                </tr>
+              </thead>
+              <tbody>
+                {SUPPLY_DETAIL.units.map((u) => (
+                  <tr
+                    key={u.code}
+                    onClick={() => {
+                      setActiveType(u.code);
+                      window.scrollTo({ top: 0, behavior: "smooth" });
+                    }}
+                    className={`border-b border-ink/[0.06] cursor-pointer transition-colors ${
+                      activeType === u.code ? "bg-paper-deep" : "hover:bg-paper-deep/60"
+                    }`}
+                  >
+                    <td className="text-ink px-4 py-3 font-medium">
+                      <span className={`inline-block px-2 py-0.5 ${activeType === u.code ? "bg-ink text-paper" : ""}`}>
+                        {u.code}
+                      </span>
+                    </td>
+                    <td className="text-ink/80 px-4 py-3 text-right font-light">{u.area.toFixed(4)}</td>
+                    <td className="text-stone px-4 py-3 text-right font-light">{u.areaSum.toFixed(4)}</td>
+                    <td className="text-stone px-4 py-3 text-right font-light">{u.areaContract.toFixed(4)}</td>
+                    <td className="text-ink px-4 py-3 text-right">{u.total}</td>
+                    <td className="text-stone-light px-4 py-3 text-right font-light">{u.special}</td>
+                    <td className="text-stone-light px-4 py-3 text-right font-light">{u.general}</td>
+                  </tr>
+                ))}
+                <tr className="bg-paper-deep">
+                  <td className="text-ink px-4 py-3 font-medium" colSpan={4}>합계</td>
+                  <td className="text-ink px-4 py-3 text-right font-medium">{SUPPLY_DETAIL.total.toLocaleString()}</td>
+                  <td className="text-ink px-4 py-3 text-right">{SUPPLY_DETAIL.specialTotal}</td>
+                  <td className="text-ink px-4 py-3 text-right">{SUPPLY_DETAIL.generalTotal}</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
+
+          <p className="text-stone-light text-[11px] mt-6 font-light">
+            * 단위: ㎡, 세대 — 자료: 입주자 모집공고 (주택관리번호 2026000086) 기준 발췌.
+          </p>
         </div>
       </div>
 
