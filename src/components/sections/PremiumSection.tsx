@@ -91,7 +91,7 @@ export default function PremiumSection() {
   const grid = useInView(0.05);
 
   return (
-    <section className="pt-[56px] bg-paper">
+    <section className="pt-[92px] bg-paper">
 
       {/* ── EDITORIAL HEADER ── */}
       <div className="bg-ink text-paper relative overflow-hidden">

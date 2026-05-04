@@ -4,10 +4,11 @@
 
 :root {
   --ink: #141414;
-  --paper: #F4F0E8;
-  --paper-deep: #EAE3D6;
-  --rust: #C25D3D;
-  --stone: #6B665E;
+  --paper: #F5F5F4;
+  --paper-deep: #E7E5E4;
+  --rust: #B8553A;
+  --stone: #57534E;
+  --stone-light: #A8A29E;
   --forest: #2D4034;
 
   /* Legacy */

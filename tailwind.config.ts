@@ -9,16 +9,16 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // — Editorial palette (new) —
-        ink: "#141414",          // primary dark, replaces navy as default
-        "ink-soft": "#1F1F1E",
-        paper: "#F4F0E8",        // warm cream background
-        "paper-deep": "#EAE3D6",
-        rust: "#C25D3D",         // warm accent, replaces gold in some places
-        "rust-deep": "#9E4A2F",
-        stone: "#6B665E",        // mid neutral
-        "stone-light": "#9A958C",
-        forest: "#2D4034",       // alternative dark accent
+        // — Editorial palette (institutional neutral) —
+        ink: "#141414",          // primary dark
+        "ink-soft": "#1F1F1F",
+        paper: "#F5F5F4",        // neutral off-white (stone-100 base)
+        "paper-deep": "#E7E5E4", // stone-200, subtle depth
+        rust: "#B8553A",         // muted terracotta accent
+        "rust-deep": "#964530",
+        stone: "#57534E",        // stone-600
+        "stone-light": "#A8A29E", // stone-400
+        forest: "#2D4034",
 
         // — Legacy palette (kept for sections still using navy/gold) —
         navy: "#0F1B2D",

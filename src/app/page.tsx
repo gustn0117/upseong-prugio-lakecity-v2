@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import NotificationRibbon from "@/components/NotificationRibbon";
 import HomeSection from "@/components/sections/HomeSection";
 import BusinessSection from "@/components/sections/BusinessSection";
 import LocationSection from "@/components/sections/LocationSection";
@@ -32,7 +33,11 @@ export default function Home() {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Header activeTab={activeTab} onTabChange={handleTabChange} />
+      {/* Fixed top stack: notification ribbon + header */}
+      <div className="fixed top-0 left-0 right-0 z-50">
+        <NotificationRibbon />
+        <Header activeTab={activeTab} onTabChange={handleTabChange} />
+      </div>
 
       <main className="flex-1">
         {activeTab === "home" && <HomeSection onTabChange={handleTabChange} />}

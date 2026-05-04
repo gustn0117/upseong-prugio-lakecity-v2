@@ -24,15 +24,26 @@ export default function Footer({ onTabChange }: FooterProps) {
 
   return (
     <footer className="bg-ink text-paper/70">
-      {/* Top divider strip with vertical year mark */}
+      {/* Top divider strip with vertical year mark + 공식 사이트 배지 */}
       <div className="border-b border-paper/10">
-        <div className="max-w-[1400px] mx-auto px-6 lg:pl-[88px] lg:pr-10 py-8 flex items-center justify-between">
-          <p className="font-display text-paper text-[28px] lg:text-[36px] tracking-tighter" style={{ fontWeight: 400 }}>
-            Prugio <span className="italic text-rust">Lakecity</span>
-          </p>
-          <p className="hidden md:block text-mono text-[11px] tabular-nums text-paper/40 tracking-[2px] uppercase">
-            UPSEONG · CHEONAN · 2026
-          </p>
+        <div className="max-w-[1400px] mx-auto px-6 lg:pl-[88px] lg:pr-10 py-7 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+          <div className="flex items-baseline gap-4">
+            <p className="font-display text-paper text-[28px] lg:text-[36px] tracking-tighter" style={{ fontWeight: 400 }}>
+              Prugio <span className="text-rust">Lakecity</span>
+            </p>
+            <span className="text-mono text-[10px] tabular-nums text-rust tracking-[2px] uppercase border border-rust/40 px-1.5 py-px">
+              Official Site
+            </span>
+          </div>
+          <div className="flex items-center gap-4">
+            <p className="text-mono text-[11px] tabular-nums text-paper/40 tracking-[2px] uppercase">
+              UPSEONG · CHEONAN · 2026
+            </p>
+            <span className="text-paper/20">|</span>
+            <p className="text-mono text-[11px] tabular-nums text-paper/40 tracking-wider">
+              v.{SITE.lastUpdated.replace(/\./g, "")}
+            </p>
+          </div>
         </div>
       </div>
 
@@ -115,14 +126,52 @@ export default function Footer({ onTabChange }: FooterProps) {
         </div>
       </div>
 
-      {/* Disclaimer */}
+      {/* Legal links + official channels */}
       <div className="border-t border-paper/[0.07]">
+        <div className="max-w-[1400px] mx-auto px-6 lg:pl-[88px] lg:pr-10 py-6 flex flex-col lg:flex-row gap-5 lg:items-center lg:justify-between">
+          <ul className="flex flex-wrap gap-x-6 gap-y-2">
+            {[
+              { label: "이용약관", href: "#terms" },
+              { label: "개인정보처리방침", href: "#privacy", strong: true },
+              { label: "위치기반서비스 이용약관", href: "#location-terms" },
+              { label: "이메일무단수집거부", href: "#anti-spam" },
+            ].map((l) => (
+              <li key={l.label}>
+                <a
+                  href={l.href}
+                  className={`text-[11.5px] hover:text-paper transition-colors ${
+                    l.strong ? "text-paper/85 font-medium" : "text-paper/55"
+                  }`}
+                >
+                  {l.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-mono text-[10.5px] tabular-nums tracking-wider uppercase">
+            <a href={SITE.links.cheongyakHome} target="_blank" rel="noopener noreferrer" className="text-paper/55 hover:text-paper transition-colors inline-flex items-center gap-1">
+              청약Home <span className="text-rust">↗</span>
+            </a>
+            <a href={SITE.links.daewooEnc} target="_blank" rel="noopener noreferrer" className="text-paper/55 hover:text-paper transition-colors inline-flex items-center gap-1">
+              대우건설 <span className="text-rust">↗</span>
+            </a>
+            <a href={SITE.links.prugioOfficial} target="_blank" rel="noopener noreferrer" className="text-paper/55 hover:text-paper transition-colors inline-flex items-center gap-1">
+              푸르지오 <span className="text-rust">↗</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {/* Disclaimer */}
+      <div className="border-t border-paper/[0.07] bg-ink-soft">
         <div className="max-w-[1400px] mx-auto px-6 lg:pl-[88px] lg:pr-10 py-7">
-          <p className="text-[11.5px] text-paper/40 leading-[1.9] font-light">
-            <span className="text-paper/60 font-medium mr-1">[ 유의사항 ]</span>
+          <p className="text-[11.5px] text-paper/45 leading-[1.95] font-light">
+            <span className="text-paper/70 font-medium mr-1">[ 유의사항 ]</span>
             본 홈페이지에 게재된 모든 내용 및 이미지·CG·문구 등은 소비자의 이해를 돕기 위해 제작·표기된 것으로
             실제와 차이가 있을 수 있으며, 인허가 및 사업 진행 상황에 따라 변경될 수 있습니다.
             정확한 분양 정보는 입주자 모집공고 및 정식 분양 안내문을 반드시 확인해 주시기 바랍니다.
+            본 사이트의 모든 정보는 사전 안내 목적이며, 법적 효력을 갖지 않습니다.
           </p>
         </div>
       </div>
@@ -134,7 +183,7 @@ export default function Footer({ onTabChange }: FooterProps) {
             © {SITE.copyrightYear} {SITE.projectName.toUpperCase()} — ALL RIGHTS RESERVED.
           </p>
           <p className="text-mono text-[10.5px] tabular-nums text-paper/30 tracking-wider">
-            UNOFFICIAL INFORMATION SITE
+            UNOFFICIAL INFORMATION SITE · UPDATED {SITE.lastUpdated}
           </p>
         </div>
       </div>

@@ -43,24 +43,29 @@ export default function Header({ activeTab, onTabChange }: HeaderProps) {
 
   return (
     <>
-      {/* ============ TOP BAR ============ */}
+      {/* ============ TOP BAR (rendered inside fixed wrapper from page.tsx) ============ */}
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        className={`relative transition-all duration-500 ${
           onDark ? "bg-transparent" : "bg-paper/90 backdrop-blur-md border-b border-ink/[0.08]"
         }`}
       >
         <div className="relative px-5 lg:px-8">
           <div className="flex items-center justify-between h-[56px]">
-            {/* Logo wordmark */}
+            {/* Logo wordmark + OFFICIAL badge */}
             <button
               onClick={() => { setMobileOpen(false); onTabChange("home"); }}
-              className="flex items-baseline gap-2 cursor-pointer flex-shrink-0"
+              className="flex items-baseline gap-2.5 cursor-pointer flex-shrink-0"
             >
               <span className={`font-display text-[20px] tracking-[-0.01em] ${onDark ? "text-paper" : "text-ink"}`} style={{ fontWeight: 500 }}>
                 Prugio
               </span>
-              <span className={`text-[10px] tracking-[3px] uppercase font-light ${onDark ? "text-paper/50" : "text-stone"}`}>
+              <span className={`text-[10px] tracking-[3px] uppercase font-light ${onDark ? "text-paper/55" : "text-stone"}`}>
                 Lakecity
+              </span>
+              <span className={`hidden md:inline text-mono text-[9px] tabular-nums tracking-[2px] uppercase border px-1 py-px ${
+                onDark ? "border-rust/50 text-rust" : "border-rust/40 text-rust"
+              }`}>
+                Official
               </span>
             </button>
 
@@ -150,7 +155,7 @@ export default function Header({ activeTab, onTabChange }: HeaderProps) {
       {/* ============ LEFT VERTICAL RAIL (desktop) ============ */}
       <aside className="hidden lg:flex fixed left-0 top-0 bottom-0 z-40 w-[56px] flex-col items-center justify-between py-6 pointer-events-none">
         {/* Top: vertical brand label */}
-        <div className="pointer-events-auto pt-[60px]">
+        <div className="pointer-events-auto pt-[100px]">
           <div className={`vertical-rl text-[9px] tracking-[5px] uppercase ${onDark ? "text-paper/40" : "text-stone-light"}`}>
             Upseong · 2026
           </div>

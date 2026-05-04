@@ -32,7 +32,7 @@ export default function BusinessSection() {
   const types = useInView();
 
   return (
-    <section className="pt-[56px] bg-paper">
+    <section className="pt-[92px] bg-paper">
 
       {/* ── EDITORIAL HEADER ── */}
       <div className="bg-ink text-paper relative overflow-hidden">

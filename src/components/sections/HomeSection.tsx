@@ -3,6 +3,9 @@
 import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import ContactCTA from "@/components/ContactCTA";
+import NoticeBoard from "@/components/NoticeBoard";
+import SalesTimeline from "@/components/SalesTimeline";
+import BrandIdentityStrip from "@/components/BrandIdentityStrip";
 import { SITE } from "@/lib/site";
 
 function useInView(threshold = 0.15) {
@@ -315,6 +318,16 @@ export default function HomeSection({ onTabChange }: HomeSectionProps) {
       </div>
 
       {/* ═══════════════════════════════════════════════
+          SALES SCHEDULE — 분양 일정 단계
+          ═══════════════════════════════════════════════ */}
+      <SalesTimeline />
+
+      {/* ═══════════════════════════════════════════════
+          NOTICES — 공지사항 보드
+          ═══════════════════════════════════════════════ */}
+      <NoticeBoard />
+
+      {/* ═══════════════════════════════════════════════
           MAP TEASER — Location entry
           ═══════════════════════════════════════════════ */}
       <div ref={map.ref} className="bg-paper">
@@ -364,6 +377,11 @@ export default function HomeSection({ onTabChange }: HomeSectionProps) {
           </div>
         </div>
       </div>
+
+      {/* ═══════════════════════════════════════════════
+          BRAND IDENTITY — 사업 정보 공시
+          ═══════════════════════════════════════════════ */}
+      <BrandIdentityStrip />
 
       {/* ═══════════════════════════════════════════════
           CTA SLAB — Horizontal contact bar
