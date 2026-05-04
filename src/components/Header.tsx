@@ -51,48 +51,39 @@ export default function Header({ activeTab, onTabChange }: HeaderProps) {
       >
         <div className="relative px-5 lg:px-8">
           <div className="flex items-center justify-between h-[56px]">
-            {/* Logo wordmark + OFFICIAL badge */}
+            {/* Logo wordmark */}
             <button
               onClick={() => { setMobileOpen(false); onTabChange("home"); }}
               className="flex items-baseline gap-2.5 cursor-pointer flex-shrink-0"
             >
-              <span className={`font-display text-[20px] tracking-[-0.01em] ${onDark ? "text-paper" : "text-ink"}`} style={{ fontWeight: 500 }}>
-                Prugio
+              <span className={`text-[16px] tracking-[-0.01em] font-semibold ${onDark ? "text-paper" : "text-ink"}`}>
+                업성 푸르지오
               </span>
-              <span className={`text-[10px] tracking-[3px] uppercase font-light ${onDark ? "text-paper/55" : "text-stone"}`}>
-                Lakecity
-              </span>
-              <span className={`hidden md:inline text-mono text-[9px] tabular-nums tracking-[2px] uppercase border px-1 py-px ${
-                onDark ? "border-rust/50 text-rust" : "border-rust/40 text-rust"
-              }`}>
-                Official
+              <span className={`text-[11px] tracking-[2px] font-light ${onDark ? "text-paper/55" : "text-stone"}`}>
+                레이크시티
               </span>
             </button>
 
             {/* Center nav (desktop) */}
-            <nav className="hidden lg:flex items-center gap-8">
+            <nav className="hidden lg:flex items-center gap-9">
               {topNavItems.map((item) => {
                 const isActive = activeTab === item.id;
                 return (
                   <button
                     key={item.id}
                     onClick={() => onTabChange(item.id)}
-                    className="group flex items-center gap-2"
+                    className="relative py-1"
                   >
-                    <span className={`text-mono text-[10px] tabular-nums ${
+                    <span className={`text-[13px] tracking-[1px] transition-colors ${
                       isActive
-                        ? onDark ? "text-rust" : "text-rust"
-                        : onDark ? "text-paper/40" : "text-stone-light"
-                    }`}>
-                      {item.num}
-                    </span>
-                    <span className={`text-[12.5px] tracking-[1.5px] transition-colors ${
-                      isActive
-                        ? onDark ? "text-paper font-medium" : "text-ink font-medium"
-                        : onDark ? "text-paper/60 hover:text-paper" : "text-stone hover:text-ink"
+                        ? onDark ? "text-paper" : "text-ink"
+                        : onDark ? "text-paper/55 hover:text-paper" : "text-stone hover:text-ink"
                     }`}>
                       {item.label}
                     </span>
+                    {isActive && (
+                      <span className="absolute -bottom-px left-0 right-0 h-px bg-rust" />
+                    )}
                   </button>
                 );
               })}
@@ -103,7 +94,7 @@ export default function Header({ activeTab, onTabChange }: HeaderProps) {
               {hasPhone ? (
                 <a
                   href={telHref}
-                  className={`hidden md:inline-flex text-mono text-[12px] tabular-nums tracking-wider transition-colors ${
+                  className={`hidden md:inline-flex text-[12.5px] tabular-nums tracking-wider transition-colors ${
                     onDark ? "text-paper/70 hover:text-paper" : "text-stone hover:text-ink"
                   }`}
                 >
@@ -112,14 +103,13 @@ export default function Header({ activeTab, onTabChange }: HeaderProps) {
               ) : null}
               <button
                 onClick={() => onTabChange("register")}
-                className={`hidden lg:inline-flex items-center gap-2 px-4 py-2 text-[12px] tracking-[1.5px] transition-all ${
+                className={`hidden lg:inline-flex items-center px-4 py-2 text-[12px] tracking-[1px] transition-all ${
                   onDark
                     ? "border border-paper/30 text-paper hover:bg-paper hover:text-ink"
-                    : "bg-ink text-paper hover:bg-rust"
+                    : "bg-ink text-paper hover:bg-stone"
                 }`}
               >
-                <span>관심고객등록</span>
-                <span className="text-[10px]">→</span>
+                관심고객등록
               </button>
               {/* Mobile hamburger */}
               <button
@@ -139,63 +129,34 @@ export default function Header({ activeTab, onTabChange }: HeaderProps) {
           </div>
         </div>
 
-        {/* Section progress bar (4 segments) */}
-        <div className={`h-[2px] flex transition-opacity ${scrolled ? "opacity-100" : "opacity-0"}`}>
-          {topNavItems.map((item) => (
-            <div
-              key={item.id}
-              className={`flex-1 transition-colors ${
-                activeTab === item.id ? "bg-rust" : "bg-ink/10"
-              }`}
-            />
-          ))}
-        </div>
       </header>
 
-      {/* ============ LEFT VERTICAL RAIL (desktop) ============ */}
-      <aside className="hidden lg:flex fixed left-0 top-0 bottom-0 z-40 w-[56px] flex-col items-center justify-between py-6 pointer-events-none">
-        {/* Top: vertical brand label */}
-        <div className="pointer-events-auto pt-[100px]">
-          <div className={`vertical-rl text-[9px] tracking-[5px] uppercase ${onDark ? "text-paper/40" : "text-stone-light"}`}>
-            Upseong · 2026
-          </div>
-        </div>
-
-        {/* Middle: section dots */}
-        <div className="pointer-events-auto flex flex-col items-center gap-5">
-          {menuItems.map((item) => {
-            const isActive = activeTab === item.id;
-            return (
-              <button
-                key={item.id}
-                onClick={() => onTabChange(item.id)}
-                className="group relative flex items-center"
-                aria-label={item.label}
-              >
-                <span
-                  className={`block w-[6px] h-[6px] rounded-full transition-all ${
-                    isActive
-                      ? "bg-rust scale-150"
-                      : onDark ? "bg-paper/30 group-hover:bg-paper/60" : "bg-ink/20 group-hover:bg-ink/50"
-                  }`}
-                />
-                {/* Floating label on hover */}
-                <span className={`absolute left-5 whitespace-nowrap text-[10px] tracking-[2px] uppercase opacity-0 group-hover:opacity-100 transition-opacity ${
-                  onDark ? "text-paper/80" : "text-ink/80"
-                }`}>
-                  {item.num} · {item.label}
-                </span>
-              </button>
-            );
-          })}
-        </div>
-
-        {/* Bottom: scroll hint */}
-        <div className="pointer-events-auto">
-          <div className={`vertical-rl text-[9px] tracking-[5px] uppercase ${onDark ? "text-paper/40" : "text-stone-light"}`}>
-            Scroll ↓
-          </div>
-        </div>
+      {/* ============ LEFT MINIMAL DOT RAIL (desktop) ============ */}
+      <aside className="hidden lg:flex fixed left-0 top-1/2 -translate-y-1/2 z-40 flex-col items-center gap-4 px-4 pointer-events-none">
+        {menuItems.map((item) => {
+          const isActive = activeTab === item.id;
+          return (
+            <button
+              key={item.id}
+              onClick={() => onTabChange(item.id)}
+              className="group relative flex items-center pointer-events-auto py-1"
+              aria-label={item.label}
+            >
+              <span
+                className={`block w-[5px] h-[5px] rounded-full transition-all ${
+                  isActive
+                    ? "bg-rust scale-[1.6]"
+                    : onDark ? "bg-paper/25 group-hover:bg-paper/55" : "bg-ink/15 group-hover:bg-ink/40"
+                }`}
+              />
+              <span className={`absolute left-5 whitespace-nowrap text-[11px] tracking-wide opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none ${
+                onDark ? "text-paper/80" : "text-ink/80"
+              }`}>
+                {item.label}
+              </span>
+            </button>
+          );
+        })}
       </aside>
 
       {/* ============ MOBILE PANEL ============ */}
@@ -214,7 +175,7 @@ export default function Header({ activeTab, onTabChange }: HeaderProps) {
           }`}
         >
           <div className="px-7 pt-7 pb-6 flex items-center justify-between border-b border-ink/10">
-            <span className="font-display text-[22px] text-ink" style={{ fontWeight: 500 }}>Prugio</span>
+            <span className="text-[16px] text-ink" style={{ fontWeight: 600 }}>업성 푸르지오</span>
             <button onClick={() => setMobileOpen(false)} className="p-1 text-ink">
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.4} d="M6 18L18 6M6 6l12 12" />
@@ -229,15 +190,14 @@ export default function Header({ activeTab, onTabChange }: HeaderProps) {
                 <button
                   key={item.id}
                   onClick={() => { onTabChange(item.id); setMobileOpen(false); }}
-                  className={`w-full flex items-baseline gap-4 py-4 border-b border-ink/[0.06] text-left ${
+                  className={`w-full flex items-center justify-between py-4 border-b border-ink/[0.06] text-left ${
                     isActive ? "text-ink" : "text-stone"
                   }`}
                 >
-                  <span className="text-mono text-[11px] tabular-nums text-rust w-7">{item.num}</span>
-                  <span className={`text-[16px] tracking-[1px] ${isActive ? "font-medium" : "font-light"}`}>
+                  <span className={`text-[15px] tracking-tight ${isActive ? "font-medium" : "font-light"}`}>
                     {item.label}
                   </span>
-                  {isActive && <span className="ml-auto text-rust">●</span>}
+                  {isActive && <span className="text-rust text-xs">●</span>}
                 </button>
               );
             })}
@@ -246,7 +206,7 @@ export default function Header({ activeTab, onTabChange }: HeaderProps) {
           <div className="px-7 mt-4 space-y-2">
             <p className="text-[10px] tracking-[3px] uppercase text-stone-light">분양문의</p>
             {hasPhone ? (
-              <a href={telHref} className="text-mono text-[20px] tabular-nums text-ink">{displayPhone}</a>
+              <a href={telHref} className="text-[20px] tabular-nums text-ink tracking-tight" style={{ fontWeight: 400 }}>{displayPhone}</a>
             ) : (
               <p className="text-[15px] text-stone font-light">추후공지</p>
             )}

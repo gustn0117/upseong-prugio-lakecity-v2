@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
 import ContactCTA from "@/components/ContactCTA";
 
 function useInView(threshold = 0.15) {
@@ -42,40 +41,38 @@ export default function LocationSection() {
   return (
     <section className="pt-[92px] bg-paper">
 
-      {/* ── EDITORIAL HEADER ── */}
-      <div className="bg-ink text-paper relative overflow-hidden">
-        <div className="max-w-[1400px] mx-auto px-6 lg:pl-[88px] lg:pr-10 py-16 lg:py-24 grid grid-cols-12 gap-8 lg:gap-12 items-end">
+      {/* ── PAGE HEADER ── */}
+      <div className="bg-ink text-paper">
+        <div className="max-w-[1280px] mx-auto px-6 lg:pl-[88px] lg:pr-10 py-14 lg:py-20 grid grid-cols-12 gap-8 lg:gap-12 items-end">
           <div className="col-span-12 lg:col-span-7">
-            <p className="text-mono text-[11px] tabular-nums text-rust tracking-[3px] mb-4">N°02 — LOCATION</p>
-            <h1 className="font-display text-paper text-[48px] lg:text-[88px] leading-[0.95] tracking-tight" style={{ fontWeight: 400 }}>
-              입지환경<br />
-              <span className="italic text-rust">Site Map.</span>
+            <p className="text-[10.5px] tracking-[3px] uppercase text-rust mb-3">Location</p>
+            <h1 className="text-paper text-[34px] lg:text-[52px] leading-[1.15] tracking-tight" style={{ fontWeight: 300 }}>
+              입지환경
             </h1>
           </div>
-          <div className="col-span-12 lg:col-span-5 lg:border-l lg:border-paper/15 lg:pl-12">
-            <p className="text-paper/55 text-[14px] font-light leading-[2]">
+          <div className="col-span-12 lg:col-span-5 lg:border-l lg:border-paper/15 lg:pl-10">
+            <p className="text-paper/65 text-[13.5px] font-light leading-[1.95]">
               호수공원 도보 1분, KTX 역세권, 직주근접의 산업 인프라.
-              자연과 도시가 균형을 이루는 좌표 위에서 새로운 주거의 가능성이 시작됩니다.
+              자연과 도시가 균형을 이루는 좌표 위에 있습니다.
             </p>
           </div>
         </div>
       </div>
 
-      {/* ── ADVANTAGES ── */}
-      <div ref={adv.ref} className="bg-paper-deep border-y border-ink/[0.08]">
-        <div className="max-w-[1400px] mx-auto px-6 lg:pl-[88px] lg:pr-10">
-          <div className="divide-y divide-ink/10">
+      {/* ── ADVANTAGES TABLE ── */}
+      <div ref={adv.ref} className="bg-paper border-b border-ink/[0.08]">
+        <div className="max-w-[1280px] mx-auto px-6 lg:pl-[88px] lg:pr-10 py-16 lg:py-20">
+          <div className="border-t border-ink/15">
             {advantages.map((item, i) => (
               <div
                 key={i}
-                className={`grid grid-cols-12 gap-3 sm:gap-6 items-center py-7 sm:py-9 transition-all duration-500 ${adv.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
-                style={{ transitionDelay: `${i * 100}ms` }}
+                className={`grid grid-cols-12 gap-3 sm:gap-6 items-center py-7 sm:py-8 border-b border-ink/[0.08] transition-all duration-500 ${adv.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
+                style={{ transitionDelay: `${i * 80}ms` }}
               >
-                <span className="col-span-2 sm:col-span-1 text-mono text-[11px] tabular-nums text-rust tracking-wider">/0{i + 1}</span>
-                <span className="hidden sm:block sm:col-span-2 text-stone-light text-[10px] tracking-[3px] uppercase">{item.tag}</span>
-                <h3 className="col-span-7 sm:col-span-3 font-display text-ink text-[20px] lg:text-[26px] tracking-tight" style={{ fontWeight: 400 }}>{item.title}</h3>
-                <p className="col-span-12 sm:col-span-4 text-stone text-[13px] font-light leading-relaxed">{item.desc}</p>
-                <span className="col-span-3 sm:col-span-2 text-mono text-[12px] tabular-nums text-ink text-right tracking-wider">{item.time}</span>
+                <span className="col-span-2 sm:col-span-2 text-[10.5px] tracking-[3px] uppercase text-rust">{item.tag}</span>
+                <h3 className="col-span-7 sm:col-span-3 text-ink text-[18px] lg:text-[20px] tracking-tight" style={{ fontWeight: 400 }}>{item.title}</h3>
+                <p className="col-span-12 sm:col-span-5 text-stone text-[13px] font-light leading-relaxed">{item.desc}</p>
+                <span className="col-span-3 sm:col-span-2 text-ink text-[12.5px] tabular-nums text-right tracking-wider">{item.time}</span>
               </div>
             ))}
           </div>
@@ -83,18 +80,18 @@ export default function LocationSection() {
       </div>
 
       {/* ── MAP ── */}
-      <div ref={map.ref} className="bg-paper">
-        <div className={`max-w-[1400px] mx-auto px-6 lg:pl-[88px] lg:pr-10 py-24 lg:py-32 transition-all duration-700 ${map.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 mb-12">
+      <div ref={map.ref} className="bg-paper-deep border-b border-ink/[0.08]">
+        <div className={`max-w-[1280px] mx-auto px-6 lg:pl-[88px] lg:pr-10 py-20 lg:py-24 transition-all duration-700 ${map.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
+          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 mb-10">
             <div>
-              <p className="text-mono text-[11px] tabular-nums text-rust tracking-[3px] mb-3">N°03 — MAP</p>
-              <h2 className="font-display text-ink text-[32px] lg:text-[46px] tracking-tight" style={{ fontWeight: 400 }}>입지 안내.</h2>
+              <p className="text-[10.5px] tracking-[3px] uppercase text-rust mb-3">Map</p>
+              <h2 className="text-ink text-[26px] lg:text-[32px] tracking-tight" style={{ fontWeight: 300 }}>입지 안내</h2>
             </div>
             <p className="text-stone-light text-[11px] font-light">
               * 본 이미지는 소비자의 이해를 돕기 위한 것으로 실제와 차이가 있을 수 있습니다.
             </p>
           </div>
-          <div className="border border-ink/10 p-2 bg-paper-deep">
+          <div className="border border-ink/10 p-2 bg-paper">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/images/location.jpg"
@@ -106,17 +103,25 @@ export default function LocationSection() {
       </div>
 
       {/* ── INFRASTRUCTURE ── */}
-      <div ref={infra.ref} className="bg-paper-deep border-t border-ink/[0.08]">
-        <div className={`max-w-[1400px] mx-auto px-6 lg:pl-[88px] lg:pr-10 py-24 lg:py-32 transition-all duration-700 ${infra.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-          <p className="text-mono text-[11px] tabular-nums text-rust tracking-[3px] mb-3">N°04 — INFRA</p>
-          <h2 className="font-display text-ink text-[32px] lg:text-[46px] tracking-tight mb-16" style={{ fontWeight: 400 }}>주변 인프라.</h2>
+      <div ref={infra.ref} className="bg-paper">
+        <div className={`max-w-[1280px] mx-auto px-6 lg:pl-[88px] lg:pr-10 py-24 lg:py-28 transition-all duration-700 ${infra.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
+          <div className="grid grid-cols-12 gap-6 mb-12">
+            <div className="col-span-12 lg:col-span-4">
+              <p className="text-[10.5px] tracking-[3px] uppercase text-rust mb-3">Infra</p>
+              <h2 className="text-ink text-[26px] lg:text-[32px] tracking-tight" style={{ fontWeight: 300 }}>주변 인프라</h2>
+            </div>
+            <p className="col-span-12 lg:col-span-8 lg:pl-12 lg:border-l lg:border-ink/10 text-stone text-[13.5px] leading-[2] font-light max-w-[520px]">
+              자연·교육·교통·생활 — 4개 카테고리로 정리한 주변 인프라 안내입니다.
+            </p>
+          </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-ink/15">
-            {nearbySpots.map((group, gi) => (
-              <div key={gi} className="bg-paper p-7 lg:p-8 min-h-[240px]">
-                <p className="text-mono text-[10px] tabular-nums text-rust tracking-[3px] mb-2">CATEGORY / {String(gi + 1).padStart(2, "0")}</p>
-                <h4 className="font-display text-ink text-[24px] tracking-tight mb-6" style={{ fontWeight: 400 }}>{group.category}</h4>
-                <ul className="space-y-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-ink/10 border border-ink/10">
+            {nearbySpots.map((group) => (
+              <div key={group.category} className="bg-paper p-6 lg:p-7 min-h-[220px]">
+                <h4 className="text-ink text-[18px] tracking-tight mb-5 pb-3 border-b border-ink/10" style={{ fontWeight: 500 }}>
+                  {group.category}
+                </h4>
+                <ul className="space-y-2.5">
                   {group.items.map((item, ii) => (
                     <li key={ii} className="text-stone text-[12.5px] font-light leading-relaxed">— {item}</li>
                   ))}
@@ -125,7 +130,7 @@ export default function LocationSection() {
             ))}
           </div>
 
-          <p className="text-stone-light text-[11px] mt-10 font-light">
+          <p className="text-stone-light text-[11px] mt-8 font-light">
             * 거리 및 소요시간은 네이버 지도 기준이며, 교통 상황에 따라 달라질 수 있습니다.
           </p>
         </div>
@@ -133,7 +138,7 @@ export default function LocationSection() {
 
       {/* ── CTA ── */}
       <div className="bg-ink text-paper">
-        <div className="max-w-[1400px] mx-auto px-6 lg:pl-[88px] lg:pr-10 py-20 lg:py-24">
+        <div className="max-w-[1280px] mx-auto px-6 lg:pl-[88px] lg:pr-10 py-20 lg:py-24">
           <ContactCTA variant="slab" heading="입지 안내" subheading="현장 위치 및 주변 인프라에 대해 자세한 안내를 받아보실 수 있습니다." />
         </div>
       </div>

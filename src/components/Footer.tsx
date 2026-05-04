@@ -24,65 +24,54 @@ export default function Footer({ onTabChange }: FooterProps) {
 
   return (
     <footer className="bg-ink text-paper/70">
-      {/* Top divider strip with vertical year mark + 공식 사이트 배지 */}
+      {/* Top divider — brand wordmark */}
       <div className="border-b border-paper/10">
-        <div className="max-w-[1400px] mx-auto px-6 lg:pl-[88px] lg:pr-10 py-7 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-          <div className="flex items-baseline gap-4">
-            <p className="font-display text-paper text-[28px] lg:text-[36px] tracking-tighter" style={{ fontWeight: 400 }}>
-              Prugio <span className="text-rust">Lakecity</span>
-            </p>
-            <span className="text-mono text-[10px] tabular-nums text-rust tracking-[2px] uppercase border border-rust/40 px-1.5 py-px">
-              Official Site
-            </span>
-          </div>
-          <div className="flex items-center gap-4">
-            <p className="text-mono text-[11px] tabular-nums text-paper/40 tracking-[2px] uppercase">
-              UPSEONG · CHEONAN · 2026
-            </p>
-            <span className="text-paper/20">|</span>
-            <p className="text-mono text-[11px] tabular-nums text-paper/40 tracking-wider">
-              v.{SITE.lastUpdated.replace(/\./g, "")}
-            </p>
-          </div>
+        <div className="max-w-[1400px] mx-auto px-6 lg:pl-[88px] lg:pr-10 py-6 flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+          <p className="text-paper text-[20px] lg:text-[22px] tracking-tight" style={{ fontWeight: 500 }}>
+            업성 푸르지오 레이크시티
+          </p>
+          <p className="text-[11px] tabular-nums text-paper/40 tracking-wider">
+            업성 · 천안 · 2026
+          </p>
         </div>
       </div>
 
-      <div className="max-w-[1400px] mx-auto px-6 lg:pl-[88px] lg:pr-10 py-16 lg:py-20">
+      <div className="max-w-[1400px] mx-auto px-6 lg:pl-[88px] lg:pr-10 py-14 lg:py-16">
         <div className="grid grid-cols-12 gap-10 lg:gap-12">
 
-          {/* Address / Contact column */}
+          {/* Contact */}
           <div className="col-span-12 lg:col-span-5">
-            <p className="text-mono text-[10px] tabular-nums text-rust tracking-[3px] uppercase mb-5">— Contact</p>
+            <p className="text-[10.5px] tracking-[3px] uppercase text-rust mb-5">Contact</p>
 
-            <div className="space-y-5">
-              <div className="flex items-baseline gap-5">
-                <span className="text-mono text-[10px] tabular-nums text-paper/40 w-[64px] tracking-wider uppercase">Tel</span>
+            <div className="space-y-3.5">
+              <div className="flex items-baseline gap-4">
+                <span className="text-[11.5px] text-paper/40 w-[60px] tracking-wider">대표번호</span>
                 {hasPhone ? (
-                  <a href={telHref} className="font-display text-paper text-[24px] lg:text-[28px] tabular-nums hover:text-rust transition-colors" style={{ fontWeight: 400 }}>
+                  <a href={telHref} className="text-paper text-[20px] lg:text-[22px] tabular-nums tracking-tight hover:text-rust transition-colors" style={{ fontWeight: 400 }}>
                     {displayPhone}
                   </a>
                 ) : (
-                  <span className="font-display text-paper/50 text-[24px] tracking-tight" style={{ fontWeight: 400 }}>{placeholder}</span>
+                  <span className="text-paper/50 text-[18px] tracking-tight" style={{ fontWeight: 300 }}>{placeholder}</span>
                 )}
               </div>
-              <div className="flex items-baseline gap-5">
-                <span className="text-mono text-[10px] tabular-nums text-paper/40 w-[64px] tracking-wider uppercase">Hours</span>
-                <span className="text-[13px] text-paper/60 font-light">{hours}</span>
+              <div className="flex items-baseline gap-4">
+                <span className="text-[11.5px] text-paper/40 w-[60px] tracking-wider">운영시간</span>
+                <span className="text-[13px] text-paper/65 font-light">{hours}</span>
               </div>
-              <div className="flex items-baseline gap-5">
-                <span className="text-mono text-[10px] tabular-nums text-paper/40 w-[64px] tracking-wider uppercase">Mail</span>
-                <span className="text-[13px] text-paper/60 font-light">{email}</span>
+              <div className="flex items-baseline gap-4">
+                <span className="text-[11.5px] text-paper/40 w-[60px] tracking-wider">이메일</span>
+                <span className="text-[13px] text-paper/65 font-light">{email}</span>
               </div>
-              <div className="flex items-baseline gap-5">
-                <span className="text-mono text-[10px] tabular-nums text-paper/40 w-[64px] tracking-wider uppercase mt-0.5">Site</span>
-                <span className="text-[13px] text-paper/60 font-light leading-relaxed">{showroom}</span>
+              <div className="flex items-baseline gap-4">
+                <span className="text-[11.5px] text-paper/40 w-[60px] tracking-wider">주소</span>
+                <span className="text-[13px] text-paper/65 font-light leading-relaxed">{showroom}</span>
               </div>
             </div>
           </div>
 
           {/* Project info */}
           <div className="col-span-12 sm:col-span-7 lg:col-span-4">
-            <p className="text-mono text-[10px] tabular-nums text-rust tracking-[3px] uppercase mb-5">— Project</p>
+            <p className="text-[10.5px] tracking-[3px] uppercase text-rust mb-5">Project</p>
             <dl className="space-y-3 text-[12.5px]">
               {[
                 { k: "사업명", v: SITE.projectName },
@@ -100,24 +89,23 @@ export default function Footer({ onTabChange }: FooterProps) {
             </dl>
           </div>
 
-          {/* Quick links */}
+          {/* Sitemap */}
           <div className="col-span-12 sm:col-span-5 lg:col-span-3">
-            <p className="text-mono text-[10px] tabular-nums text-rust tracking-[3px] uppercase mb-5">— Sitemap</p>
-            <ul className="grid grid-cols-2 lg:grid-cols-1 gap-y-3">
+            <p className="text-[10.5px] tracking-[3px] uppercase text-rust mb-5">Sitemap</p>
+            <ul className="grid grid-cols-2 lg:grid-cols-1 gap-y-2.5">
               {[
-                { id: "home", num: "00", label: "Home" },
-                { id: "business", num: "01", label: "사업개요" },
-                { id: "location", num: "02", label: "입지환경" },
-                { id: "premium", num: "03", label: "프리미엄" },
-                { id: "register", num: "04", label: "관심고객등록" },
+                { id: "home", label: "홈" },
+                { id: "business", label: "사업개요" },
+                { id: "location", label: "입지환경" },
+                { id: "premium", label: "프리미엄" },
+                { id: "register", label: "관심고객등록" },
               ].map((item) => (
                 <li key={item.id}>
                   <button
                     onClick={() => handleNav(item.id)}
-                    className="group flex items-center gap-3 text-[13px] text-paper/60 hover:text-paper transition-colors"
+                    className="text-[13px] text-paper/60 hover:text-paper transition-colors"
                   >
-                    <span className="text-mono text-[10px] tabular-nums text-paper/30 group-hover:text-rust transition-colors">{item.num}</span>
-                    <span>{item.label}</span>
+                    {item.label}
                   </button>
                 </li>
               ))}
@@ -149,15 +137,15 @@ export default function Footer({ onTabChange }: FooterProps) {
             ))}
           </ul>
 
-          <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-mono text-[10.5px] tabular-nums tracking-wider uppercase">
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-[11.5px] tracking-wide">
             <a href={SITE.links.cheongyakHome} target="_blank" rel="noopener noreferrer" className="text-paper/55 hover:text-paper transition-colors inline-flex items-center gap-1">
-              청약Home <span className="text-rust">↗</span>
+              청약Home <span className="text-rust text-[10px]">↗</span>
             </a>
             <a href={SITE.links.daewooEnc} target="_blank" rel="noopener noreferrer" className="text-paper/55 hover:text-paper transition-colors inline-flex items-center gap-1">
-              대우건설 <span className="text-rust">↗</span>
+              대우건설 <span className="text-rust text-[10px]">↗</span>
             </a>
             <a href={SITE.links.prugioOfficial} target="_blank" rel="noopener noreferrer" className="text-paper/55 hover:text-paper transition-colors inline-flex items-center gap-1">
-              푸르지오 <span className="text-rust">↗</span>
+              푸르지오 <span className="text-rust text-[10px]">↗</span>
             </a>
           </div>
         </div>
@@ -179,11 +167,11 @@ export default function Footer({ onTabChange }: FooterProps) {
       {/* Bottom bar */}
       <div className="border-t border-paper/[0.07]">
         <div className="max-w-[1400px] mx-auto px-6 lg:pl-[88px] lg:pr-10 py-5 flex flex-col md:flex-row items-center justify-between gap-3">
-          <p className="text-mono text-[10.5px] tabular-nums text-paper/30 tracking-wider">
-            © {SITE.copyrightYear} {SITE.projectName.toUpperCase()} — ALL RIGHTS RESERVED.
+          <p className="text-[11px] tabular-nums text-paper/35 tracking-wider">
+            © {SITE.copyrightYear} {SITE.projectName} — All rights reserved.
           </p>
-          <p className="text-mono text-[10.5px] tabular-nums text-paper/30 tracking-wider">
-            UNOFFICIAL INFORMATION SITE · UPDATED {SITE.lastUpdated}
+          <p className="text-[11px] tabular-nums text-paper/35 tracking-wider">
+            본 사이트는 분양 정보 안내를 위한 비공식 홍보 페이지입니다.
           </p>
         </div>
       </div>

@@ -68,20 +68,18 @@ export default function RegisterSection() {
   return (
     <section className="pt-[92px] bg-paper">
 
-      {/* ── EDITORIAL HEADER ── */}
-      <div className="bg-ink text-paper relative overflow-hidden">
-        <div className="max-w-[1400px] mx-auto px-6 lg:pl-[88px] lg:pr-10 py-16 lg:py-24 grid grid-cols-12 gap-8 lg:gap-12 items-end">
+      {/* ── PAGE HEADER ── */}
+      <div className="bg-ink text-paper">
+        <div className="max-w-[1280px] mx-auto px-6 lg:pl-[88px] lg:pr-10 py-14 lg:py-20 grid grid-cols-12 gap-8 lg:gap-12 items-end">
           <div className="col-span-12 lg:col-span-7">
-            <p className="text-mono text-[11px] tabular-nums text-rust tracking-[3px] mb-4">N°04 — REGISTER</p>
-            <h1 className="font-display text-paper text-[48px] lg:text-[88px] leading-[0.95] tracking-tight" style={{ fontWeight: 400 }}>
-              관심고객<br />
-              <span className="italic text-rust">사전등록.</span>
+            <p className="text-[10.5px] tracking-[3px] uppercase text-rust mb-3">Register</p>
+            <h1 className="text-paper text-[34px] lg:text-[52px] leading-[1.15] tracking-tight" style={{ fontWeight: 300 }}>
+              관심고객 사전등록
             </h1>
           </div>
-          <div className="col-span-12 lg:col-span-5 lg:border-l lg:border-paper/15 lg:pl-12">
-            <p className="text-paper/55 text-[14px] font-light leading-[2]">
-              사전 등록하시는 고객에게는 분양 일정·평형 안내·청약 정보 등을 가장 먼저 안내드립니다.
-              아래 양식 작성 후 담당자가 연락드립니다.
+          <div className="col-span-12 lg:col-span-5 lg:border-l lg:border-paper/15 lg:pl-10">
+            <p className="text-paper/65 text-[13.5px] font-light leading-[1.95]">
+              사전 등록하시는 고객님께 분양 일정·평형·청약 정보를 가장 먼저 안내드립니다.
             </p>
           </div>
         </div>
@@ -89,34 +87,18 @@ export default function RegisterSection() {
 
       {/* ── FORM ── */}
       <div className="bg-paper">
-        <div className="max-w-[920px] mx-auto px-6 py-20 lg:py-28 grid grid-cols-12 gap-10 lg:gap-12">
+        <div className="max-w-[680px] mx-auto px-6 py-20 lg:py-24">
 
-          {/* Side index */}
-          <aside className="col-span-12 lg:col-span-3 lg:sticky lg:top-32 self-start">
-            <p className="text-mono text-[10px] tabular-nums text-rust tracking-[3px] uppercase mb-5">— Index</p>
-            <ol className="text-[12.5px] text-stone space-y-3 font-light">
-              <li>01 / 개인정보 동의</li>
-              <li>02 / 성명</li>
-              <li>03 / 연락처</li>
-              <li>04 / 관심유형</li>
-              <li>05 / 생년월일</li>
-              <li>06 / 주소</li>
-            </ol>
-          </aside>
-
-          <form onSubmit={handleSubmit} className="col-span-12 lg:col-span-9 space-y-12">
+          <form onSubmit={handleSubmit} className="space-y-10">
 
             {/* Privacy */}
             <div className="border border-ink/10 bg-paper-deep">
               <button
                 type="button"
                 onClick={() => setPrivacyOpen(!privacyOpen)}
-                className="w-full flex items-center justify-between px-6 py-4 text-left hover:bg-paper transition-colors"
+                className="w-full flex items-center justify-between px-5 py-4 text-left hover:bg-paper transition-colors"
               >
-                <div className="flex items-center gap-3">
-                  <span className="text-mono text-[10px] tabular-nums text-rust">/01</span>
-                  <span className="text-[13px] text-ink font-medium">개인정보 수집 및 이용 동의</span>
-                </div>
+                <span className="text-[13px] text-ink font-medium">개인정보 수집 및 이용 동의</span>
                 <svg className={`w-4 h-4 text-stone transition-transform ${privacyOpen ? "rotate-180" : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 9l-7 7-7-7" />
                 </svg>
@@ -147,10 +129,7 @@ export default function RegisterSection() {
 
             {/* Name */}
             <div>
-              <div className="flex items-baseline gap-3 mb-2">
-                <span className="text-mono text-[10px] tabular-nums text-rust">/02</span>
-                <label className="text-[12px] tracking-[2px] uppercase text-stone">성명 <span className="text-rust">*</span></label>
-              </div>
+              <label className="text-[12.5px] text-stone mb-2 block">성명 <span className="text-rust">*</span></label>
               <input
                 type="text"
                 value={form.name}
@@ -162,10 +141,7 @@ export default function RegisterSection() {
 
             {/* Phone */}
             <div>
-              <div className="flex items-baseline gap-3 mb-2">
-                <span className="text-mono text-[10px] tabular-nums text-rust">/03</span>
-                <label className="text-[12px] tracking-[2px] uppercase text-stone">연락처 <span className="text-rust">*</span></label>
-              </div>
+              <label className="text-[12.5px] text-stone mb-2 block">연락처 <span className="text-rust">*</span></label>
               <div className="flex items-center gap-3">
                 <select
                   value={form.phone1}
@@ -195,10 +171,7 @@ export default function RegisterSection() {
 
             {/* Interest Type */}
             <div>
-              <div className="flex items-baseline gap-3 mb-3">
-                <span className="text-mono text-[10px] tabular-nums text-rust">/04</span>
-                <label className="text-[12px] tracking-[2px] uppercase text-stone">관심유형</label>
-              </div>
+              <label className="text-[12.5px] text-stone mb-3 block">관심유형</label>
               <div className="flex flex-wrap gap-2">
                 {["특별공급", "1순위", "2순위"].map((type) => (
                   <button
@@ -219,10 +192,7 @@ export default function RegisterSection() {
 
             {/* Birth */}
             <div>
-              <div className="flex items-baseline gap-3 mb-2">
-                <span className="text-mono text-[10px] tabular-nums text-rust">/05</span>
-                <label className="text-[12px] tracking-[2px] uppercase text-stone">생년월일</label>
-              </div>
+              <label className="text-[12.5px] text-stone mb-2 block">생년월일</label>
               <input
                 type="text"
                 maxLength={6}
@@ -235,10 +205,7 @@ export default function RegisterSection() {
 
             {/* Address */}
             <div>
-              <div className="flex items-baseline gap-3 mb-2">
-                <span className="text-mono text-[10px] tabular-nums text-rust">/06</span>
-                <label className="text-[12px] tracking-[2px] uppercase text-stone">주소</label>
-              </div>
+              <label className="text-[12.5px] text-stone mb-2 block">주소</label>
               <div className="flex flex-wrap gap-3">
                 <select
                   value={form.city}
@@ -272,14 +239,14 @@ export default function RegisterSection() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="flex-1 py-4 bg-ink text-paper text-[13px] tracking-[2px] uppercase hover:bg-rust transition-colors disabled:opacity-50"
+                className="flex-1 py-4 bg-ink text-paper text-[13.5px] tracking-wider hover:bg-stone transition-colors disabled:opacity-50"
               >
-                {isSubmitting ? "등록 중..." : "등록하기 →"}
+                {isSubmitting ? "등록 중..." : "등록하기"}
               </button>
               <button
                 type="button"
                 onClick={handleReset}
-                className="px-8 py-4 border border-ink/15 text-stone text-[13px] tracking-[2px] uppercase hover:border-ink/40 transition-colors"
+                className="px-8 py-4 border border-ink/15 text-stone text-[13.5px] tracking-wider hover:border-ink/40 transition-colors"
               >
                 초기화
               </button>
@@ -293,15 +260,15 @@ export default function RegisterSection() {
 
       {/* ── PHONE BLOCK ── */}
       <div className="bg-paper-deep border-t border-ink/[0.08]">
-        <div className="max-w-[920px] mx-auto px-6 py-14 text-center">
-          <p className="text-mono text-[10px] tabular-nums text-rust tracking-[3px] uppercase mb-4">— 분양문의</p>
+        <div className="max-w-[920px] mx-auto px-6 py-12 text-center">
+          <p className="text-[10.5px] tracking-[3px] uppercase text-rust mb-3">분양문의</p>
           {hasPhone ? (
-            <a href={telHref} className="font-display text-ink text-[40px] lg:text-[56px] tabular-nums hover:text-rust transition-colors" style={{ fontWeight: 400 }}>
+            <a href={telHref} className="text-ink text-[32px] lg:text-[40px] tabular-nums tracking-tight hover:text-rust transition-colors" style={{ fontWeight: 300 }}>
               {displayPhone}
             </a>
           ) : (
             <>
-              <p className="font-display text-ink text-[36px] lg:text-[48px] tracking-tight" style={{ fontWeight: 400 }}>추후공지</p>
+              <p className="text-ink text-[28px] lg:text-[32px] tracking-tight" style={{ fontWeight: 300 }}>추후공지</p>
               <p className="text-stone text-[12.5px] mt-3 font-light leading-relaxed">
                 대표번호는 정식 분양 시 안내됩니다.<br />
                 관심고객 등록 시 분양 일정 및 정보를 가장 먼저 안내드립니다.
