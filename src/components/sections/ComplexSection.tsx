@@ -225,7 +225,7 @@ export default function ComplexSection({ initialSubTab }: ComplexSectionProps) {
 
       {/* ── PAGE HEADER (with subtle bg) ── */}
       <div className="relative bg-ink text-paper overflow-hidden">
-        <Image src="/images/skyline-sunset.jpg" alt="" fill priority sizes="100vw" className="object-cover" />
+        <Image src="/images/office-interior.jpg" alt="" fill priority sizes="100vw" className="object-cover" />
         <div className="absolute inset-0 bg-gradient-to-r from-ink/75 via-ink/55 to-ink/35" />
         <div className="relative max-w-[1280px] mx-auto px-6 lg:pl-[88px] lg:pr-10 py-14 lg:py-20 grid grid-cols-12 gap-8 lg:gap-12 items-end">
           <div className="col-span-12 lg:col-span-7">

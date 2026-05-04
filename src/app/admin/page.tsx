@@ -41,7 +41,7 @@ export default function AdminLoginPage() {
         {/* Logo */}
         <div className="text-center mb-10">
           <div className="inline-flex items-center gap-1 text-[28px] font-bold tracking-wider">
-            <span className="text-navy">PU</span>
+            <span className="text-navy">PRU</span>
             <span className="text-gold">GIO</span>
           </div>
           <p className="text-[12px] text-gray-400 tracking-[3px] mt-1">ADMIN</p>

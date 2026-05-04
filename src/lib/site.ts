@@ -7,14 +7,14 @@ export const SITE = {
   builder: "대우건설",
 
   contact: {
-    /** 분양문의 대표번호 */
-    phone: "1668-3535",
-    /** 모델하우스 주소 */
-    showroomAddress: "충청남도 천안시 서북구 업성동 일원 (모델하우스)",
-    /** 운영시간 */
+    /** 분양문의 대표번호 — placeholder, 실제 번호로 교체 필요 */
+    phone: "1234-5678",
+    /** 모델하우스 주소 — placeholder */
+    showroomAddress: "충청남도 천안시 서북구 업성동 일원 (모델하우스 운영 예정)",
+    /** 운영시간 — placeholder */
     hours: "오전 10시 ~ 오후 6시",
-    /** 이메일 */
-    email: "",
+    /** 이메일 — placeholder */
+    email: "info@prugio-lakecity.example",
   },
 
   company: {

@@ -140,8 +140,6 @@ export default function AdminDashboardPage() {
     );
   }
 
-  const maxBarValue = (items: { count: number }[]) => Math.max(...items.map(i => i.count), 1);
-
   return (
     <div className="min-h-screen bg-[#FAFAF7]">
       {/* ===== 헤더 ===== */}
@@ -184,73 +182,7 @@ export default function AdminDashboardPage() {
               />
             </div>
 
-            {/* ===== 차트 ===== */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-              {/* 관심유형별 */}
-              <ChartCard title="관심유형별 분포">
-                {stats.byInterestType.length === 0 ? (
-                  <p className="text-[13px] text-gray-300 text-center py-6">데이터 없음</p>
-                ) : (
-                  <div className="space-y-3">
-                    {stats.byInterestType.map((item) => (
-                      <BarRow key={item.type} label={item.type} count={item.count} max={maxBarValue(stats.byInterestType)} color="bg-navy" />
-                    ))}
-                  </div>
-                )}
-              </ChartCard>
-
-              {/* 연령대별 */}
-              <ChartCard title="연령대별 분포">
-                {stats.byAge.length === 0 ? (
-                  <p className="text-[13px] text-gray-300 text-center py-6">데이터 없음</p>
-                ) : (
-                  <div className="space-y-3">
-                    {stats.byAge.map((item) => (
-                      <BarRow key={item.age} label={item.age} count={item.count} max={maxBarValue(stats.byAge)} color="bg-blue-500" />
-                    ))}
-                  </div>
-                )}
-              </ChartCard>
-
-              {/* 지역별 */}
-              <ChartCard title="지역별 분포 (상위 10)">
-                {stats.byCity.length === 0 ? (
-                  <p className="text-[13px] text-gray-300 text-center py-6">데이터 없음</p>
-                ) : (
-                  <div className="space-y-3">
-                    {stats.byCity.map((item) => (
-                      <BarRow key={item.city} label={item.city} count={item.count} max={maxBarValue(stats.byCity)} color="bg-amber-500" />
-                    ))}
-                  </div>
-                )}
-              </ChartCard>
-
-              {/* 최근 7일 추이 */}
-              <ChartCard title="최근 7일 등록 추이">
-                {stats.recentTrend.length === 0 ? (
-                  <p className="text-[13px] text-gray-300 text-center py-6">데이터 없음</p>
-                ) : (
-                  <div className="flex items-end gap-2 h-[140px] pt-4">
-                    {stats.recentTrend.map((item) => {
-                      const max = maxBarValue(stats.recentTrend);
-                      const height = max > 0 ? (item.count / max) * 100 : 0;
-                      return (
-                        <div key={item.date} className="flex-1 flex flex-col items-center gap-1">
-                          <span className="text-[11px] text-gray-500 font-medium">{item.count}</span>
-                          <div className="w-full bg-gray-100 rounded-t-md relative" style={{ height: "100px" }}>
-                            <div
-                              className="absolute bottom-0 w-full bg-navy rounded-t-md transition-all duration-500"
-                              style={{ height: `${height}%` }}
-                            />
-                          </div>
-                          <span className="text-[10px] text-gray-400">{item.date.slice(5)}</span>
-                        </div>
-                      );
-                    })}
-                  </div>
-                )}
-              </ChartCard>
-            </div>
+            {/* 차트 섹션은 데이터가 충분히 누적되면 다시 활성화. 비어있는 분포 카드 제거. */}
           </>
         )}
 
@@ -550,32 +482,6 @@ function StatCard({ label, value, icon, color }: { label: string; value: string;
       <div>
         <p className="text-[12px] text-gray-400 font-medium">{label}</p>
         <p className="text-[22px] font-bold text-gray-900 leading-tight">{value}</p>
-      </div>
-    </div>
-  );
-}
-
-function ChartCard({ title, children }: { title: string; children: React.ReactNode }) {
-  return (
-    <div className="bg-white rounded-xl border border-gray-100 shadow-sm p-5">
-      <h3 className="text-[14px] font-bold text-gray-700 mb-4">{title}</h3>
-      {children}
-    </div>
-  );
-}
-
-function BarRow({ label, count, max, color }: { label: string; count: number; max: number; color: string }) {
-  const pct = max > 0 ? (count / max) * 100 : 0;
-  return (
-    <div className="flex items-center gap-3">
-      <span className="w-[70px] text-[13px] text-gray-600 flex-shrink-0 text-right">{label}</span>
-      <div className="flex-1 bg-gray-100 rounded-full h-6 overflow-hidden">
-        <div
-          className={`h-full ${color} rounded-full flex items-center justify-end pr-2 transition-all duration-700`}
-          style={{ width: `${Math.max(pct, 8)}%` }}
-        >
-          <span className="text-[11px] text-white font-medium">{count}</span>
-        </div>
       </div>
     </div>
   );
