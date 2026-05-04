@@ -47,7 +47,7 @@ export default function HomeSection({ onTabChange }: HomeSectionProps) {
       {/* ─────── HERO ─────── */}
       <div className="relative h-screen min-h-[640px]">
         <Image
-          src="/images/hero-lake-new.jpg"
+          src="/images/hero-lake-blue.jpg"
           alt="업성 푸르지오 레이크시티"
           fill
           priority
