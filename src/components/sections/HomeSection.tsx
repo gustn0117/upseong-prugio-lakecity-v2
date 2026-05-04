@@ -79,7 +79,7 @@ export default function HomeSection({ onTabChange }: HomeSectionProps) {
 
           {/* Main heading */}
           <h1 className={`text-paper text-[42px] sm:text-[60px] lg:text-[80px] leading-[1.02] tracking-tight max-w-[900px] transition-all duration-[1100ms] delay-150 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"}`}
-              style={{ fontWeight: 300 }}>
+              style={{ fontWeight: 500 }}>
             업성 푸르지오<br />레이크시티
           </h1>
 
