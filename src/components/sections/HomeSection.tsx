@@ -70,17 +70,6 @@ export default function HomeSection({ onTabChange }: HomeSectionProps) {
 
         <div className="relative h-full max-w-[1400px] mx-auto px-6 lg:pl-[88px] lg:pr-10 flex flex-col justify-end pb-16 lg:pb-20 pt-32">
 
-          {/* Status pill — current sales phase */}
-          <div className={`mb-7 self-start inline-flex items-center gap-2.5 border border-rust/60 bg-rust/15 backdrop-blur-md px-3.5 py-2 transition-all duration-[1000ms] ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"}`}>
-            <span className="relative flex w-1.5 h-1.5">
-              <span className="absolute inset-0 rounded-full bg-rust opacity-60 animate-ping" />
-              <span className="relative w-1.5 h-1.5 rounded-full bg-rust" />
-            </span>
-            <span className="text-paper text-[11px] tracking-wider">
-              {SITE.currentPhase} · 2026.05.04 ~ 05.07
-            </span>
-          </div>
-
           {/* Eyebrow with brand + year */}
           <div className={`flex items-center gap-3 mb-6 transition-all duration-1000 delay-100 ${loaded ? "opacity-100" : "opacity-0"}`}>
             <span className="text-paper/65 text-[10.5px] tracking-[3px] uppercase">대우건설 푸르지오</span>
