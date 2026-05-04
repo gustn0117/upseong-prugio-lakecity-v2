@@ -14,7 +14,10 @@ const menuItems: MenuItem[] = [
   { id: "business", label: "사업개요", num: "01" },
   { id: "location", label: "입지환경", num: "02" },
   { id: "premium", label: "프리미엄", num: "03" },
-  { id: "register", label: "관심고객등록", num: "04" },
+  { id: "complex", label: "단지안내", num: "04" },
+  { id: "unit", label: "세대안내", num: "05" },
+  { id: "press", label: "홍보센터", num: "06" },
+  { id: "register", label: "관심고객등록", num: "07" },
 ];
 
 interface HeaderProps {

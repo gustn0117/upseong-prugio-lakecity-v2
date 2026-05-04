@@ -205,6 +205,46 @@ export default function BusinessSection() {
         </div>
       </div>
 
+      {/* ── SCHEDULE CALENDAR ── */}
+      <div className="bg-paper-deep border-t border-ink/[0.08]">
+        <div className="max-w-[1280px] mx-auto px-6 lg:pl-[88px] lg:pr-10 py-20 lg:py-24">
+          <div className="grid grid-cols-12 gap-6 mb-10">
+            <div className="col-span-12 lg:col-span-4">
+              <p className="text-[10.5px] tracking-[3px] uppercase text-rust mb-3">Calendar</p>
+              <h2 className="text-ink text-[26px] lg:text-[32px] tracking-tight" style={{ fontWeight: 300 }}>분양 일정 캘린더</h2>
+            </div>
+            <p className="col-span-12 lg:col-span-8 lg:pl-12 lg:border-l lg:border-ink/10 text-stone text-[13.5px] leading-[2] font-light max-w-[520px]">
+              4월 13일 특별공급 → 4월 14·15일 1·2순위 → 4월 22일 당첨자 발표 → 4월 24일~5월 1일 서류접수 → 5월 4~7일 정당계약 체결.
+            </p>
+          </div>
+
+          <div className="border border-ink/10 bg-paper p-2">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/images/crawled/schedule.jpg" alt="분양 일정 캘린더" className="w-full h-auto block" />
+          </div>
+        </div>
+      </div>
+
+      {/* ── OFFICIAL SUPPLY DOC ── */}
+      <div className="bg-paper border-t border-ink/[0.08]">
+        <div className="max-w-[1280px] mx-auto px-6 lg:pl-[88px] lg:pr-10 py-20 lg:py-24">
+          <div className="grid grid-cols-12 gap-6 mb-10">
+            <div className="col-span-12 lg:col-span-4">
+              <p className="text-[10.5px] tracking-[3px] uppercase text-rust mb-3">Notice</p>
+              <h2 className="text-ink text-[26px] lg:text-[32px] tracking-tight" style={{ fontWeight: 300 }}>공급안내 (공식)</h2>
+            </div>
+            <p className="col-span-12 lg:col-span-8 lg:pl-12 lg:border-l lg:border-ink/10 text-stone text-[13.5px] leading-[2] font-light max-w-[520px]">
+              공식 입주자 모집공고에서 발췌한 공급대상·공급금액·납부일정 안내입니다. 정확한 내용은 청약Home의 공식 공고문을 확인해 주시기 바랍니다.
+            </p>
+          </div>
+
+          <div className="border border-ink/10 bg-paper p-2 max-w-[1100px] mx-auto">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/images/crawled/supply_info.jpg" alt="공식 공급안내" className="w-full h-auto block" />
+          </div>
+        </div>
+      </div>
+
       {/* ── CTA ── */}
       <div className="bg-ink text-paper">
         <div className="max-w-[1280px] mx-auto px-6 lg:pl-[88px] lg:pr-10 py-20 lg:py-24">
