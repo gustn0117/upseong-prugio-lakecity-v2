@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import ContactCTA from "@/components/ContactCTA";
 
 function useInView(threshold = 0.15) {
@@ -70,8 +71,10 @@ export default function LocationSection() {
     <section className="pt-[92px] bg-paper">
 
       {/* ── PAGE HEADER ── */}
-      <div className="bg-ink text-paper">
-        <div className="max-w-[1280px] mx-auto px-6 lg:pl-[88px] lg:pr-10 py-14 lg:py-20 grid grid-cols-12 gap-8 lg:gap-12 items-end">
+      <div className="relative bg-ink text-paper overflow-hidden">
+        <Image src="/images/city-night.jpg" alt="" fill priority sizes="100vw" className="object-cover opacity-30" />
+        <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/85 to-ink/60" />
+        <div className="relative max-w-[1280px] mx-auto px-6 lg:pl-[88px] lg:pr-10 py-14 lg:py-20 grid grid-cols-12 gap-8 lg:gap-12 items-end">
           <div className="col-span-12 lg:col-span-7">
             <p className="text-[10.5px] tracking-[3px] uppercase text-rust mb-3">Location</p>
             <h1 className="text-paper text-[34px] lg:text-[52px] leading-[1.15] tracking-tight" style={{ fontWeight: 300 }}>
@@ -79,7 +82,7 @@ export default function LocationSection() {
             </h1>
           </div>
           <div className="col-span-12 lg:col-span-5 lg:border-l lg:border-paper/15 lg:pl-10">
-            <p className="text-paper/65 text-[13.5px] font-light leading-[1.95]">
+            <p className="text-paper/70 text-[13.5px] font-light leading-[1.95]">
               성성호수공원 도보 1분, 1호선 부성역(예정) 인접, 직주근접의 산업 인프라.
               자연과 도시가 균형을 이루는 성성호수 새도시의 새중심.
             </p>

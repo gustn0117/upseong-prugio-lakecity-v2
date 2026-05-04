@@ -146,10 +146,10 @@ export default function HomeSection({ onTabChange }: HomeSectionProps) {
           <div className={`grid grid-cols-1 md:grid-cols-2 gap-3 lg:gap-4 transition-all duration-1000 ${features.visible ? "opacity-100" : "opacity-0"}`}>
             {FOUR_UP.map((f, i) => {
               const imgs = [
-                "/images/nature-park.jpg",
-                "/images/premium-education.jpg",
-                "/images/premium-living.jpg",
-                "/images/premium-transport-new.jpg",
+                "/images/lakefront-bldg.jpg",
+                "/images/classroom.jpg",
+                "/images/city-night.jpg",
+                "/images/highway-aerial.jpg",
               ];
               return (
                 <article key={f.label} className="relative aspect-[4/3] overflow-hidden bg-ink group">
@@ -237,7 +237,7 @@ export default function HomeSection({ onTabChange }: HomeSectionProps) {
 
           <div className="col-span-12 lg:col-span-7">
             <div className="relative aspect-[4/3] lg:aspect-[5/4] overflow-hidden bg-ink">
-              <Image src="/images/about-nature.jpg" alt="단지 주변 환경" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 50vw" />
+              <Image src="/images/exterior-balconies.jpg" alt="단지 주변 환경" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 50vw" />
               <div className="absolute inset-0 bg-gradient-to-t from-ink/35 via-transparent to-transparent" />
               <div className="absolute bottom-6 left-6 right-6">
                 <p className="text-paper/65 text-[10px] tracking-[3px] uppercase mb-1.5">사업 위치</p>

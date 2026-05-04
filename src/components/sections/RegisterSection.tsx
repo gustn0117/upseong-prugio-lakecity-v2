@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { displayPhone, hasPhone, telHref } from "@/lib/site";
 import FAQ from "@/components/FAQ";
 
@@ -69,8 +70,10 @@ export default function RegisterSection() {
     <section className="pt-[92px] bg-paper">
 
       {/* ── PAGE HEADER ── */}
-      <div className="bg-ink text-paper">
-        <div className="max-w-[1280px] mx-auto px-6 lg:pl-[88px] lg:pr-10 py-14 lg:py-20 grid grid-cols-12 gap-8 lg:gap-12 items-end">
+      <div className="relative bg-ink text-paper overflow-hidden">
+        <Image src="/images/park-bridge.jpg" alt="" fill priority sizes="100vw" className="object-cover opacity-25" />
+        <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/85 to-ink/60" />
+        <div className="relative max-w-[1280px] mx-auto px-6 lg:pl-[88px] lg:pr-10 py-14 lg:py-20 grid grid-cols-12 gap-8 lg:gap-12 items-end">
           <div className="col-span-12 lg:col-span-7">
             <p className="text-[10.5px] tracking-[3px] uppercase text-rust mb-3">Register</p>
             <h1 className="text-paper text-[34px] lg:text-[52px] leading-[1.15] tracking-tight" style={{ fontWeight: 300 }}>
@@ -78,7 +81,7 @@ export default function RegisterSection() {
             </h1>
           </div>
           <div className="col-span-12 lg:col-span-5 lg:border-l lg:border-paper/15 lg:pl-10">
-            <p className="text-paper/65 text-[13.5px] font-light leading-[1.95]">
+            <p className="text-paper/70 text-[13.5px] font-light leading-[1.95]">
               사전 등록하시는 고객님께 분양 일정·평형·청약 정보를 가장 먼저 안내드립니다.
             </p>
           </div>
