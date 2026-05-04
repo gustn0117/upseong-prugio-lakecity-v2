@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import ContactCTA from "@/components/ContactCTA";
 import { PRESS } from "@/lib/site";
 
@@ -32,8 +33,10 @@ export default function PRSection({ initialSubTab }: PRSectionProps) {
     <section className="pt-[92px] bg-paper">
 
       {/* ── PAGE HEADER ── */}
-      <div className="bg-ink text-paper">
-        <div className="max-w-[1280px] mx-auto px-6 lg:pl-[88px] lg:pr-10 py-14 lg:py-20 grid grid-cols-12 gap-8 lg:gap-12 items-end">
+      <div className="relative bg-ink text-paper overflow-hidden">
+        <Image src="/images/exterior-balconies.jpg" alt="" fill priority sizes="100vw" className="object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-r from-ink/75 via-ink/55 to-ink/35" />
+        <div className="relative max-w-[1280px] mx-auto px-6 lg:pl-[88px] lg:pr-10 py-14 lg:py-20 grid grid-cols-12 gap-8 lg:gap-12 items-end">
           <div className="col-span-12 lg:col-span-7">
             <p className="text-[10.5px] tracking-[3px] uppercase text-rust mb-3">News</p>
             <h1 className="text-paper text-[34px] lg:text-[52px] leading-[1.15] tracking-tight" style={{ fontWeight: 300 }}>
@@ -41,7 +44,7 @@ export default function PRSection({ initialSubTab }: PRSectionProps) {
             </h1>
           </div>
           <div className="col-span-12 lg:col-span-5 lg:border-l lg:border-paper/15 lg:pl-10">
-            <p className="text-paper/65 text-[13.5px] font-light leading-[1.95]">
+            <p className="text-paper/70 text-[13.5px] font-light leading-[1.95]">
               업성 푸르지오 레이크시티의 최신 소식과 언론보도를 한곳에서 확인하실 수 있습니다.
             </p>
           </div>

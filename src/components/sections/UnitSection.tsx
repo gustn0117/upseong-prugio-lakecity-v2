@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import ContactCTA from "@/components/ContactCTA";
 import { SUPPLY_DETAIL } from "@/lib/site";
 
@@ -49,8 +50,10 @@ export default function UnitSection({ initialSubTab }: UnitSectionProps) {
     <section className="pt-[92px] bg-paper">
 
       {/* ── PAGE HEADER ── */}
-      <div className="bg-ink text-paper">
-        <div className="max-w-[1280px] mx-auto px-6 lg:pl-[88px] lg:pr-10 py-14 lg:py-20 grid grid-cols-12 gap-8 lg:gap-12 items-end">
+      <div className="relative bg-ink text-paper overflow-hidden">
+        <Image src="/images/interior-living.jpg" alt="" fill priority sizes="100vw" className="object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-r from-ink/75 via-ink/55 to-ink/35" />
+        <div className="relative max-w-[1280px] mx-auto px-6 lg:pl-[88px] lg:pr-10 py-14 lg:py-20 grid grid-cols-12 gap-8 lg:gap-12 items-end">
           <div className="col-span-12 lg:col-span-7">
             <p className="text-[10.5px] tracking-[3px] uppercase text-rust mb-3">Type Info</p>
             <h1 className="text-paper text-[34px] lg:text-[52px] leading-[1.15] tracking-tight" style={{ fontWeight: 300 }}>
@@ -58,7 +61,7 @@ export default function UnitSection({ initialSubTab }: UnitSectionProps) {
             </h1>
           </div>
           <div className="col-span-12 lg:col-span-5 lg:border-l lg:border-paper/15 lg:pl-10">
-            <p className="text-paper/65 text-[13.5px] font-light leading-[1.95]">
+            <p className="text-paper/70 text-[13.5px] font-light leading-[1.95]">
               전용 72㎡ A·B·C·D / 84㎡ A·B·C·D / 95㎡ A·B — 3개 평형 10개 타입의 면적·공급 안내입니다.
             </p>
           </div>
@@ -88,7 +91,28 @@ export default function UnitSection({ initialSubTab }: UnitSectionProps) {
       <div ref={content.ref} className={`bg-paper transition-opacity duration-500 ${content.visible ? "opacity-100" : "opacity-0"}`}>
         <div className="max-w-[1280px] mx-auto px-6 lg:pl-[88px] lg:pr-10 py-16 lg:py-20">
 
-          <div className="grid grid-cols-12 gap-10 lg:gap-16">
+          {/* Floor plan image */}
+          <div className="mb-12 lg:mb-16 grid grid-cols-12 gap-6 items-start">
+            <div className="col-span-12 lg:col-span-3">
+              <p className="text-rust text-[10.5px] tracking-[3px] uppercase mb-3">Floor Plan</p>
+              <h3 className="text-ink text-[20px] tracking-tight" style={{ fontWeight: 500 }}>전용 {current.category} {current.id.slice(-1)}타입</h3>
+              <p className="text-stone text-[12px] mt-3 font-light leading-relaxed">
+                평면도는 입주자 모집공고 기준이며,<br />실제 시공 시 일부 다를 수 있습니다.
+              </p>
+            </div>
+            <div className="col-span-12 lg:col-span-9">
+              <div className="border border-ink/10 bg-paper p-4 lg:p-6">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={`/images/crawled/type_info_${current.id.toLowerCase()}.jpg`}
+                  alt={`전용 ${current.category} ${current.id} 타입 평면도`}
+                  className="w-full h-auto block"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-12 gap-10 lg:gap-16 border-t border-ink/[0.08] pt-12 lg:pt-16">
 
             {/* meta */}
             <div className="col-span-12 lg:col-span-5">
