@@ -68,7 +68,7 @@ export default function HomeSection({ onTabChange }: HomeSectionProps) {
         {/* Subtle vertical accent line on left edge of content */}
         <div className={`hidden lg:block absolute top-[120px] left-[88px] w-px bg-rust transition-all duration-[1400ms] ${loaded ? "h-16 opacity-100" : "h-0 opacity-0"}`} />
 
-        <div className="relative h-full max-w-[1400px] mx-auto px-6 lg:pl-[88px] lg:pr-10 flex flex-col justify-end pb-20 lg:pb-20 pt-[150px] lg:pt-32">
+        <div className="relative h-full max-w-[1400px] mx-auto px-6 lg:pl-[88px] lg:pr-10 flex flex-col justify-end pb-12 lg:pb-20 pt-[144px] lg:pt-32">
 
           {/* Eyebrow with brand + year */}
           <div className={`flex items-center gap-3 mb-6 transition-all duration-1000 delay-100 ${loaded ? "opacity-100" : "opacity-0"}`}>
@@ -78,28 +78,28 @@ export default function HomeSection({ onTabChange }: HomeSectionProps) {
           </div>
 
           {/* Main heading */}
-          <h1 className={`text-paper text-[42px] sm:text-[60px] lg:text-[80px] leading-[1.02] tracking-tight max-w-[900px] transition-all duration-[1100ms] delay-150 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"}`}
+          <h1 className={`text-paper text-[36px] sm:text-[56px] lg:text-[80px] leading-[1.05] tracking-tight max-w-[900px] transition-all duration-[1100ms] delay-150 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"}`}
               style={{ fontWeight: 500 }}>
             업성 푸르지오<br />레이크시티
           </h1>
 
-          <p className={`text-paper/80 text-[14px] lg:text-[16px] leading-[1.95] font-light mt-7 max-w-[560px] transition-all duration-1000 delay-300 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"}`}>
+          <p className={`text-paper/80 text-[13.5px] lg:text-[16px] leading-[1.85] font-light mt-5 lg:mt-7 max-w-[560px] transition-all duration-1000 delay-300 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"}`}>
             푸르지오가 완성하는 성성호수 앞 프리미엄 도시.<br className="hidden sm:block" />
             성성호수 새도시가 기다린 업성의 새중심, 천안의 주거명작.
           </p>
 
           {/* CTA buttons */}
-          <div className={`mt-10 flex flex-wrap gap-3 transition-all duration-1000 delay-[450ms] ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"}`}>
+          <div className={`mt-7 lg:mt-10 flex flex-wrap gap-2.5 lg:gap-3 transition-all duration-1000 delay-[450ms] ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"}`}>
             <button
               onClick={() => onTabChange?.("register")}
-              className="group inline-flex items-center gap-2 px-6 py-3.5 bg-paper text-ink text-[13px] tracking-wider hover:bg-rust hover:text-paper transition-colors"
+              className="group inline-flex items-center gap-2 px-5 lg:px-6 py-3 lg:py-3.5 bg-paper text-ink text-[12.5px] lg:text-[13px] tracking-wider hover:bg-rust hover:text-paper transition-colors"
             >
               관심고객 등록
               <span className="text-rust group-hover:text-paper transition-colors">→</span>
             </button>
             <button
               onClick={() => onTabChange?.("business")}
-              className="inline-flex items-center gap-2 px-6 py-3.5 border border-paper/35 text-paper text-[13px] tracking-wider hover:bg-paper/10 hover:border-paper/60 transition-colors"
+              className="inline-flex items-center gap-2 px-5 lg:px-6 py-3 lg:py-3.5 border border-paper/35 text-paper text-[12.5px] lg:text-[13px] tracking-wider hover:bg-paper/10 hover:border-paper/60 transition-colors"
             >
               사업개요 자세히
               <span className="text-paper/60">↓</span>

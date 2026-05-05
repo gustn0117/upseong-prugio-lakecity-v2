@@ -11,7 +11,6 @@ import LocationSection from "@/components/sections/LocationSection";
 import PremiumSection from "@/components/sections/PremiumSection";
 import ComplexSection from "@/components/sections/ComplexSection";
 import UnitSection from "@/components/sections/UnitSection";
-import PRSection from "@/components/sections/PRSection";
 import RegisterSection from "@/components/sections/RegisterSection";
 import { hasPhone, telHref } from "@/lib/site";
 
@@ -53,7 +52,6 @@ export default function Home() {
         {activeTab === "premium" && <PremiumSection />}
         {activeTab === "complex" && <ComplexSection initialSubTab={activeSubTab} />}
         {activeTab === "unit" && <UnitSection initialSubTab={activeSubTab} />}
-        {activeTab === "press" && <PRSection initialSubTab={activeSubTab} />}
         {activeTab === "register" && <RegisterSection />}
       </main>
 
