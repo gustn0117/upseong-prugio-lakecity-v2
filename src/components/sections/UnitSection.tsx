@@ -47,7 +47,7 @@ export default function UnitSection({ initialSubTab }: UnitSectionProps) {
   const supplyData = SUPPLY_DETAIL.units.find((u) => u.code === activeType);
 
   return (
-    <section className="pt-[132px] lg:pt-[92px] bg-paper">
+    <section className="pt-[140px] lg:pt-[92px] bg-paper">
 
       {/* ── PAGE HEADER ── */}
       <div className="relative bg-ink text-paper overflow-hidden">
@@ -69,7 +69,7 @@ export default function UnitSection({ initialSubTab }: UnitSectionProps) {
       </div>
 
       {/* ── TYPE SELECTOR ── */}
-      <div className="bg-paper border-b border-ink/[0.08] sticky top-[56px] z-30 backdrop-blur-md bg-paper/95">
+      <div className="bg-paper border-b border-ink/[0.08] sticky top-[136px] lg:top-[56px] z-30 backdrop-blur-md bg-paper/95">
         <div className="max-w-[1280px] mx-auto px-6 lg:pl-[88px] lg:pr-10 flex items-center gap-1 overflow-x-auto py-3">
           {types.map((t) => (
             <button

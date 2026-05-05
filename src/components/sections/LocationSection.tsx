@@ -68,7 +68,7 @@ export default function LocationSection() {
   const infra = useInView();
 
   return (
-    <section className="pt-[132px] lg:pt-[92px] bg-paper">
+    <section className="pt-[140px] lg:pt-[92px] bg-paper">
 
       {/* ── PAGE HEADER ── */}
       <div className="relative bg-ink text-paper overflow-hidden">

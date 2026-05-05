@@ -221,7 +221,7 @@ export default function ComplexSection({ initialSubTab }: ComplexSectionProps) {
   const head = headerCopy[activeSubTab] || headerCopy.landscape;
 
   return (
-    <section className="pt-[132px] lg:pt-[92px] bg-paper">
+    <section className="pt-[140px] lg:pt-[92px] bg-paper">
 
       {/* ── PAGE HEADER (with subtle bg) ── */}
       <div className="relative bg-ink text-paper overflow-hidden">
@@ -243,7 +243,7 @@ export default function ComplexSection({ initialSubTab }: ComplexSectionProps) {
       </div>
 
       {/* ── SUB NAV ── */}
-      <div className="bg-paper border-b border-ink/[0.08] sticky top-[56px] z-30 backdrop-blur-md bg-paper/95">
+      <div className="bg-paper border-b border-ink/[0.08] sticky top-[136px] lg:top-[56px] z-30 backdrop-blur-md bg-paper/95">
         <div className="max-w-[1280px] mx-auto px-6 lg:pl-[88px] lg:pr-10 flex items-center gap-7 overflow-x-auto">
           {subTabs.map((tab) => (
             <button

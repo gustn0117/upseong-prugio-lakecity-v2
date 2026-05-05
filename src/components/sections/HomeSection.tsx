@@ -59,8 +59,8 @@ export default function HomeSection({ onTabChange }: HomeSectionProps) {
         <div className="absolute inset-0 bg-gradient-to-r from-ink/85 via-ink/45 to-ink/25" />
         <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-ink/35" />
 
-        {/* Top-right meta */}
-        <div className={`absolute top-[100px] right-6 lg:right-10 text-right transition-opacity duration-1000 delay-500 ${loaded ? "opacity-100" : "opacity-0"}`}>
+        {/* Top-right meta — hidden on small mobile to avoid header overlap */}
+        <div className={`hidden sm:block absolute top-[150px] lg:top-[100px] right-6 lg:right-10 text-right transition-opacity duration-1000 delay-500 ${loaded ? "opacity-100" : "opacity-0"}`}>
           <p className="text-paper/55 text-[10px] tracking-[3px] uppercase mb-1">36.85°N · 127.15°E</p>
           <p className="text-paper/35 text-[10px] tabular-nums tracking-wider">UPDATED · {SITE.lastUpdated}</p>
         </div>
@@ -68,7 +68,7 @@ export default function HomeSection({ onTabChange }: HomeSectionProps) {
         {/* Subtle vertical accent line on left edge of content */}
         <div className={`hidden lg:block absolute top-[120px] left-[88px] w-px bg-rust transition-all duration-[1400ms] ${loaded ? "h-16 opacity-100" : "h-0 opacity-0"}`} />
 
-        <div className="relative h-full max-w-[1400px] mx-auto px-6 lg:pl-[88px] lg:pr-10 flex flex-col justify-end pb-16 lg:pb-20 pt-32">
+        <div className="relative h-full max-w-[1400px] mx-auto px-6 lg:pl-[88px] lg:pr-10 flex flex-col justify-end pb-20 lg:pb-20 pt-[150px] lg:pt-32">
 
           {/* Eyebrow with brand + year */}
           <div className={`flex items-center gap-3 mb-6 transition-all duration-1000 delay-100 ${loaded ? "opacity-100" : "opacity-0"}`}>
