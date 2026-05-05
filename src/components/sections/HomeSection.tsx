@@ -45,7 +45,7 @@ export default function HomeSection({ onTabChange }: HomeSectionProps) {
     <section className="bg-paper">
 
       {/* ─────── HERO ─────── */}
-      <div className="relative h-screen min-h-[700px] overflow-hidden">
+      <div className="relative h-[100svh] min-h-[680px] lg:min-h-[720px] overflow-hidden">
         <Image
           src="/images/hero-main.png"
           alt="업성 푸르지오 레이크시티"
@@ -107,26 +107,26 @@ export default function HomeSection({ onTabChange }: HomeSectionProps) {
           </div>
 
           {/* Stat strip */}
-          <div className={`mt-14 lg:mt-16 grid grid-cols-2 sm:grid-cols-4 max-w-[820px] divide-x divide-paper/15 border-t border-paper/15 transition-all duration-1000 delay-[600ms] ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
+          <div className={`mt-10 lg:mt-16 grid grid-cols-4 max-w-[820px] divide-x divide-paper/15 border-t border-paper/15 transition-all duration-1000 delay-[600ms] ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
             {[
               { v: "1,908", l: "총 세대", note: "Households" },
               { v: "39", l: "최고 층수", note: "Top Floor" },
               { v: "11", l: "동", note: "Buildings" },
               { v: "72·84·95", l: "전용 (㎡)", note: "Type" },
             ].map((s, i) => (
-              <div key={s.l} className={`pt-4 ${i === 0 ? "pl-0 pr-5" : "px-5"}`}>
-                <p className="text-paper text-[24px] lg:text-[28px] tabular-nums tracking-tight leading-none" style={{ fontWeight: 300 }}>
+              <div key={s.l} className={`pt-3 lg:pt-4 ${i === 0 ? "pl-0 pr-2 sm:pr-5" : "px-2 sm:px-5"}`}>
+                <p className="text-paper text-[18px] sm:text-[22px] lg:text-[28px] tabular-nums tracking-tight leading-none" style={{ fontWeight: 300 }}>
                   {s.v}
                 </p>
-                <p className="text-paper/65 text-[11.5px] tracking-wider mt-2">{s.l}</p>
-                <p className="text-paper/30 text-[9.5px] tabular-nums tracking-[2px] uppercase mt-0.5">{s.note}</p>
+                <p className="text-paper/65 text-[10.5px] sm:text-[11.5px] tracking-wider mt-2">{s.l}</p>
+                <p className="hidden sm:block text-paper/30 text-[9.5px] tabular-nums tracking-[2px] uppercase mt-0.5">{s.note}</p>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Animated scroll cue */}
-        <div className={`absolute bottom-7 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2.5 transition-opacity duration-1000 delay-[800ms] ${loaded ? "opacity-100" : "opacity-0"}`}>
+        {/* Animated scroll cue — desktop only (mobile uses sticky phone CTA) */}
+        <div className={`hidden lg:flex absolute bottom-7 left-1/2 -translate-x-1/2 flex-col items-center gap-2.5 transition-opacity duration-1000 delay-[800ms] ${loaded ? "opacity-100" : "opacity-0"}`}>
           <span className="text-paper/45 text-[9.5px] tracking-[4px] uppercase">Scroll</span>
           <div className="relative w-px h-10 bg-paper/15 overflow-hidden">
             <div className="absolute inset-x-0 top-0 h-3 bg-paper/70 scroll-line origin-top" />
