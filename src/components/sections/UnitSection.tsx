@@ -47,7 +47,7 @@ export default function UnitSection({ initialSubTab }: UnitSectionProps) {
   const supplyData = SUPPLY_DETAIL.units.find((u) => u.code === activeType);
 
   return (
-    <section className="pt-[92px] bg-paper">
+    <section className="pt-[132px] lg:pt-[92px] bg-paper">
 
       {/* ── PAGE HEADER ── */}
       <div className="relative bg-ink text-paper overflow-hidden">

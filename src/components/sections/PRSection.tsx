@@ -30,7 +30,7 @@ export default function PRSection({ initialSubTab }: PRSectionProps) {
   const [activeSubTab, setActiveSubTab] = useState(initialSubTab || "news");
 
   return (
-    <section className="pt-[92px] bg-paper">
+    <section className="pt-[132px] lg:pt-[92px] bg-paper">
 
       {/* ── PAGE HEADER ── */}
       <div className="relative bg-ink text-paper overflow-hidden">

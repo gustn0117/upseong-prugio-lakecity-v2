@@ -221,7 +221,7 @@ export default function ComplexSection({ initialSubTab }: ComplexSectionProps) {
   const head = headerCopy[activeSubTab] || headerCopy.landscape;
 
   return (
-    <section className="pt-[92px] bg-paper">
+    <section className="pt-[132px] lg:pt-[92px] bg-paper">
 
       {/* ── PAGE HEADER (with subtle bg) ── */}
       <div className="relative bg-ink text-paper overflow-hidden">
@@ -269,7 +269,7 @@ export default function ComplexSection({ initialSubTab }: ComplexSectionProps) {
           {/* ── LANDSCAPE ── */}
           {activeSubTab === "landscape" && (
             <div>
-              <div className="grid grid-cols-12 gap-6 mb-14">
+              <div className="grid grid-cols-12 gap-6 mb-10">
                 <div className="col-span-12 lg:col-span-4">
                   <p className="text-[10.5px] tracking-[3px] uppercase text-rust mb-3">Theme</p>
                   <h2 className="text-ink text-[26px] lg:text-[32px] leading-[1.25] tracking-tight" style={{ fontWeight: 300 }}>
@@ -280,6 +280,22 @@ export default function ComplexSection({ initialSubTab }: ComplexSectionProps) {
                   수공간을 품은 초대형 광장과 다채롭고 예술적인 힐링조경.
                   업성만의 유려한 명품 레이크 뷰를 누리며, 단지 안에서도 자연과의 거리가 가까워집니다.
                 </p>
+              </div>
+
+              {/* Official imagery gallery */}
+              <div className="grid grid-cols-12 gap-3 lg:gap-4 mb-12">
+                <div className="col-span-12 lg:col-span-8 relative aspect-[16/10] overflow-hidden bg-ink">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src="/images/crawled/landscape_img_01.jpg" alt="단지 조경 — 수공간 광장" className="absolute inset-0 w-full h-full object-cover" />
+                </div>
+                <div className="col-span-12 lg:col-span-4 grid grid-cols-2 lg:grid-cols-1 gap-3 lg:gap-4">
+                  {[2, 3, 4].map((n) => (
+                    <div key={n} className={`relative aspect-square ${n === 4 ? "col-span-2 lg:col-span-1 aspect-[16/9] lg:aspect-square" : ""} overflow-hidden bg-ink`}>
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={`/images/crawled/landscape_img_0${n}.jpg`} alt={`단지 조경 ${n}`} className="absolute inset-0 w-full h-full object-cover" />
+                    </div>
+                  ))}
+                </div>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-ink/10 border border-ink/10">
@@ -323,6 +339,16 @@ export default function ComplexSection({ initialSubTab }: ComplexSectionProps) {
                 </p>
               </div>
 
+              {/* Official imagery gallery */}
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-3 lg:gap-4 mb-12">
+                {[1, 3, 4, 5, 6, 7].map((n) => (
+                  <div key={n} className="relative aspect-[4/3] overflow-hidden bg-ink">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={`/images/crawled/sub_community_img_0${n}.jpg`} alt={`커뮤니티 ${n}`} className="absolute inset-0 w-full h-full object-cover" />
+                  </div>
+                ))}
+              </div>
+
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-ink/10 border border-ink/10">
                 {communityFacilities.map((f) => (
                   <article key={f.title} className="bg-paper p-7 lg:p-8 min-h-[220px] flex flex-col">
@@ -364,6 +390,22 @@ export default function ComplexSection({ initialSubTab }: ComplexSectionProps) {
                 </p>
               </div>
 
+              {/* Official imagery gallery */}
+              <div className="grid grid-cols-12 gap-3 lg:gap-4 mb-12">
+                <div className="col-span-12 lg:col-span-8 relative aspect-[16/10] overflow-hidden bg-ink">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src="/images/crawled/sub_skylounge_img_03.jpg" alt="스카이라운지 메인" className="absolute inset-0 w-full h-full object-cover" />
+                </div>
+                <div className="col-span-12 lg:col-span-4 grid grid-cols-3 lg:grid-cols-1 gap-3 lg:gap-4">
+                  {[1, 4, 6].map((n) => (
+                    <div key={n} className="relative aspect-square overflow-hidden bg-ink">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={`/images/crawled/sub_skylounge_img_0${n}.jpg`} alt={`스카이라운지 ${n}`} className="absolute inset-0 w-full h-full object-cover" />
+                    </div>
+                  ))}
+                </div>
+              </div>
+
               <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-ink/10 border border-ink/10">
                 {skyloungeFeatures.map((f) => (
                   <article key={f.num} className="bg-paper p-8 lg:p-10 min-h-[240px] flex flex-col">
@@ -399,6 +441,16 @@ export default function ComplexSection({ initialSubTab }: ComplexSectionProps) {
                   최대 125m 동간거리로 누리는 레이크 뷰 그 이상의 특급조망.
                   지하 2층 ~ 지상 39층, 11개동의 단지 구성으로 11개동 1,460세대가 자리 잡습니다.
                 </p>
+              </div>
+
+              {/* 공식 단지배치도 */}
+              <div className="border border-ink/10 bg-paper-deep p-3 lg:p-4 mb-12">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/images/crawled/danji_layout.jpg"
+                  alt="업성 푸르지오 레이크시티 단지배치도"
+                  className="w-full h-auto block"
+                />
               </div>
 
               <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-ink/10 border border-ink/10">

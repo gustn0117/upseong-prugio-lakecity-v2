@@ -67,7 +67,7 @@ export default function RegisterSection() {
     "w-full px-0 py-3 bg-transparent border-0 border-b border-ink/15 text-[15px] text-ink focus:outline-none focus:border-rust transition-colors duration-200 placeholder:text-stone-light";
 
   return (
-    <section className="pt-[92px] bg-paper">
+    <section className="pt-[132px] lg:pt-[92px] bg-paper">
 
       {/* ── PAGE HEADER ── */}
       <div className="relative bg-ink text-paper overflow-hidden">

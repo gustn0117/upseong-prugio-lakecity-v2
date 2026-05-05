@@ -34,7 +34,7 @@ export default function BusinessSection() {
   const supply = useInView();
 
   return (
-    <section className="pt-[92px] bg-paper">
+    <section className="pt-[132px] lg:pt-[92px] bg-paper">
 
       {/* ── PAGE HEADER ── */}
       <div className="relative bg-ink text-paper overflow-hidden">
@@ -250,57 +250,6 @@ export default function BusinessSection() {
               </tbody>
             </table>
           </div>
-        </div>
-      </div>
-
-      {/* ── CONTRACT PAYMENT SCHEDULE ── */}
-      <div className="bg-paper border-t border-ink/[0.08]">
-        <div className="max-w-[1280px] mx-auto px-6 lg:pl-[88px] lg:pr-10 py-20 lg:py-24">
-          <div className="grid grid-cols-12 gap-6 mb-10">
-            <div className="col-span-12 lg:col-span-4">
-              <p className="text-[10.5px] tracking-[3px] uppercase text-rust mb-3">Payment</p>
-              <h2 className="text-ink text-[26px] lg:text-[32px] tracking-tight" style={{ fontWeight: 300 }}>대금 납부 일정</h2>
-            </div>
-            <p className="col-span-12 lg:col-span-8 lg:pl-12 lg:border-l lg:border-ink/10 text-stone text-[13.5px] leading-[2] font-light max-w-[520px]">
-              계약금 5% (1차 + 2차) → 중도금 60% (6회 분할) → 잔금 35% (입주지정일).
-              자세한 금액은 입주자 모집공고 공급금액 표를 확인해 주시기 바랍니다.
-            </p>
-          </div>
-
-          <div className="overflow-x-auto border border-ink/10">
-            <table className="w-full text-[12.5px] tabular-nums">
-              <thead className="bg-paper-deep">
-                <tr className="text-stone text-[11px] tracking-wider">
-                  <th className="text-left font-normal px-4 py-3 border-b border-ink/10">구분</th>
-                  <th className="text-right font-normal px-4 py-3 border-b border-ink/10">비율</th>
-                  <th className="text-right font-normal px-4 py-3 border-b border-ink/10">납부일</th>
-                </tr>
-              </thead>
-              <tbody>
-                {[
-                  { label: "계약금 1차", ratio: "5%", date: "2026.05 (계약시)" },
-                  { label: "계약금 2차", ratio: "—", date: "계약 1개월 이내" },
-                  { label: "중도금 1차", ratio: "10%", date: "2026.09.11" },
-                  { label: "중도금 2차", ratio: "10%", date: "2027.03.12" },
-                  { label: "중도금 3차", ratio: "10%", date: "2027.09.10" },
-                  { label: "중도금 4차", ratio: "10%", date: "2028.05.12" },
-                  { label: "중도금 5차", ratio: "10%", date: "2028.10.13" },
-                  { label: "중도금 6차", ratio: "10%", date: "2029.03.09" },
-                  { label: "잔금", ratio: "35%", date: "입주지정일 (2029.09 예정)" },
-                ].map((row, i) => (
-                  <tr key={i} className="border-b border-ink/[0.06] last:border-b-0">
-                    <td className="text-ink px-4 py-3 font-medium">{row.label}</td>
-                    <td className="text-stone px-4 py-3 text-right font-light">{row.ratio}</td>
-                    <td className="text-stone px-4 py-3 text-right font-light">{row.date}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-
-          <p className="text-stone-light text-[11px] mt-6 font-light leading-relaxed">
-            * 자료: 입주자 모집공고 공급금액 및 납부일정 (주택관리번호 2026000086) 발췌. 정확한 금액 및 일정은 공식 공고문을 확인해 주시기 바랍니다.
-          </p>
         </div>
       </div>
 

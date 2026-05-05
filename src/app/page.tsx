@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import NotificationRibbon from "@/components/NotificationRibbon";
+import SalesAnnouncementModal from "@/components/SalesAnnouncementModal";
 import HomeSection from "@/components/sections/HomeSection";
 import BusinessSection from "@/components/sections/BusinessSection";
 import LocationSection from "@/components/sections/LocationSection";
@@ -42,6 +43,9 @@ export default function Home() {
         <Header activeTab={activeTab} onTabChange={handleTabChange} />
       </div>
 
+      {/* 메인 페이지 진입 시 안내 팝업 */}
+      {activeTab === "home" && <SalesAnnouncementModal />}
+
       <main className="flex-1">
         {activeTab === "home" && <HomeSection onTabChange={handleTabChange} />}
         {activeTab === "business" && <BusinessSection />}
@@ -78,19 +82,17 @@ export default function Home() {
         </button>
       </div>
 
-      {/* Phone CTA (mobile only) */}
+      {/* Phone CTA — sticky on mobile, always visible (스크롤 따라다님) */}
       {hasPhone && (
         <a
           href={telHref}
-          className={`fixed bottom-6 left-6 z-40 lg:hidden inline-flex items-center gap-2 px-4 h-10 bg-ink text-paper transition-all duration-500 ${
-            showFloatingBtn ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"
-          }`}
+          className="fixed bottom-5 left-5 z-40 lg:hidden inline-flex items-center gap-2.5 px-4 h-12 bg-ink text-paper shadow-xl border border-paper/10"
         >
-          <svg className="w-3.5 h-3.5 text-rust" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-4 h-4 text-rust" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5}
               d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
           </svg>
-          <span className="text-[11px] tracking-[2px] uppercase">Call</span>
+          <span className="text-[12.5px] tabular-nums tracking-wider">분양문의 1234-5678</span>
         </a>
       )}
     </div>
