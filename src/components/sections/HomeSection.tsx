@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import ContactCTA from "@/components/ContactCTA";
 import NoticeBoard from "@/components/NoticeBoard";
@@ -8,33 +8,12 @@ import SalesTimeline from "@/components/SalesTimeline";
 import BrandIdentityStrip from "@/components/BrandIdentityStrip";
 import { SITE, FOUR_UP } from "@/lib/site";
 
-function useInView(threshold = 0.1) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const obs = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) { setVisible(true); obs.disconnect(); } },
-      { threshold }
-    );
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, [threshold]);
-  return { ref, visible };
-}
-
 interface HomeSectionProps {
   onTabChange?: (tabId: string) => void;
 }
 
 export default function HomeSection({ onTabChange }: HomeSectionProps) {
   const [loaded, setLoaded] = useState(false);
-  const vision = useInView();
-  const features = useInView(0.05);
-  const numbers = useInView(0.2);
-  const map = useInView();
-  const cta = useInView();
 
   useEffect(() => {
     const t = setTimeout(() => setLoaded(true), 100);
@@ -137,24 +116,24 @@ export default function HomeSection({ onTabChange }: HomeSectionProps) {
       </div>
 
       {/* ─────── VISION ─────── */}
-      <div ref={vision.ref} className="bg-paper border-b border-ink/[0.08]">
-        <div className={`max-w-[1280px] mx-auto px-6 lg:pl-[88px] lg:pr-10 py-24 lg:py-32 grid grid-cols-12 gap-10 lg:gap-16 transition-all duration-700 ${vision.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
+      <div className="bg-paper border-b border-ink/[0.08]">
+        <div className="max-w-[1280px] mx-auto px-6 lg:pl-[88px] lg:pr-10 py-16 lg:py-32 grid grid-cols-12 gap-7 lg:gap-16">
 
           <div className="col-span-12 lg:col-span-4">
             <p className="text-[10.5px] tracking-[3px] uppercase text-rust mb-3">Vision</p>
-            <h2 className="text-ink text-[28px] lg:text-[36px] leading-[1.25] tracking-tight" style={{ fontWeight: 300 }}>
+            <h2 className="text-ink text-[24px] sm:text-[28px] lg:text-[36px] leading-[1.3] tracking-tight" style={{ fontWeight: 300 }}>
               전망 좋은 레이크뷰,<br />
               선망 받는 푸르지오
             </h2>
           </div>
 
           <div className="col-span-12 lg:col-span-8 lg:pl-12 lg:border-l lg:border-ink/10">
-            <div className="grid sm:grid-cols-2 gap-8 lg:gap-12">
-              <p className="text-stone text-[14px] leading-[2] font-light">
+            <div className="grid sm:grid-cols-2 gap-6 lg:gap-12">
+              <p className="text-stone text-[13.5px] lg:text-[14px] leading-[1.95] lg:leading-[2] font-light">
                 충청남도 천안시 서북구 업성동, 업성3 도시개발지구에 들어서는 1,460세대 규모의 푸르지오 주거단지.
                 성성호수공원과 맞닿은 입지 위에 호수 조망과 도시 인프라가 균형 있게 자리 잡습니다.
               </p>
-              <p className="text-stone text-[14px] leading-[2] font-light">
+              <p className="text-stone text-[13.5px] lg:text-[14px] leading-[1.95] lg:leading-[2] font-light">
                 지하 2층 ~ 지상 39층, 11개동의 단지 구성. 전용 72·84·95㎡ 3개 평형 10개 타입이
                 가족 구성에 따라 선택의 폭을 제공하며, 39층 스카이라운지와 25m 4레인 실내수영장 등
                 푸르지오 특유의 특화 설계가 함께합니다.
@@ -168,7 +147,7 @@ export default function HomeSection({ onTabChange }: HomeSectionProps) {
       <div ref={features.ref} className="bg-paper border-b border-ink/[0.08]">
         <div className="max-w-[1280px] mx-auto px-6 lg:pl-[88px] lg:pr-10 py-24 lg:py-32">
 
-          <div className={`grid grid-cols-12 gap-6 mb-14 lg:mb-20 transition-all duration-700 ${features.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
+          <div className="grid grid-cols-12 gap-6 mb-14 lg:mb-20">
             <div className="col-span-12 lg:col-span-4">
               <p className="text-[10.5px] tracking-[3px] uppercase text-rust mb-3">4 UP</p>
               <h2 className="text-ink text-[28px] lg:text-[36px] leading-[1.25] tracking-tight" style={{ fontWeight: 300 }}>
@@ -181,7 +160,7 @@ export default function HomeSection({ onTabChange }: HomeSectionProps) {
             </p>
           </div>
 
-          <div className={`grid grid-cols-1 md:grid-cols-2 gap-3 lg:gap-4 transition-all duration-1000 ${features.visible ? "opacity-100" : "opacity-0"}`}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 lg:gap-4">
             {FOUR_UP.map((f, i) => {
               const imgs = [
                 "/images/lakefront-bldg.jpg",
@@ -214,8 +193,8 @@ export default function HomeSection({ onTabChange }: HomeSectionProps) {
       </div>
 
       {/* ─────── DATA ─────── */}
-      <div ref={numbers.ref} className="bg-ink text-paper">
-        <div className={`max-w-[1280px] mx-auto px-6 lg:pl-[88px] lg:pr-10 py-20 lg:py-24 transition-all duration-700 ${numbers.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
+      <div className="bg-ink text-paper">
+        <div className="max-w-[1280px] mx-auto px-6 lg:pl-[88px] lg:pr-10 py-20 lg:py-24">
           <div className="flex items-baseline justify-between mb-12">
             <div>
               <p className="text-[10.5px] tracking-[3px] uppercase text-rust mb-3">Data</p>
@@ -253,8 +232,8 @@ export default function HomeSection({ onTabChange }: HomeSectionProps) {
       <NoticeBoard />
 
       {/* ─────── MAP TEASER ─────── */}
-      <div ref={map.ref} className="bg-paper border-y border-ink/[0.08]">
-        <div className={`max-w-[1280px] mx-auto px-6 lg:pl-[88px] lg:pr-10 py-24 lg:py-32 grid grid-cols-12 gap-8 lg:gap-12 transition-all duration-700 ${map.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
+      <div className="bg-paper border-y border-ink/[0.08]">
+        <div className="max-w-[1280px] mx-auto px-6 lg:pl-[88px] lg:pr-10 py-16 lg:py-32 grid grid-cols-12 gap-8 lg:gap-12">
 
           <div className="col-span-12 lg:col-span-5 lg:sticky lg:top-32 self-start">
             <p className="text-[10.5px] tracking-[3px] uppercase text-rust mb-3">Location</p>
@@ -293,8 +272,8 @@ export default function HomeSection({ onTabChange }: HomeSectionProps) {
       <BrandIdentityStrip />
 
       {/* ─────── CTA ─────── */}
-      <div ref={cta.ref} className="bg-ink text-paper">
-        <div className={`max-w-[1280px] mx-auto px-6 lg:pl-[88px] lg:pr-10 py-20 lg:py-24 transition-all duration-700 ${cta.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
+      <div className="bg-ink text-paper">
+        <div className="max-w-[1280px] mx-auto px-6 lg:pl-[88px] lg:pr-10 py-20 lg:py-24">
           <ContactCTA
             variant="slab"
             heading="분양문의"
