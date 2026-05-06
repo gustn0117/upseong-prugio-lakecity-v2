@@ -45,7 +45,9 @@ export default function HomeSection({ onTabChange }: HomeSectionProps) {
     <section className="bg-paper">
 
       {/* ─────── HERO ─────── */}
-      <div className="relative h-[100svh] min-h-[680px] lg:min-h-[720px] overflow-hidden">
+      {/* 모바일: 콘텐츠 높이로 자연 sizing (min-h-[560px]) — h-screen 사용 시 justify-end로 상단에 빈 공간 발생함
+          데스크톱: 풀 뷰포트 + bottom-aligned 에디토리얼 레이아웃 */}
+      <div className="relative min-h-[560px] lg:h-[100svh] lg:min-h-[720px] overflow-hidden">
         <Image
           src="/images/hero-main.png"
           alt="업성 푸르지오 레이크시티"
@@ -68,7 +70,8 @@ export default function HomeSection({ onTabChange }: HomeSectionProps) {
         {/* Subtle vertical accent line on left edge of content */}
         <div className={`hidden lg:block absolute top-[120px] left-[88px] w-px bg-rust transition-all duration-[1400ms] ${loaded ? "h-16 opacity-100" : "h-0 opacity-0"}`} />
 
-        <div className="relative h-full max-w-[1400px] mx-auto px-6 lg:pl-[88px] lg:pr-10 flex flex-col justify-end pb-12 lg:pb-20 pt-[144px] lg:pt-32">
+        {/* 모바일: 자연 흐름 (top-down) / 데스크톱: h-full flex justify-end (bottom-aligned) */}
+        <div className="relative max-w-[1400px] mx-auto px-6 lg:pl-[88px] lg:pr-10 pt-[144px] pb-12 lg:h-full lg:flex lg:flex-col lg:justify-end lg:pt-32 lg:pb-20">
 
           {/* Eyebrow with brand + year */}
           <div className={`flex items-center gap-3 mb-6 transition-all duration-1000 delay-100 ${loaded ? "opacity-100" : "opacity-0"}`}>
