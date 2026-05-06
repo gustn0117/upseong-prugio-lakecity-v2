@@ -282,22 +282,6 @@ export default function ComplexSection({ initialSubTab }: ComplexSectionProps) {
                 </p>
               </div>
 
-              {/* Official imagery gallery */}
-              <div className="grid grid-cols-12 gap-3 lg:gap-4 mb-12">
-                <div className="col-span-12 lg:col-span-8 relative aspect-[16/10] overflow-hidden bg-ink">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/images/crawled/landscape_img_01.jpg" alt="단지 조경 — 수공간 광장" className="absolute inset-0 w-full h-full object-cover" />
-                </div>
-                <div className="col-span-12 lg:col-span-4 grid grid-cols-2 lg:grid-cols-1 gap-3 lg:gap-4">
-                  {[2, 3, 4].map((n) => (
-                    <div key={n} className={`relative aspect-square ${n === 4 ? "col-span-2 lg:col-span-1 aspect-[16/9] lg:aspect-square" : ""} overflow-hidden bg-ink`}>
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img src={`/images/crawled/landscape_img_0${n}.jpg`} alt={`단지 조경 ${n}`} className="absolute inset-0 w-full h-full object-cover" />
-                    </div>
-                  ))}
-                </div>
-              </div>
-
               <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-ink/10 border border-ink/10">
                 {landscapeFeatures.map((f) => (
                   <article key={f.num} className="bg-paper p-8 lg:p-10 min-h-[220px] flex flex-col">
@@ -339,16 +323,6 @@ export default function ComplexSection({ initialSubTab }: ComplexSectionProps) {
                 </p>
               </div>
 
-              {/* Official imagery gallery */}
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-3 lg:gap-4 mb-12">
-                {[1, 3, 4, 5, 6, 7].map((n) => (
-                  <div key={n} className="relative aspect-[4/3] overflow-hidden bg-ink">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={`/images/crawled/sub_community_img_0${n}.jpg`} alt={`커뮤니티 ${n}`} className="absolute inset-0 w-full h-full object-cover" />
-                  </div>
-                ))}
-              </div>
-
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-ink/10 border border-ink/10">
                 {communityFacilities.map((f) => (
                   <article key={f.title} className="bg-paper p-7 lg:p-8 min-h-[220px] flex flex-col">
@@ -388,22 +362,6 @@ export default function ComplexSection({ initialSubTab }: ComplexSectionProps) {
                   성성호수가 한눈에 들어오는 단지 최상층 39층의 스카이라운지와 게스트하우스.
                   단지 안에서만 누릴 수 있는 또 하나의 프리미엄 라이프 거점입니다.
                 </p>
-              </div>
-
-              {/* Official imagery gallery */}
-              <div className="grid grid-cols-12 gap-3 lg:gap-4 mb-12">
-                <div className="col-span-12 lg:col-span-8 relative aspect-[16/10] overflow-hidden bg-ink">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/images/crawled/sub_skylounge_img_03.jpg" alt="스카이라운지 메인" className="absolute inset-0 w-full h-full object-cover" />
-                </div>
-                <div className="col-span-12 lg:col-span-4 grid grid-cols-3 lg:grid-cols-1 gap-3 lg:gap-4">
-                  {[1, 4, 6].map((n) => (
-                    <div key={n} className="relative aspect-square overflow-hidden bg-ink">
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img src={`/images/crawled/sub_skylounge_img_0${n}.jpg`} alt={`스카이라운지 ${n}`} className="absolute inset-0 w-full h-full object-cover" />
-                    </div>
-                  ))}
-                </div>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-ink/10 border border-ink/10">
