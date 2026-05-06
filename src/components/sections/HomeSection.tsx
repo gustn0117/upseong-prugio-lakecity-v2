@@ -111,20 +111,20 @@ export default function HomeSection({ onTabChange }: HomeSectionProps) {
           </div>
         </div>
 
-        {/* BOTTOM — stat strip 하단 고정 */}
+        {/* BOTTOM — stat strip 하단 고정 (모바일 2x2, sm+ 4-col) */}
         <div className={`relative max-w-[1400px] mx-auto w-full px-6 lg:pl-[88px] lg:pr-10 pb-20 lg:pb-24 transition-all duration-1000 delay-[600ms] ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
-          <div className="grid grid-cols-4 max-w-[820px] divide-x divide-paper/15 border-t border-paper/15">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-y-4 sm:gap-y-0 sm:divide-x sm:divide-paper/15 border-t border-paper/15 max-w-[820px]">
             {[
               { v: "1,908", l: "총 세대", note: "Households" },
               { v: "39", l: "최고 층수", note: "Top Floor" },
               { v: "11", l: "동", note: "Buildings" },
               { v: "72·84·95", l: "전용 (㎡)", note: "Type" },
             ].map((s, i) => (
-              <div key={s.l} className={`pt-3 lg:pt-4 ${i === 0 ? "pl-0 pr-2 sm:pr-5" : "px-2 sm:px-5"}`}>
-                <p className="text-paper text-[18px] sm:text-[22px] lg:text-[28px] tabular-nums tracking-tight leading-none" style={{ fontWeight: 300 }}>
+              <div key={s.l} className={`pt-4 ${i === 0 ? "pr-3 sm:pl-0 sm:pr-5" : i === 1 ? "pl-3 sm:px-5" : i === 2 ? "pr-3 sm:px-5" : "pl-3 sm:px-5"}`}>
+                <p className="text-paper text-[20px] sm:text-[22px] lg:text-[28px] tabular-nums tracking-tight leading-none" style={{ fontWeight: 300 }}>
                   {s.v}
                 </p>
-                <p className="text-paper/65 text-[10.5px] sm:text-[11.5px] tracking-wider mt-2">{s.l}</p>
+                <p className="text-paper/65 text-[11px] sm:text-[11.5px] tracking-wider mt-2">{s.l}</p>
                 <p className="hidden sm:block text-paper/30 text-[9.5px] tabular-nums tracking-[2px] uppercase mt-0.5">{s.note}</p>
               </div>
             ))}
