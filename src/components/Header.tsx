@@ -156,30 +156,6 @@ export default function Header({ activeTab, onTabChange }: HeaderProps) {
           </div>
         </div>
 
-        {/* ============ MOBILE SECONDARY NAV (always visible) ============ */}
-        <nav className={`lg:hidden border-t ${onDark ? "border-paper/20 bg-ink/60 backdrop-blur-md" : "border-ink/[0.08] bg-paper/95 backdrop-blur-sm"}`}>
-          <div className="flex items-center gap-6 overflow-x-auto px-5 h-11 no-scrollbar">
-            {menuItems.filter((m) => m.id !== "home").map((item) => {
-              const isActive = activeTab === item.id;
-              return (
-                <button
-                  key={item.id}
-                  onClick={() => onTabChange(item.id)}
-                  className={`relative whitespace-nowrap text-[13.5px] tracking-tight py-2 transition-colors ${
-                    isActive
-                      ? onDark ? "text-paper font-medium" : "text-ink font-medium"
-                      : onDark ? "text-paper/70 hover:text-paper" : "text-stone hover:text-ink"
-                  }`}
-                >
-                  {item.label}
-                  {isActive && (
-                    <span className="absolute -bottom-px left-0 right-0 h-[1.5px] bg-rust" />
-                  )}
-                </button>
-              );
-            })}
-          </div>
-        </nav>
       </header>
 
       {/* ============ LEFT MINIMAL DOT RAIL (desktop) ============ */}

@@ -71,7 +71,7 @@ export default function HomeSection({ onTabChange }: HomeSectionProps) {
         <div className={`hidden lg:block absolute top-[120px] left-[88px] w-px bg-rust transition-all duration-[1400ms] ${loaded ? "h-16 opacity-100" : "h-0 opacity-0"}`} />
 
         {/* 콘텐츠 — 모바일/데스크톱 동일하게 padding-driven block layout */}
-        <div className="relative max-w-[1400px] mx-auto px-6 lg:pl-[88px] lg:pr-10 pt-[156px] pb-14 lg:pt-44 lg:pb-24">
+        <div className="relative max-w-[1400px] mx-auto px-6 lg:pl-[88px] lg:pr-10 pt-[112px] pb-14 lg:pt-44 lg:pb-24">
 
           {/* Eyebrow with brand + year */}
           <div className={`flex items-center gap-3 mb-6 transition-all duration-1000 delay-100 ${loaded ? "opacity-100" : "opacity-0"}`}>
