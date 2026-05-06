@@ -125,7 +125,7 @@ export default function LocationSection() {
           <div className="border border-ink/10 p-2 bg-paper">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/images/crawled/map.jpg"
+              src="/images/location-map.jpg"
               alt="업성 푸르지오 레이크시티 입지 안내도"
               className="w-full h-auto block"
             />
