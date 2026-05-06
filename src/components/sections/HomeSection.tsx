@@ -144,7 +144,7 @@ export default function HomeSection({ onTabChange }: HomeSectionProps) {
       </div>
 
       {/* ─────── FEATURES — minimal grid ─────── */}
-      <div ref={features.ref} className="bg-paper border-b border-ink/[0.08]">
+      <div className="bg-paper border-b border-ink/[0.08]">
         <div className="max-w-[1280px] mx-auto px-6 lg:pl-[88px] lg:pr-10 py-24 lg:py-32">
 
           <div className="grid grid-cols-12 gap-6 mb-14 lg:mb-20">
