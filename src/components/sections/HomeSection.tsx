@@ -45,10 +45,8 @@ export default function HomeSection({ onTabChange }: HomeSectionProps) {
     <section className="bg-paper">
 
       {/* ─────── HERO ─────── */}
-      {/* 풀스크린 hero — 콘텐츠 상하 분산 배치 (justify-between)
-          상단: 헤더+에어브라우+헤딩+설명+CTA / 하단: 스탯 / 중간: 빌딩 이미지
-          이미지 영역이 중앙에 위치해 자연스러운 균형 */}
-      <div className="relative h-screen min-h-[640px] overflow-hidden flex flex-col justify-between" style={{ height: "100svh" }}>
+      {/* 풀스크린 hero — 모든 콘텐츠를 하나의 블록으로 묶고 vertical center */}
+      <div className="relative h-screen min-h-[640px] overflow-hidden flex flex-col justify-center" style={{ height: "100svh" }}>
         <Image
           src="/images/hero-main.png"
           alt="업성 푸르지오 레이크시티"
@@ -71,29 +69,29 @@ export default function HomeSection({ onTabChange }: HomeSectionProps) {
         {/* Subtle vertical accent line on left edge of content */}
         <div className={`hidden lg:block absolute top-[120px] left-[88px] w-px bg-rust transition-all duration-[1400ms] ${loaded ? "h-16 opacity-100" : "h-0 opacity-0"}`} />
 
-        {/* TOP — eyebrow + heading + desc + CTA */}
-        <div className="relative max-w-[1400px] mx-auto w-full px-6 lg:pl-[88px] lg:pr-10 pt-[112px] lg:pt-32">
+        {/* CONTENT — 모든 요소를 하나의 블록으로, vertical center, 헤더 클리어 위해 위쪽 안전 padding */}
+        <div className="relative max-w-[1400px] mx-auto w-full px-6 lg:pl-[88px] lg:pr-10 pt-[92px] pb-16 lg:pt-[92px] lg:pb-20">
 
           {/* Eyebrow with brand + year */}
-          <div className={`flex items-center gap-3 mb-6 transition-all duration-1000 delay-100 ${loaded ? "opacity-100" : "opacity-0"}`}>
+          <div className={`flex items-center gap-3 mb-5 lg:mb-6 transition-all duration-1000 delay-100 ${loaded ? "opacity-100" : "opacity-0"}`}>
             <span className="text-paper/65 text-[10.5px] tracking-[3px] uppercase">대우건설 푸르지오</span>
             <span className="w-8 h-px bg-paper/35" />
             <span className="text-paper/45 text-[10.5px] tracking-[3px] uppercase tabular-nums">est. 2026</span>
           </div>
 
           {/* Main heading */}
-          <h1 className={`text-paper text-[36px] sm:text-[56px] lg:text-[80px] leading-[1.05] tracking-tight max-w-[900px] transition-all duration-[1100ms] delay-150 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"}`}
+          <h1 className={`text-paper text-[34px] sm:text-[56px] lg:text-[80px] leading-[1.05] tracking-tight max-w-[900px] transition-all duration-[1100ms] delay-150 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"}`}
               style={{ fontWeight: 500 }}>
             업성 푸르지오<br />레이크시티
           </h1>
 
-          <p className={`text-paper/80 text-[13.5px] lg:text-[16px] leading-[1.85] font-light mt-5 lg:mt-7 max-w-[560px] transition-all duration-1000 delay-300 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"}`}>
+          <p className={`text-paper/80 text-[13.5px] lg:text-[16px] leading-[1.8] font-light mt-4 lg:mt-7 max-w-[560px] transition-all duration-1000 delay-300 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"}`}>
             푸르지오가 완성하는 성성호수 앞 프리미엄 도시.<br className="hidden sm:block" />
             성성호수 새도시가 기다린 업성의 새중심, 천안의 주거명작.
           </p>
 
           {/* CTA buttons */}
-          <div className={`mt-7 lg:mt-10 flex flex-wrap gap-2.5 lg:gap-3 transition-all duration-1000 delay-[450ms] ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"}`}>
+          <div className={`mt-6 lg:mt-10 flex flex-wrap gap-2.5 lg:gap-3 transition-all duration-1000 delay-[450ms] ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"}`}>
             <button
               onClick={() => onTabChange?.("register")}
               className="group inline-flex items-center gap-2 px-5 lg:px-6 py-3 lg:py-3.5 bg-paper text-ink text-[12.5px] lg:text-[13px] tracking-wider hover:bg-rust hover:text-paper transition-colors"
@@ -109,11 +107,9 @@ export default function HomeSection({ onTabChange }: HomeSectionProps) {
               <span className="text-paper/60">↓</span>
             </button>
           </div>
-        </div>
 
-        {/* BOTTOM — stat strip 하단 고정 (모바일 2x2, sm+ 4-col) */}
-        <div className={`relative max-w-[1400px] mx-auto w-full px-6 lg:pl-[88px] lg:pr-10 pb-20 lg:pb-24 transition-all duration-1000 delay-[600ms] ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-y-4 sm:gap-y-0 sm:divide-x sm:divide-paper/15 border-t border-paper/15 max-w-[820px]">
+          {/* Stat strip — 콘텐츠 블록 내 통합 (모바일 2x2 / sm+ 4-col) */}
+          <div className={`mt-8 lg:mt-12 grid grid-cols-2 sm:grid-cols-4 gap-y-4 sm:gap-y-0 sm:divide-x sm:divide-paper/15 border-t border-paper/15 max-w-[820px] transition-all duration-1000 delay-[600ms] ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
             {[
               { v: "1,908", l: "총 세대", note: "Households" },
               { v: "39", l: "최고 층수", note: "Top Floor" },
@@ -131,7 +127,7 @@ export default function HomeSection({ onTabChange }: HomeSectionProps) {
           </div>
         </div>
 
-        {/* Animated scroll cue — desktop only (mobile uses sticky phone CTA) */}
+        {/* Animated scroll cue — desktop only */}
         <div className={`hidden lg:flex absolute bottom-7 left-1/2 -translate-x-1/2 flex-col items-center gap-2.5 transition-opacity duration-1000 delay-[800ms] ${loaded ? "opacity-100" : "opacity-0"}`}>
           <span className="text-paper/45 text-[9.5px] tracking-[4px] uppercase">Scroll</span>
           <div className="relative w-px h-10 bg-paper/15 overflow-hidden">
