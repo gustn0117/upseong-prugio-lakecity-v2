@@ -92,17 +92,20 @@ export default function Header({ activeTab, onTabChange }: HeaderProps) {
             </nav>
 
             {/* Right cluster */}
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 lg:gap-3">
+              {/* Desktop: phone (text) */}
               {hasPhone ? (
                 <a
                   href={telHref}
-                  className={`hidden md:inline-flex text-[12.5px] tabular-nums tracking-wider transition-colors ${
+                  className={`hidden md:inline-flex lg:inline-flex text-[12.5px] tabular-nums tracking-wider transition-colors ${
                     onDark ? "text-paper/70 hover:text-paper" : "text-stone hover:text-ink"
                   }`}
                 >
                   {displayPhone}
                 </a>
               ) : null}
+
+              {/* Desktop: register CTA */}
               <button
                 onClick={() => onTabChange("register")}
                 className={`hidden lg:inline-flex items-center px-4 py-2 text-[12px] tracking-[1px] transition-all ${
@@ -113,19 +116,41 @@ export default function Header({ activeTab, onTabChange }: HeaderProps) {
               >
                 관심고객등록
               </button>
-              {/* Mobile hamburger */}
+
+              {/* Mobile right cluster: phone icon + MENU button */}
+              {hasPhone && (
+                <a
+                  href={telHref}
+                  className={`lg:hidden inline-flex items-center justify-center w-10 h-10 transition-colors ${
+                    onDark ? "text-paper hover:bg-paper/10" : "text-ink hover:bg-ink/5"
+                  }`}
+                  aria-label="분양문의 전화"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5}
+                      d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                  </svg>
+                </a>
+              )}
+
+              {/* Mobile MENU button — prominent */}
               <button
-                className={`lg:hidden p-1.5 ${onDark ? "text-paper" : "text-ink"}`}
                 onClick={() => setMobileOpen(!mobileOpen)}
                 aria-label="메뉴"
+                className={`lg:hidden inline-flex items-center gap-2 px-3 h-10 transition-colors ${
+                  onDark
+                    ? "border border-paper/40 text-paper hover:bg-paper/10"
+                    : "border border-ink/25 text-ink hover:bg-ink hover:text-paper"
+                }`}
               >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   {mobileOpen ? (
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.4} d="M6 18L18 6M6 6l12 12" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.6} d="M6 18L18 6M6 6l12 12" />
                   ) : (
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.4} d="M4 7h16M4 17h16" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.6} d="M4 7h16M4 17h16" />
                   )}
                 </svg>
+                <span className="text-[12px] tracking-[2px] uppercase">{mobileOpen ? "Close" : "Menu"}</span>
               </button>
             </div>
           </div>
