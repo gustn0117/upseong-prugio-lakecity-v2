@@ -45,9 +45,9 @@ export default function HomeSection({ onTabChange }: HomeSectionProps) {
     <section className="bg-paper">
 
       {/* ─────── HERO ─────── */}
-      {/* 단순 padding-only 레이아웃 — h-screen / svh / flex justify-end 모두 제거
-          hero 높이 = 콘텐츠 + padding. 모바일/데스크톱 모두 빈 공간 없이 자연 sizing */}
-      <div className="relative overflow-hidden lg:min-h-[680px]">
+      {/* 풀스크린 hero (h-screen + svh fallback) — 콘텐츠는 상단에 자연 정렬 (flex/justify 미사용)
+          핵심: 빈 공간을 콘텐츠 "아래"에 두면 hero 이미지가 자연스럽게 채움 (vs. 위에 두면 헤더와 콘텐츠 사이 빈 공간 발생) */}
+      <div className="relative h-screen min-h-[640px] overflow-hidden" style={{ height: "100svh" }}>
         <Image
           src="/images/hero-main.png"
           alt="업성 푸르지오 레이크시티"
