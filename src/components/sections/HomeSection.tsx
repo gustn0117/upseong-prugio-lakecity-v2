@@ -45,9 +45,9 @@ export default function HomeSection({ onTabChange }: HomeSectionProps) {
     <section className="bg-paper">
 
       {/* ─────── HERO ─────── */}
-      {/* 모바일: 콘텐츠 높이로 자연 sizing (min-h-[560px]) — h-screen 사용 시 justify-end로 상단에 빈 공간 발생함
-          데스크톱: 풀 뷰포트 + bottom-aligned 에디토리얼 레이아웃 */}
-      <div className="relative min-h-[560px] lg:h-[100svh] lg:min-h-[720px] overflow-hidden">
+      {/* 단순 padding-only 레이아웃 — h-screen / svh / flex justify-end 모두 제거
+          hero 높이 = 콘텐츠 + padding. 모바일/데스크톱 모두 빈 공간 없이 자연 sizing */}
+      <div className="relative overflow-hidden lg:min-h-[680px]">
         <Image
           src="/images/hero-main.png"
           alt="업성 푸르지오 레이크시티"
@@ -61,8 +61,8 @@ export default function HomeSection({ onTabChange }: HomeSectionProps) {
         <div className="absolute inset-0 bg-gradient-to-r from-ink/85 via-ink/45 to-ink/25" />
         <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-ink/35" />
 
-        {/* Top-right meta — hidden on small mobile to avoid header overlap */}
-        <div className={`hidden sm:block absolute top-[150px] lg:top-[100px] right-6 lg:right-10 text-right transition-opacity duration-1000 delay-500 ${loaded ? "opacity-100" : "opacity-0"}`}>
+        {/* Top-right meta — desktop only */}
+        <div className={`hidden lg:block absolute top-[100px] right-10 text-right transition-opacity duration-1000 delay-500 ${loaded ? "opacity-100" : "opacity-0"}`}>
           <p className="text-paper/55 text-[10px] tracking-[3px] uppercase mb-1">36.85°N · 127.15°E</p>
           <p className="text-paper/35 text-[10px] tabular-nums tracking-wider">UPDATED · {SITE.lastUpdated}</p>
         </div>
@@ -70,8 +70,8 @@ export default function HomeSection({ onTabChange }: HomeSectionProps) {
         {/* Subtle vertical accent line on left edge of content */}
         <div className={`hidden lg:block absolute top-[120px] left-[88px] w-px bg-rust transition-all duration-[1400ms] ${loaded ? "h-16 opacity-100" : "h-0 opacity-0"}`} />
 
-        {/* 모바일: 자연 흐름 (top-down) / 데스크톱: h-full flex justify-end (bottom-aligned) */}
-        <div className="relative max-w-[1400px] mx-auto px-6 lg:pl-[88px] lg:pr-10 pt-[144px] pb-12 lg:h-full lg:flex lg:flex-col lg:justify-end lg:pt-32 lg:pb-20">
+        {/* 콘텐츠 — 모바일/데스크톱 동일하게 padding-driven block layout */}
+        <div className="relative max-w-[1400px] mx-auto px-6 lg:pl-[88px] lg:pr-10 pt-[156px] pb-14 lg:pt-44 lg:pb-24">
 
           {/* Eyebrow with brand + year */}
           <div className={`flex items-center gap-3 mb-6 transition-all duration-1000 delay-100 ${loaded ? "opacity-100" : "opacity-0"}`}>
