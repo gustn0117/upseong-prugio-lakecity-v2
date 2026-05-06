@@ -45,9 +45,10 @@ export default function HomeSection({ onTabChange }: HomeSectionProps) {
     <section className="bg-paper">
 
       {/* ─────── HERO ─────── */}
-      {/* 풀스크린 hero (h-screen + svh fallback) — 콘텐츠는 상단에 자연 정렬 (flex/justify 미사용)
-          핵심: 빈 공간을 콘텐츠 "아래"에 두면 hero 이미지가 자연스럽게 채움 (vs. 위에 두면 헤더와 콘텐츠 사이 빈 공간 발생) */}
-      <div className="relative h-screen min-h-[640px] overflow-hidden" style={{ height: "100svh" }}>
+      {/* 풀스크린 hero — 콘텐츠 상하 분산 배치 (justify-between)
+          상단: 헤더+에어브라우+헤딩+설명+CTA / 하단: 스탯 / 중간: 빌딩 이미지
+          이미지 영역이 중앙에 위치해 자연스러운 균형 */}
+      <div className="relative h-screen min-h-[640px] overflow-hidden flex flex-col justify-between" style={{ height: "100svh" }}>
         <Image
           src="/images/hero-main.png"
           alt="업성 푸르지오 레이크시티"
@@ -59,7 +60,7 @@ export default function HomeSection({ onTabChange }: HomeSectionProps) {
 
         {/* Layered gradients — directional darkness for text legibility */}
         <div className="absolute inset-0 bg-gradient-to-r from-ink/85 via-ink/45 to-ink/25" />
-        <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-ink/35" />
+        <div className="absolute inset-0 bg-gradient-to-t from-ink/65 via-ink/15 to-ink/40" />
 
         {/* Top-right meta — desktop only */}
         <div className={`hidden lg:block absolute top-[100px] right-10 text-right transition-opacity duration-1000 delay-500 ${loaded ? "opacity-100" : "opacity-0"}`}>
@@ -70,8 +71,8 @@ export default function HomeSection({ onTabChange }: HomeSectionProps) {
         {/* Subtle vertical accent line on left edge of content */}
         <div className={`hidden lg:block absolute top-[120px] left-[88px] w-px bg-rust transition-all duration-[1400ms] ${loaded ? "h-16 opacity-100" : "h-0 opacity-0"}`} />
 
-        {/* 콘텐츠 — 모바일/데스크톱 동일하게 padding-driven block layout */}
-        <div className="relative max-w-[1400px] mx-auto px-6 lg:pl-[88px] lg:pr-10 pt-[112px] pb-14 lg:pt-44 lg:pb-24">
+        {/* TOP — eyebrow + heading + desc + CTA */}
+        <div className="relative max-w-[1400px] mx-auto w-full px-6 lg:pl-[88px] lg:pr-10 pt-[112px] lg:pt-32">
 
           {/* Eyebrow with brand + year */}
           <div className={`flex items-center gap-3 mb-6 transition-all duration-1000 delay-100 ${loaded ? "opacity-100" : "opacity-0"}`}>
@@ -108,9 +109,11 @@ export default function HomeSection({ onTabChange }: HomeSectionProps) {
               <span className="text-paper/60">↓</span>
             </button>
           </div>
+        </div>
 
-          {/* Stat strip */}
-          <div className={`mt-10 lg:mt-16 grid grid-cols-4 max-w-[820px] divide-x divide-paper/15 border-t border-paper/15 transition-all duration-1000 delay-[600ms] ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
+        {/* BOTTOM — stat strip 하단 고정 */}
+        <div className={`relative max-w-[1400px] mx-auto w-full px-6 lg:pl-[88px] lg:pr-10 pb-20 lg:pb-24 transition-all duration-1000 delay-[600ms] ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
+          <div className="grid grid-cols-4 max-w-[820px] divide-x divide-paper/15 border-t border-paper/15">
             {[
               { v: "1,908", l: "총 세대", note: "Households" },
               { v: "39", l: "최고 층수", note: "Top Floor" },
