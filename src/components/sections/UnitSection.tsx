@@ -88,7 +88,7 @@ export default function UnitSection({ initialSubTab }: UnitSectionProps) {
               <div className="border border-ink/10 bg-paper p-4 lg:p-6">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src={`/images/cg/plan-${current.id.toLowerCase()}.jpg`}
+                  src={`/images/cg/plan-${current.id.toLowerCase()}.jpg?v=2`}
                   alt={`전용 ${current.category} ${current.id} 타입 확장옵션 평면도`}
                   className="w-full h-auto block"
                 />
