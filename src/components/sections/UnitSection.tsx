@@ -91,12 +91,13 @@ export default function UnitSection({ initialSubTab }: UnitSectionProps) {
       <div ref={content.ref} className={`bg-paper transition-opacity duration-500 ${content.visible ? "opacity-100" : "opacity-0"}`}>
         <div className="max-w-[1280px] mx-auto px-6 lg:pl-[88px] lg:pr-10 py-16 lg:py-20">
 
-          {/* Floor plan image */}
+          {/* Floor plan image — 확장옵션 평면도 */}
           <div className="mb-12 lg:mb-16 grid grid-cols-12 gap-6 items-start">
             <div className="col-span-12 lg:col-span-3">
               <p className="text-rust text-[10.5px] tracking-[3px] uppercase mb-3">Floor Plan</p>
               <h3 className="text-ink text-[20px] tracking-tight" style={{ fontWeight: 500 }}>전용 {current.category} {current.id.slice(-1)}타입</h3>
-              <p className="text-stone text-[12px] mt-3 font-light leading-relaxed">
+              <p className="text-stone text-[12px] mt-1.5">확장옵션 적용 평면도</p>
+              <p className="text-stone-light text-[11.5px] mt-3 font-light leading-relaxed">
                 평면도는 입주자 모집공고 기준이며,<br />실제 시공 시 일부 다를 수 있습니다.
               </p>
             </div>
@@ -104,8 +105,8 @@ export default function UnitSection({ initialSubTab }: UnitSectionProps) {
               <div className="border border-ink/10 bg-paper p-4 lg:p-6">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src={`/images/crawled/type_info_${current.id.toLowerCase()}.jpg`}
-                  alt={`전용 ${current.category} ${current.id} 타입 평면도`}
+                  src={`/images/cg/plan-${current.id.toLowerCase()}.jpg`}
+                  alt={`전용 ${current.category} ${current.id} 타입 확장옵션 평면도`}
                   className="w-full h-auto block"
                 />
               </div>

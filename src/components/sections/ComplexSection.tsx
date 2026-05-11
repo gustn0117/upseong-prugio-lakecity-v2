@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import ContactCTA from "@/components/ContactCTA";
 
@@ -13,22 +13,6 @@ const subTabs = [
 
 interface ComplexSectionProps {
   initialSubTab?: string;
-}
-
-function useInView(threshold = 0.05) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const obs = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) { setVisible(true); obs.disconnect(); } },
-      { threshold }
-    );
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, [threshold]);
-  return { ref, visible };
 }
 
 const headerCopy: Record<string, { tag: string; title: string; subtitle: string }> = {
@@ -217,7 +201,6 @@ const layoutHighlights = [
 
 export default function ComplexSection({ initialSubTab }: ComplexSectionProps) {
   const [activeSubTab, setActiveSubTab] = useState(initialSubTab || "landscape");
-  const content = useInView();
   const head = headerCopy[activeSubTab] || headerCopy.landscape;
 
   return (
@@ -263,7 +246,7 @@ export default function ComplexSection({ initialSubTab }: ComplexSectionProps) {
       </div>
 
       {/* ── CONTENT ── */}
-      <div ref={content.ref} className={`bg-paper transition-all duration-700 ${content.visible ? "opacity-100" : "opacity-0"}`}>
+      <div className="bg-paper">
         <div className="max-w-[1280px] mx-auto px-6 lg:pl-[88px] lg:pr-10 py-16 lg:py-24">
 
           {/* ── LANDSCAPE ── */}
@@ -279,6 +262,16 @@ export default function ComplexSection({ initialSubTab }: ComplexSectionProps) {
                 <p className="col-span-12 lg:col-span-8 lg:pl-12 lg:border-l lg:border-ink/10 text-stone text-[14px] leading-[2] font-light max-w-[560px]">
                   수공간을 품은 초대형 광장과 다채롭고 예술적인 힐링조경.
                   업성만의 유려한 명품 레이크 뷰를 누리며, 단지 안에서도 자연과의 거리가 가까워집니다.
+                </p>
+              </div>
+
+              {/* 공식 CG — 단지 출입구 */}
+              <div className="relative aspect-[16/9] sm:aspect-[2/1] overflow-hidden bg-ink mb-12">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/images/cg/entrance.jpg" alt="단지 출입구 조감 CG" className="absolute inset-0 w-full h-full object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-ink/30 to-transparent" />
+                <p className="absolute bottom-5 left-5 lg:bottom-7 lg:left-7 text-paper text-[13px] lg:text-[15px] tracking-tight" style={{ fontWeight: 500 }}>
+                  단지 출입구 — 사계절 힐링조경
                 </p>
               </div>
 
@@ -323,6 +316,27 @@ export default function ComplexSection({ initialSubTab }: ComplexSectionProps) {
                 </p>
               </div>
 
+              {/* 공식 커뮤니티 CG 갤러리 */}
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-3 lg:gap-4 mb-12">
+                {[
+                  { src: "/images/cg/pool.jpg", label: "25m 4레인 실내수영장" },
+                  { src: "/images/cg/pool-kids.jpg", label: "유아 풀장" },
+                  { src: "/images/cg/sauna.jpg", label: "사우나" },
+                  { src: "/images/cg/fitness.jpg", label: "피트니스 클럽" },
+                  { src: "/images/cg/cafeteria.jpg", label: "카페테리아" },
+                  { src: "/images/cg/library.jpg", label: "작은 도서관" },
+                  { src: "/images/cg/kids-room.jpg", label: "실내 놀이터" },
+                  { src: "/images/cg/golf.jpg", label: "스크린 골프" },
+                ].map((img) => (
+                  <div key={img.src} className="relative aspect-[4/3] overflow-hidden bg-ink group">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={img.src} alt={img.label} className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-[1.04]" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent" />
+                    <p className="absolute bottom-3 left-3 lg:bottom-4 lg:left-4 text-paper text-[11px] lg:text-[12.5px] tracking-tight" style={{ fontWeight: 500 }}>{img.label}</p>
+                  </div>
+                ))}
+              </div>
+
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-ink/10 border border-ink/10">
                 {communityFacilities.map((f) => (
                   <article key={f.title} className="bg-paper p-7 lg:p-8 min-h-[220px] flex flex-col">
@@ -364,6 +378,31 @@ export default function ComplexSection({ initialSubTab }: ComplexSectionProps) {
                 </p>
               </div>
 
+              {/* 공식 스카이라운지 CG 갤러리 */}
+              <div className="grid grid-cols-12 gap-3 lg:gap-4 mb-12">
+                <div className="col-span-12 relative aspect-[16/9] sm:aspect-[5/2] overflow-hidden bg-ink">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src="/images/cg/skylounge-night1.jpg" alt="39층 스카이라운지 야경 CG" className="absolute inset-0 w-full h-full object-cover" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-ink/35 to-transparent" />
+                  <p className="absolute bottom-5 left-5 lg:bottom-7 lg:left-7 text-paper text-[13px] lg:text-[15px] tracking-tight" style={{ fontWeight: 500 }}>
+                    39층 스카이라운지 — 야경 조망
+                  </p>
+                </div>
+                {[
+                  { src: "/images/cg/skylounge-day1.jpg", label: "스카이라운지 주경" },
+                  { src: "/images/cg/skylounge-night2.jpg", label: "스카이라운지 야경" },
+                  { src: "/images/cg/guest-a.jpg", label: "게스트룸 A" },
+                  { src: "/images/cg/guest-b.jpg", label: "게스트룸 B" },
+                ].map((img) => (
+                  <div key={img.src} className="col-span-6 lg:col-span-3 relative aspect-[4/3] overflow-hidden bg-ink group">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={img.src} alt={img.label} className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-[1.04]" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent" />
+                    <p className="absolute bottom-3 left-3 lg:bottom-4 lg:left-4 text-paper text-[11px] lg:text-[12.5px] tracking-tight" style={{ fontWeight: 500 }}>{img.label}</p>
+                  </div>
+                ))}
+              </div>
+
               <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-ink/10 border border-ink/10">
                 {skyloungeFeatures.map((f) => (
                   <article key={f.num} className="bg-paper p-8 lg:p-10 min-h-[240px] flex flex-col">
@@ -401,11 +440,11 @@ export default function ComplexSection({ initialSubTab }: ComplexSectionProps) {
                 </p>
               </div>
 
-              {/* 공식 단지배치도 */}
+              {/* 공식 단지배치도 CG */}
               <div className="border border-ink/10 bg-paper-deep p-3 lg:p-4 mb-12">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="/images/crawled/danji_layout.jpg"
+                  src="/images/cg/site-plan.jpg"
                   alt="업성 푸르지오 레이크시티 단지배치도"
                   className="w-full h-auto block"
                 />
