@@ -38,10 +38,7 @@ const headerCopy: Record<string, { tag: string; title: string; subtitle: string 
   },
 };
 
-/* ──────────────────────────────────────────────
-   SVG ICONS — 모두 stroke 기반의 미니멀 라인 아이콘
-   currentColor로 텍스트 색상과 일치
-   ────────────────────────────────────────────── */
+/* SVG icons — landscape & layout 용 (해당 컨셉의 CG가 없어 아이콘 유지) */
 const Icon = {
   Water: () => (
     <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" className="w-full h-full">
@@ -65,71 +62,6 @@ const Icon = {
     <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" className="w-full h-full">
       <circle cx="28" cy="9" r="3" />
       <path d="M16 42l6-12 4-6 6 4 4 8M22 24l-2-8 6-2 6 6" />
-    </svg>
-  ),
-  Pool: () => (
-    <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" className="w-full h-full">
-      <path d="M4 32c4 0 4-2 8-2s4 2 8 2 4-2 8-2 4 2 8 2 4-2 8-2" />
-      <path d="M4 40c4 0 4-2 8-2s4 2 8 2 4-2 8-2 4 2 8 2 4-2 8-2" opacity="0.6" />
-      <path d="M14 32V12c0-2 2-4 4-4M34 32V12c0-2-2-4-4-4" />
-      <path d="M14 18h20" opacity="0.6" />
-    </svg>
-  ),
-  Sauna: () => (
-    <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" className="w-full h-full">
-      <path d="M16 28c0-3 2-3 2-6s-2-3-2-6M24 28c0-3 2-3 2-6s-2-3-2-6M32 28c0-3 2-3 2-6s-2-3-2-6" />
-      <rect x="8" y="30" width="32" height="12" rx="1" />
-      <path d="M14 36h20" opacity="0.5" />
-    </svg>
-  ),
-  Fitness: () => (
-    <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" className="w-full h-full">
-      <path d="M14 14v20M10 18v12M34 14v20M38 18v12M14 24h20" />
-      <path d="M6 22v4M42 22v4" opacity="0.6" />
-    </svg>
-  ),
-  Book: () => (
-    <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" className="w-full h-full">
-      <path d="M8 10h14a4 4 0 014 4v24a4 4 0 00-4-4H8z" />
-      <path d="M40 10H26a4 4 0 00-4 4v24a4 4 0 014-4h14z" />
-      <path d="M14 18h8M14 24h8M28 18h8M28 24h8" opacity="0.5" />
-    </svg>
-  ),
-  Kids: () => (
-    <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" className="w-full h-full">
-      <circle cx="24" cy="14" r="5" />
-      <path d="M14 36c0-6 4-10 10-10s10 4 10 10v6H14z" />
-      <path d="M14 28h-4M38 28h-4" opacity="0.6" />
-    </svg>
-  ),
-  Cafe: () => (
-    <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" className="w-full h-full">
-      <path d="M10 18h24v14a8 8 0 01-8 8h-8a8 8 0 01-8-8z" />
-      <path d="M34 22h4a4 4 0 010 8h-4" />
-      <path d="M16 12c0-2 2-2 2-4M22 12c0-2 2-2 2-4M28 12c0-2 2-2 2-4" opacity="0.6" />
-    </svg>
-  ),
-  Skyline: () => (
-    <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" className="w-full h-full">
-      <path d="M4 42h40" />
-      <rect x="6" y="22" width="8" height="20" />
-      <rect x="14" y="14" width="10" height="28" />
-      <rect x="24" y="6" width="10" height="36" />
-      <rect x="34" y="18" width="8" height="24" />
-      <path d="M18 20h2M18 26h2M18 32h2M28 14h2M28 22h2M28 30h2M28 38h2" opacity="0.5" />
-    </svg>
-  ),
-  House: () => (
-    <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" className="w-full h-full">
-      <path d="M6 22L24 8l18 14v18a2 2 0 01-2 2H8a2 2 0 01-2-2z" />
-      <path d="M18 42V28h12v14" />
-    </svg>
-  ),
-  Lounge: () => (
-    <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" className="w-full h-full">
-      <path d="M6 30v-6a4 4 0 014-4h28a4 4 0 014 4v6" />
-      <path d="M6 30h36v6a4 4 0 01-4 4H10a4 4 0 01-4-4z" />
-      <path d="M14 30v-6M34 30v-6" opacity="0.5" />
     </svg>
   ),
   Buildings: () => (
@@ -157,15 +89,9 @@ const Icon = {
   ),
   Grid: () => (
     <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" className="w-full h-full">
-      <rect x="8" y="8" width="10" height="10" />
-      <rect x="20" y="8" width="10" height="10" />
-      <rect x="32" y="8" width="8" height="10" />
-      <rect x="8" y="20" width="10" height="10" />
-      <rect x="20" y="20" width="10" height="10" />
-      <rect x="32" y="20" width="8" height="10" />
-      <rect x="8" y="32" width="10" height="8" />
-      <rect x="20" y="32" width="10" height="8" />
-      <rect x="32" y="32" width="8" height="8" />
+      <rect x="8" y="8" width="10" height="10" /><rect x="20" y="8" width="10" height="10" /><rect x="32" y="8" width="8" height="10" />
+      <rect x="8" y="20" width="10" height="10" /><rect x="20" y="20" width="10" height="10" /><rect x="32" y="20" width="8" height="10" />
+      <rect x="8" y="32" width="10" height="8" /><rect x="20" y="32" width="10" height="8" /><rect x="32" y="32" width="8" height="8" />
     </svg>
   ),
 };
@@ -178,18 +104,22 @@ const landscapeFeatures = [
 ];
 
 const communityFacilities = [
-  { tag: "Pool", icon: <Icon.Pool />, title: "25m 4레인 실내수영장", desc: "유아 풀장과 사우나를 함께 갖춘 25m, 4레인 규모 실내수영장. 리조트보다 즐거운 홈캉스를 만끽." },
-  { tag: "Sauna", icon: <Icon.Sauna />, title: "사우나", desc: "수영장과 연계된 사우나 시설로 운동 후의 피로 회복 동선까지 단지 안에서 완성." },
-  { tag: "Fitness", icon: <Icon.Fitness />, title: "피트니스 클럽", desc: "유산소·웨이트·GX 공간을 갖춘 피트니스 클럽. 입주민 전용으로 쾌적한 운동 환경을 제공." },
-  { tag: "Library", icon: <Icon.Book />, title: "도서관 · 스터디룸", desc: "독서·자기계발·아이의 학습이 가능한 조용한 라이브러리와 스터디 라운지." },
-  { tag: "Kids", icon: <Icon.Kids />, title: "키즈존", desc: "아이들이 안전하게 머무를 수 있는 실내 놀이 공간. 부모가 가까이서 함께 시간을 나눌 수 있습니다." },
-  { tag: "Cafe", icon: <Icon.Cafe />, title: "카페테리아 · 라운지", desc: "이웃과 가볍게 만날 수 있는 카페 라운지. 단지의 일상 모임 거점." },
+  { img: "/images/cg/pool.jpg", tag: "Pool", title: "25m 4레인 실내수영장", desc: "리조트보다 즐거운 홈캉스. 사계절 쾌적한 25m, 4레인 규모 실내수영장." },
+  { img: "/images/cg/pool-kids.jpg", tag: "Kids Pool", title: "유아 풀장", desc: "아이들이 안전하게 물놀이를 즐길 수 있는 별도의 유아 전용 풀." },
+  { img: "/images/cg/sauna.jpg", tag: "Sauna", title: "사우나", desc: "수영장과 연계된 사우나로 운동 후의 피로 회복까지 단지 안에서 완성." },
+  { img: "/images/cg/fitness.jpg", tag: "Fitness", title: "피트니스 클럽", desc: "유산소·웨이트 공간을 갖춘 입주민 전용 피트니스. 쾌적한 운동 환경." },
+  { img: "/images/cg/cafeteria.jpg", tag: "Cafeteria", title: "카페테리아 · 라운지", desc: "이웃과 가볍게 만날 수 있는 카페 라운지. 단지의 일상 모임 거점." },
+  { img: "/images/cg/library.jpg", tag: "Library", title: "작은 도서관 · 스터디룸", desc: "독서·자기계발·아이의 학습이 가능한 조용한 라이브러리와 스터디 라운지." },
+  { img: "/images/cg/kids-room.jpg", tag: "Kids", title: "실내 놀이터", desc: "아이들이 안전하게 머무를 수 있는 실내 놀이 공간. 부모와 함께하는 시간." },
+  { img: "/images/cg/golf.jpg", tag: "Golf", title: "스크린 골프", desc: "단지 안에서 즐기는 스크린 골프. 날씨와 무관하게 라운딩을 만끽." },
 ];
 
 const skyloungeFeatures = [
-  { num: "01", icon: <Icon.Skyline />, title: "39층 최상층 스카이라운지", desc: "성성호수공원이 한눈에 들어오는 단지 최상층의 라운지 공간. 파노라마로 펼쳐진 명품 전망." },
-  { num: "02", icon: <Icon.House />, title: "게스트하우스", desc: "방문객을 위한 별도의 게스트하우스. 손님을 가까이서 모실 수 있는 단지 안의 호스피탈리티." },
-  { num: "03", icon: <Icon.Lounge />, title: "프라이빗 라운지 좌석", desc: "휴식·미팅·차 한잔을 위한 라운지 좌석. 입주민만이 누릴 수 있는 단지 안의 특별한 시간." },
+  { img: "/images/cg/skylounge-night1.jpg", tag: "Night View", title: "39층 스카이라운지 — 야경", desc: "성성호수공원이 한눈에 들어오는 단지 최상층의 라운지. 파노라마로 펼쳐진 명품 야경." },
+  { img: "/images/cg/skylounge-day1.jpg", tag: "Day View", title: "스카이라운지 — 주경", desc: "낮에는 호수와 도시를 동시에 조망하는 탁 트인 전망의 라운지 공간." },
+  { img: "/images/cg/skylounge-night2.jpg", tag: "Lounge", title: "프라이빗 라운지", desc: "휴식·미팅·차 한잔을 위한 라운지 좌석. 입주민만이 누릴 수 있는 특별한 시간." },
+  { img: "/images/cg/guest-a.jpg", tag: "Guest Room", title: "게스트룸 A", desc: "방문객을 위한 별도의 게스트룸. 손님을 가까이서 모실 수 있는 호스피탈리티." },
+  { img: "/images/cg/guest-b.jpg", tag: "Guest Room", title: "게스트룸 B", desc: "또 하나의 게스트룸 타입. 단지 안에서 누리는 프라이빗한 손님맞이." },
 ];
 
 const layoutHighlights = [
@@ -199,6 +129,21 @@ const layoutHighlights = [
   { num: "1,460", unit: "세대", label: "1블록 공급", icon: <Icon.Grid /> },
 ];
 
+function PhotoCard({ img, tag, title, desc }: { img: string; tag: string; title: string; desc: string }) {
+  return (
+    <article className="relative aspect-[4/3] overflow-hidden bg-ink group">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={img} alt={title} className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-[1.04]" />
+      <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/30 to-transparent" />
+      <p className="absolute top-4 left-4 lg:top-5 lg:left-5 text-paper/65 text-[10px] tracking-[3px] uppercase">{tag}</p>
+      <div className="absolute bottom-4 left-4 right-4 lg:bottom-5 lg:left-5 lg:right-5">
+        <h3 className="text-paper text-[16px] lg:text-[18px] tracking-tight leading-tight mb-1.5" style={{ fontWeight: 500 }}>{title}</h3>
+        <p className="text-paper/65 text-[11.5px] lg:text-[12.5px] font-light leading-[1.8]">{desc}</p>
+      </div>
+    </article>
+  );
+}
+
 export default function ComplexSection({ initialSubTab }: ComplexSectionProps) {
   const [activeSubTab, setActiveSubTab] = useState(initialSubTab || "landscape");
   const head = headerCopy[activeSubTab] || headerCopy.landscape;
@@ -206,10 +151,10 @@ export default function ComplexSection({ initialSubTab }: ComplexSectionProps) {
   return (
     <section className="pt-[92px] bg-paper">
 
-      {/* ── PAGE HEADER (with subtle bg) ── */}
+      {/* ── PAGE HEADER ── */}
       <div className="relative bg-ink text-paper overflow-hidden">
-        <Image src="/images/office-interior.jpg" alt="" fill priority sizes="100vw" className="object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-r from-ink/75 via-ink/55 to-ink/35" />
+        <Image src="/images/cg/site-plan.jpg" alt="" fill priority sizes="100vw" className="object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-r from-ink/85 via-ink/65 to-ink/45" />
         <div className="relative max-w-[1280px] mx-auto px-6 lg:pl-[88px] lg:pr-10 py-14 lg:py-20 grid grid-cols-12 gap-8 lg:gap-12 items-end">
           <div className="col-span-12 lg:col-span-7">
             <p className="text-[10.5px] tracking-[3px] uppercase text-rust mb-3">{head.tag}</p>
@@ -218,7 +163,7 @@ export default function ComplexSection({ initialSubTab }: ComplexSectionProps) {
             </h1>
           </div>
           <div className="col-span-12 lg:col-span-5 lg:border-l lg:border-paper/15 lg:pl-10">
-            <p className="text-paper/70 text-[13.5px] font-light leading-[1.95]">
+            <p className="text-paper/75 text-[13.5px] font-light leading-[1.95]">
               {head.subtitle}
             </p>
           </div>
@@ -227,7 +172,7 @@ export default function ComplexSection({ initialSubTab }: ComplexSectionProps) {
 
       {/* ── SUB NAV ── */}
       <div className="bg-paper border-b border-ink/[0.08] sticky top-[56px] z-30 backdrop-blur-md bg-paper/95">
-        <div className="max-w-[1280px] mx-auto px-6 lg:pl-[88px] lg:pr-10 flex items-center gap-7 overflow-x-auto">
+        <div className="max-w-[1280px] mx-auto px-6 lg:pl-[88px] lg:pr-10 flex items-center gap-7 overflow-x-auto no-scrollbar">
           {subTabs.map((tab) => (
             <button
               key={tab.id}
@@ -269,7 +214,7 @@ export default function ComplexSection({ initialSubTab }: ComplexSectionProps) {
               <div className="relative aspect-[16/9] sm:aspect-[2/1] overflow-hidden bg-ink mb-12">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src="/images/cg/entrance.jpg" alt="단지 출입구 조감 CG" className="absolute inset-0 w-full h-full object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-t from-ink/30 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-ink/35 to-transparent" />
                 <p className="absolute bottom-5 left-5 lg:bottom-7 lg:left-7 text-paper text-[13px] lg:text-[15px] tracking-tight" style={{ fontWeight: 500 }}>
                   단지 출입구 — 사계절 힐링조경
                 </p>
@@ -280,22 +225,16 @@ export default function ComplexSection({ initialSubTab }: ComplexSectionProps) {
                   <article key={f.num} className="bg-paper p-8 lg:p-10 min-h-[220px] flex flex-col">
                     <div className="flex items-start justify-between mb-6">
                       <span className="text-rust text-[12px] tabular-nums tracking-wider">{f.num}</span>
-                      <div className="w-12 h-12 lg:w-14 lg:h-14 text-rust">
-                        {f.icon}
-                      </div>
+                      <div className="w-12 h-12 lg:w-14 lg:h-14 text-rust">{f.icon}</div>
                     </div>
-                    <h3 className="text-ink text-[20px] lg:text-[22px] tracking-tight leading-tight mb-3" style={{ fontWeight: 500 }}>
-                      {f.title}
-                    </h3>
-                    <p className="text-stone text-[13.5px] font-light leading-[1.95]">
-                      {f.desc}
-                    </p>
+                    <h3 className="text-ink text-[20px] lg:text-[22px] tracking-tight leading-tight mb-3" style={{ fontWeight: 500 }}>{f.title}</h3>
+                    <p className="text-stone text-[13.5px] font-light leading-[1.95]">{f.desc}</p>
                   </article>
                 ))}
               </div>
 
               <p className="text-stone-light text-[11px] mt-8 font-light">
-                * 본 내용은 분양 마케팅 컨셉 안내이며, 실제 시공 시 식재·시설물 위치는 다소 변경될 수 있습니다.
+                * 본 CG는 분양 마케팅 컨셉 안내이며, 실제 시공 시 식재·시설물 위치는 다소 변경될 수 있습니다.
               </p>
             </div>
           )}
@@ -303,7 +242,7 @@ export default function ComplexSection({ initialSubTab }: ComplexSectionProps) {
           {/* ── COMMUNITY ── */}
           {activeSubTab === "community" && (
             <div>
-              <div className="grid grid-cols-12 gap-6 mb-14">
+              <div className="grid grid-cols-12 gap-6 mb-12">
                 <div className="col-span-12 lg:col-span-4">
                   <p className="text-[10.5px] tracking-[3px] uppercase text-rust mb-3">Resort-like</p>
                   <h2 className="text-ink text-[26px] lg:text-[32px] leading-[1.25] tracking-tight" style={{ fontWeight: 300 }}>
@@ -312,52 +251,16 @@ export default function ComplexSection({ initialSubTab }: ComplexSectionProps) {
                 </div>
                 <p className="col-span-12 lg:col-span-8 lg:pl-12 lg:border-l lg:border-ink/10 text-stone text-[14px] leading-[2] font-light max-w-[560px]">
                   유아 풀장과 사우나까지 갖춘 25m, 4레인 규모 실내수영장을 비롯해
-                  피트니스·도서관·키즈존·카페테리아 등 입주민 전용 커뮤니티가 단지 안에서 일상을 풍요롭게 합니다.
+                  피트니스·도서관·키즈존·카페테리아·스크린골프 등 입주민 전용 커뮤니티가 단지 안에서 일상을 풍요롭게 합니다.
                 </p>
               </div>
 
-              {/* 공식 커뮤니티 CG 갤러리 */}
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-3 lg:gap-4 mb-12">
-                {[
-                  { src: "/images/cg/pool.jpg", label: "25m 4레인 실내수영장" },
-                  { src: "/images/cg/pool-kids.jpg", label: "유아 풀장" },
-                  { src: "/images/cg/sauna.jpg", label: "사우나" },
-                  { src: "/images/cg/fitness.jpg", label: "피트니스 클럽" },
-                  { src: "/images/cg/cafeteria.jpg", label: "카페테리아" },
-                  { src: "/images/cg/library.jpg", label: "작은 도서관" },
-                  { src: "/images/cg/kids-room.jpg", label: "실내 놀이터" },
-                  { src: "/images/cg/golf.jpg", label: "스크린 골프" },
-                ].map((img) => (
-                  <div key={img.src} className="relative aspect-[4/3] overflow-hidden bg-ink group">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={img.src} alt={img.label} className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-[1.04]" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent" />
-                    <p className="absolute bottom-3 left-3 lg:bottom-4 lg:left-4 text-paper text-[11px] lg:text-[12.5px] tracking-tight" style={{ fontWeight: 500 }}>{img.label}</p>
-                  </div>
-                ))}
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-ink/10 border border-ink/10">
-                {communityFacilities.map((f) => (
-                  <article key={f.title} className="bg-paper p-7 lg:p-8 min-h-[220px] flex flex-col">
-                    <div className="flex items-start justify-between mb-5">
-                      <p className="text-rust text-[10.5px] tracking-[3px] uppercase">{f.tag}</p>
-                      <div className="w-11 h-11 lg:w-12 lg:h-12 text-rust">
-                        {f.icon}
-                      </div>
-                    </div>
-                    <h3 className="text-ink text-[18px] lg:text-[19px] tracking-tight leading-tight mb-3" style={{ fontWeight: 500 }}>
-                      {f.title}
-                    </h3>
-                    <p className="text-stone text-[13px] font-light leading-[1.9]">
-                      {f.desc}
-                    </p>
-                  </article>
-                ))}
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-4">
+                {communityFacilities.map((f) => <PhotoCard key={f.img} {...f} />)}
               </div>
 
               <p className="text-stone-light text-[11px] mt-8 font-light">
-                * 커뮤니티 시설 구성·규모·운영 방식은 인허가 진행 및 분양 단계에서 변경될 수 있습니다.
+                * 본 CG는 분양 마케팅 컨셉 안내이며, 커뮤니티 시설 구성·규모·운영 방식은 인허가 진행 및 분양 단계에서 변경될 수 있습니다.
               </p>
             </div>
           )}
@@ -365,7 +268,7 @@ export default function ComplexSection({ initialSubTab }: ComplexSectionProps) {
           {/* ── SKYLOUNGE ── */}
           {activeSubTab === "skylounge" && (
             <div>
-              <div className="grid grid-cols-12 gap-6 mb-14">
+              <div className="grid grid-cols-12 gap-6 mb-12">
                 <div className="col-span-12 lg:col-span-4">
                   <p className="text-[10.5px] tracking-[3px] uppercase text-rust mb-3">39F Premium</p>
                   <h2 className="text-ink text-[26px] lg:text-[32px] leading-[1.25] tracking-tight" style={{ fontWeight: 300 }}>
@@ -378,49 +281,22 @@ export default function ComplexSection({ initialSubTab }: ComplexSectionProps) {
                 </p>
               </div>
 
-              {/* 공식 스카이라운지 CG 갤러리 */}
-              <div className="grid grid-cols-12 gap-3 lg:gap-4 mb-12">
-                <div className="col-span-12 relative aspect-[16/9] sm:aspect-[5/2] overflow-hidden bg-ink">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/images/cg/skylounge-night1.jpg" alt="39층 스카이라운지 야경 CG" className="absolute inset-0 w-full h-full object-cover" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-ink/35 to-transparent" />
-                  <p className="absolute bottom-5 left-5 lg:bottom-7 lg:left-7 text-paper text-[13px] lg:text-[15px] tracking-tight" style={{ fontWeight: 500 }}>
-                    39층 스카이라운지 — 야경 조망
-                  </p>
-                </div>
-                {[
-                  { src: "/images/cg/skylounge-day1.jpg", label: "스카이라운지 주경" },
-                  { src: "/images/cg/skylounge-night2.jpg", label: "스카이라운지 야경" },
-                  { src: "/images/cg/guest-a.jpg", label: "게스트룸 A" },
-                  { src: "/images/cg/guest-b.jpg", label: "게스트룸 B" },
-                ].map((img) => (
-                  <div key={img.src} className="col-span-6 lg:col-span-3 relative aspect-[4/3] overflow-hidden bg-ink group">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={img.src} alt={img.label} className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-[1.04]" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent" />
-                    <p className="absolute bottom-3 left-3 lg:bottom-4 lg:left-4 text-paper text-[11px] lg:text-[12.5px] tracking-tight" style={{ fontWeight: 500 }}>{img.label}</p>
-                  </div>
-                ))}
+              {/* 야경 와이드 + 4-card */}
+              <div className="relative aspect-[16/9] sm:aspect-[5/2] overflow-hidden bg-ink mb-3 lg:mb-4">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/images/cg/skylounge-hero.jpg" alt="39층 스카이라운지 석양 CG" className="absolute inset-0 w-full h-full object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-ink/40 to-transparent" />
+                <p className="absolute bottom-5 left-5 lg:bottom-7 lg:left-7 text-paper text-[13px] lg:text-[15px] tracking-tight" style={{ fontWeight: 500 }}>
+                  39층 스카이라운지 — 석양 조망
+                </p>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-4">
+                {skyloungeFeatures.map((f) => <PhotoCard key={f.img} {...f} />)}
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-ink/10 border border-ink/10">
-                {skyloungeFeatures.map((f) => (
-                  <article key={f.num} className="bg-paper p-8 lg:p-10 min-h-[240px] flex flex-col">
-                    <div className="flex items-start justify-between mb-6">
-                      <span className="text-rust text-[12px] tabular-nums tracking-wider">{f.num}</span>
-                      <div className="w-12 h-12 lg:w-14 lg:h-14 text-rust">
-                        {f.icon}
-                      </div>
-                    </div>
-                    <h3 className="text-ink text-[19px] lg:text-[20px] tracking-tight leading-tight mb-3" style={{ fontWeight: 500 }}>
-                      {f.title}
-                    </h3>
-                    <p className="text-stone text-[13px] font-light leading-[1.95]">
-                      {f.desc}
-                    </p>
-                  </article>
-                ))}
-              </div>
+              <p className="text-stone-light text-[11px] mt-8 font-light">
+                * 본 CG는 분양 마케팅 컨셉 안내이며, 실제 시공 시 마감·배치·구성은 변경될 수 있습니다.
+              </p>
             </div>
           )}
 
@@ -440,22 +316,15 @@ export default function ComplexSection({ initialSubTab }: ComplexSectionProps) {
                 </p>
               </div>
 
-              {/* 공식 단지배치도 CG */}
               <div className="border border-ink/10 bg-paper-deep p-3 lg:p-4 mb-12">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="/images/cg/site-plan.jpg"
-                  alt="업성 푸르지오 레이크시티 단지배치도"
-                  className="w-full h-auto block"
-                />
+                <img src="/images/cg/site-plan.jpg" alt="업성 푸르지오 레이크시티 단지배치도" className="w-full h-auto block" />
               </div>
 
               <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-ink/10 border border-ink/10">
                 {layoutHighlights.map((s) => (
                   <div key={s.label} className="bg-paper px-5 lg:px-7 py-7 flex flex-col">
-                    <div className="w-10 h-10 lg:w-12 lg:h-12 text-rust mb-5">
-                      {s.icon}
-                    </div>
+                    <div className="w-10 h-10 lg:w-12 lg:h-12 text-rust mb-5">{s.icon}</div>
                     <p className="text-ink tabular-nums text-[36px] lg:text-[44px] leading-none tracking-tight" style={{ fontWeight: 300 }}>
                       {s.num}<span className="text-stone text-[14px] lg:text-[16px] ml-2 align-baseline">{s.unit}</span>
                     </p>
@@ -463,7 +332,6 @@ export default function ComplexSection({ initialSubTab }: ComplexSectionProps) {
                   </div>
                 ))}
               </div>
-
 
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 mt-16">
                 <div>

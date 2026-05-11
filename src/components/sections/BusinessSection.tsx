@@ -1,25 +1,8 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import ContactCTA from "@/components/ContactCTA";
 import { SUPPLY_DETAIL } from "@/lib/site";
-
-function useInView(threshold = 0.15) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const obs = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) { setVisible(true); obs.disconnect(); } },
-      { threshold }
-    );
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, [threshold]);
-  return { ref, visible };
-}
 
 const typeInfo = [
   { type: "72㎡", variants: "A·B·C·D", desc: "효율적인 공간 구성의 실속형 — 총 749세대 공급" },
@@ -28,17 +11,12 @@ const typeInfo = [
 ];
 
 export default function BusinessSection() {
-  const hero = useInView();
-  const info = useInView();
-  const types = useInView();
-  const supply = useInView();
-
   return (
     <section className="pt-[92px] bg-paper">
 
       {/* ── PAGE HEADER ── */}
       <div className="relative bg-ink text-paper overflow-hidden">
-        <Image src="/images/office-blueprints.jpg" alt="" fill priority sizes="100vw" className="object-cover" />
+        <Image src="/images/cg/site-plan.jpg" alt="" fill priority sizes="100vw" className="object-cover" />
         <div className="absolute inset-0 bg-gradient-to-r from-ink/75 via-ink/55 to-ink/35" />
         <div className="relative max-w-[1280px] mx-auto px-6 lg:pl-[88px] lg:pr-10 py-14 lg:py-20 grid grid-cols-12 gap-8 lg:gap-12 items-end">
           <div className="col-span-12 lg:col-span-7">
@@ -57,8 +35,8 @@ export default function BusinessSection() {
       </div>
 
       {/* ── BIG NUMBERS ── */}
-      <div ref={hero.ref} className="bg-paper-deep border-b border-ink/[0.08]">
-        <div className={`max-w-[1280px] mx-auto px-6 lg:pl-[88px] lg:pr-10 py-14 lg:py-16 transition-all duration-700 ${hero.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
+      <div className="bg-paper-deep border-b border-ink/[0.08]">
+        <div className={`max-w-[1280px] mx-auto px-6 lg:pl-[88px] lg:pr-10 py-14 lg:py-16`}>
           <div className="grid grid-cols-2 lg:grid-cols-4 divide-y divide-ink/10 lg:divide-y-0 lg:divide-x lg:divide-ink/10">
             {[
               { num: "39", unit: "층", label: "최고 층수" },
@@ -78,8 +56,8 @@ export default function BusinessSection() {
       </div>
 
       {/* ── PROJECT INFO ── */}
-      <div ref={info.ref} className="bg-paper">
-        <div className={`max-w-[1280px] mx-auto px-6 lg:pl-[88px] lg:pr-10 py-24 lg:py-28 grid grid-cols-12 gap-10 lg:gap-12 transition-all duration-700 ${info.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+      <div className="bg-paper">
+        <div className={`max-w-[1280px] mx-auto px-6 lg:pl-[88px] lg:pr-10 py-24 lg:py-28 grid grid-cols-12 gap-10 lg:gap-12`}>
           <div className="col-span-12 lg:col-span-4 lg:sticky lg:top-32 self-start">
             <p className="text-[10.5px] tracking-[3px] uppercase text-rust mb-3">Details</p>
             <h2 className="text-ink text-[26px] lg:text-[32px] leading-[1.25] tracking-tight" style={{ fontWeight: 300 }}>
@@ -121,8 +99,8 @@ export default function BusinessSection() {
       </div>
 
       {/* ── UNIT TYPES ── */}
-      <div ref={types.ref} className="bg-paper-deep border-t border-ink/[0.08]">
-        <div className={`max-w-[1280px] mx-auto px-6 lg:pl-[88px] lg:pr-10 py-24 lg:py-28 transition-all duration-700 ${types.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+      <div className="bg-paper-deep border-t border-ink/[0.08]">
+        <div className={`max-w-[1280px] mx-auto px-6 lg:pl-[88px] lg:pr-10 py-24 lg:py-28`}>
           <div className="grid grid-cols-12 gap-6 mb-10">
             <div className="col-span-12 lg:col-span-4">
               <p className="text-[10.5px] tracking-[3px] uppercase text-rust mb-3">Units</p>
@@ -155,8 +133,8 @@ export default function BusinessSection() {
       </div>
 
       {/* ── SUPPLY DETAIL TABLE ── */}
-      <div ref={supply.ref} className="bg-paper border-t border-ink/[0.08]">
-        <div className={`max-w-[1280px] mx-auto px-6 lg:pl-[88px] lg:pr-10 py-24 lg:py-28 transition-all duration-700 ${supply.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+      <div className="bg-paper border-t border-ink/[0.08]">
+        <div className={`max-w-[1280px] mx-auto px-6 lg:pl-[88px] lg:pr-10 py-24 lg:py-28`}>
           <div className="grid grid-cols-12 gap-6 mb-10">
             <div className="col-span-12 lg:col-span-4">
               <p className="text-[10.5px] tracking-[3px] uppercase text-rust mb-3">Supply</p>

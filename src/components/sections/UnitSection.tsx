@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import ContactCTA from "@/components/ContactCTA";
 import { SUPPLY_DETAIL } from "@/lib/site";
@@ -22,27 +22,10 @@ interface UnitSectionProps {
   initialSubTab?: string;
 }
 
-function useInView(threshold = 0.05) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const obs = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) { setVisible(true); obs.disconnect(); } },
-      { threshold }
-    );
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, [threshold]);
-  return { ref, visible };
-}
-
 export default function UnitSection({ initialSubTab }: UnitSectionProps) {
   const [activeType, setActiveType] = useState(
     types.find((t) => t.id.toLowerCase() === (initialSubTab || "").toLowerCase())?.id || "72A"
   );
-  const content = useInView();
   const current = types.find((t) => t.id === activeType) || types[0];
   const supplyData = SUPPLY_DETAIL.units.find((u) => u.code === activeType);
 
@@ -51,7 +34,7 @@ export default function UnitSection({ initialSubTab }: UnitSectionProps) {
 
       {/* ── PAGE HEADER ── */}
       <div className="relative bg-ink text-paper overflow-hidden">
-        <Image src="/images/office-blueprints.jpg" alt="" fill priority sizes="100vw" className="object-cover" />
+        <Image src="/images/cg/guest-a.jpg" alt="" fill priority sizes="100vw" className="object-cover" />
         <div className="absolute inset-0 bg-gradient-to-r from-ink/75 via-ink/55 to-ink/35" />
         <div className="relative max-w-[1280px] mx-auto px-6 lg:pl-[88px] lg:pr-10 py-14 lg:py-20 grid grid-cols-12 gap-8 lg:gap-12 items-end">
           <div className="col-span-12 lg:col-span-7">
@@ -88,7 +71,7 @@ export default function UnitSection({ initialSubTab }: UnitSectionProps) {
       </div>
 
       {/* ── CURRENT TYPE DETAIL ── */}
-      <div ref={content.ref} className={`bg-paper transition-opacity duration-500 ${content.visible ? "opacity-100" : "opacity-0"}`}>
+      <div className={`bg-paper`}>
         <div className="max-w-[1280px] mx-auto px-6 lg:pl-[88px] lg:pr-10 py-16 lg:py-20">
 
           {/* Floor plan image — 확장옵션 평면도 */}

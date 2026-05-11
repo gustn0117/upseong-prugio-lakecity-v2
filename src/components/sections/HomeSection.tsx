@@ -163,9 +163,9 @@ export default function HomeSection({ onTabChange }: HomeSectionProps) {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3 lg:gap-4">
             {FOUR_UP.map((f, i) => {
               const imgs = [
-                "/images/lakefront-bldg.jpg",
+                "/images/cg/skylounge-hero.jpg",
                 "/images/classroom.jpg",
-                "/images/skyline-residential.jpg",
+                "/images/cg/cafeteria.jpg",
                 "/images/highway-aerial.jpg",
               ];
               return (
