@@ -16,7 +16,7 @@ export default function BusinessSection() {
 
       {/* ── PAGE HEADER ── */}
       <div className="relative bg-ink text-paper overflow-hidden">
-        <Image src="/images/cg/site-plan.jpg" alt="" fill priority sizes="100vw" className="object-cover" />
+        <Image src="/images/hero-main.png" alt="" fill priority sizes="100vw" className="object-cover" />
         <div className="absolute inset-0 bg-gradient-to-r from-ink/75 via-ink/55 to-ink/35" />
         <div className="relative max-w-[1280px] mx-auto px-6 lg:pl-[88px] lg:pr-10 py-14 lg:py-20 grid grid-cols-12 gap-8 lg:gap-12 items-end">
           <div className="col-span-12 lg:col-span-7">
@@ -77,11 +77,10 @@ export default function BusinessSection() {
                   { label: "건축규모", value: "총 1,908세대 중 금회공급 1블록 1,460세대\n지하 2층 ~ 지상 39층, 11개동" },
                   { label: "주택형", value: "전용 72㎡ (A·B·C·D) / 84㎡ (A·B·C·D) / 95㎡ (A·B) — 3개 평형 10개 타입" },
                   { label: "공급세대", value: "특별공급 654세대 + 일반공급 806세대 (최하층 우선배정 39세대 포함)" },
-                  { label: "주택관리번호", value: "2026000086" },
                   { label: "입주시기", value: "2029년 9월 예정" },
-                  { label: "시행사", value: "교보자산신탁(주)" },
+                  { label: "신탁사", value: "교보자산신탁(주)" },
                   { label: "시공사", value: "(주)대우건설" },
-                  { label: "분양문의", value: "1668-3535" },
+                  { label: "분양문의", value: "1522-7347" },
                 ].map((row) => (
                   <tr key={row.label} className="border-b border-ink/[0.08]">
                     <th className="text-left text-stone text-[12.5px] font-normal py-5 pr-6 align-top w-[120px] lg:w-[140px]">

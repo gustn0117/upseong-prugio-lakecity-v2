@@ -12,7 +12,7 @@ import PremiumSection from "@/components/sections/PremiumSection";
 import ComplexSection from "@/components/sections/ComplexSection";
 import UnitSection from "@/components/sections/UnitSection";
 import RegisterSection from "@/components/sections/RegisterSection";
-import { hasPhone, telHref } from "@/lib/site";
+import { hasPhone, telHref, displayPhone } from "@/lib/site";
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState("home");
@@ -74,9 +74,9 @@ export default function Home() {
         </button>
         <button
           onClick={() => handleTabChange("register")}
-          className="px-4 h-10 bg-ink text-paper hover:bg-rust transition-all flex items-center gap-2 text-[11px] tracking-[2px] uppercase"
+          className="px-4 h-10 bg-ink text-paper hover:bg-rust transition-all flex items-center gap-2 text-[12px] tracking-wide"
         >
-          Register <span className="text-rust group-hover:text-paper">→</span>
+          관심고객 등록 <span className="text-rust">→</span>
         </button>
       </div>
 
@@ -90,7 +90,7 @@ export default function Home() {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5}
               d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
           </svg>
-          <span className="text-[12.5px] tabular-nums tracking-wider">분양문의 1234-5678</span>
+          <span className="text-[12.5px] tabular-nums tracking-wider">분양문의 {displayPhone}</span>
         </a>
       )}
     </div>

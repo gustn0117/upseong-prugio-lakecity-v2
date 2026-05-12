@@ -15,12 +15,10 @@ export default function Footer({ onTabChange }: FooterProps) {
   };
 
   const placeholder = "추후공지";
-  const developer = SITE.company.developer || placeholder;
-  const salesAgency = SITE.company.salesAgency || placeholder;
   const trust = SITE.company.trust || placeholder;
   const showroom = SITE.contact.showroomAddress || placeholder;
   const hours = SITE.contact.hours || placeholder;
-  const email = SITE.contact.email || placeholder;
+  const email = SITE.contact.email; // 빈 값이면 렌더 안 함
 
   return (
     <footer className="bg-ink text-paper/70">
@@ -58,10 +56,12 @@ export default function Footer({ onTabChange }: FooterProps) {
                 <span className="text-[11.5px] text-paper/40 w-[60px] tracking-wider">운영시간</span>
                 <span className="text-[13px] text-paper/65 font-light">{hours}</span>
               </div>
-              <div className="flex items-baseline gap-4">
-                <span className="text-[11.5px] text-paper/40 w-[60px] tracking-wider">이메일</span>
-                <span className="text-[13px] text-paper/65 font-light">{email}</span>
-              </div>
+              {email && (
+                <div className="flex items-baseline gap-4">
+                  <span className="text-[11.5px] text-paper/40 w-[60px] tracking-wider">이메일</span>
+                  <span className="text-[13px] text-paper/65 font-light">{email}</span>
+                </div>
+              )}
               <div className="flex items-baseline gap-4">
                 <span className="text-[11.5px] text-paper/40 w-[60px] tracking-wider">주소</span>
                 <span className="text-[13px] text-paper/65 font-light leading-relaxed">{showroom}</span>
@@ -77,8 +77,6 @@ export default function Footer({ onTabChange }: FooterProps) {
                 { k: "사업명", v: SITE.projectName },
                 { k: "위치", v: SITE.siteAddress },
                 { k: "시공", v: SITE.builder },
-                { k: "시행", v: developer },
-                { k: "분양", v: salesAgency },
                 { k: "신탁", v: trust },
               ].map((row) => (
                 <div key={row.k} className="flex gap-4">

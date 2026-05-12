@@ -1,24 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import ContactCTA from "@/components/ContactCTA";
-
-function useInView(threshold = 0.15) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const obs = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) { setVisible(true); obs.disconnect(); } },
-      { threshold }
-    );
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, [threshold]);
-  return { ref, visible };
-}
 
 const advantages = [
   { tag: "Class UP", title: "성성호수공원 레이크뷰", time: "도보 1분", desc: "성성호수공원을 품은 새도시, 남향으로 펼쳐지는 명품 레이크 뷰" },
@@ -30,43 +13,23 @@ const advantages = [
 const nearbySpots = [
   {
     category: "자연",
-    items: [
-      "성성호수공원 — 도보 1분 (남향 레이크뷰)",
-      "노태근린공원 — 도보 5분",
-      "단지 내 초대형 광장·힐링조경",
-    ],
+    items: ["성성호수공원 — 도보 1분 (남향 레이크뷰)", "노태근린공원 — 도보 5분", "단지 내 초대형 광장·힐링조경"],
   },
   {
     category: "교육",
-    items: [
-      "고등학교(예정) — 1블록 옆",
-      "초·중학교(예정) — 2블록 앞",
-      "성성지구 학원가 인근",
-    ],
+    items: ["고등학교(예정) — 1블록 옆", "초·중학교(예정) — 2블록 앞", "성성지구 학원가 인근"],
   },
   {
     category: "교통",
-    items: [
-      "1호선 부성역(예정) — 신설 협약 체결",
-      "번영로·삼성대로·천안대로 광역 도로망",
-      "경부고속도로 천안IC 인접",
-    ],
+    items: ["1호선 부성역(예정) — 신설 협약 체결", "번영로·삼성대로·천안대로 광역 도로망", "경부고속도로 천안IC 인접"],
   },
   {
     category: "생활",
-    items: [
-      "이마트·코스트코 등 대형마트",
-      "성성지구 내 중심상권",
-      "삼성SDI 등 직주근접 산업단지",
-    ],
+    items: ["이마트·코스트코 등 대형마트", "성성지구 내 중심상권", "삼성SDI 등 직주근접 산업단지"],
   },
 ];
 
 export default function LocationSection() {
-  const adv = useInView();
-  const map = useInView();
-  const infra = useInView();
-
   return (
     <section className="pt-[92px] bg-paper">
 
@@ -90,39 +53,19 @@ export default function LocationSection() {
         </div>
       </div>
 
-      {/* ── ADVANTAGES TABLE ── */}
-      <div ref={adv.ref} className="bg-paper border-b border-ink/[0.08]">
-        <div className="max-w-[1280px] mx-auto px-6 lg:pl-[88px] lg:pr-10 py-16 lg:py-20">
-          <div className="border-t border-ink/15">
-            {advantages.map((item, i) => (
-              <div
-                key={i}
-                className={`grid grid-cols-12 gap-3 sm:gap-6 items-center py-7 sm:py-8 border-b border-ink/[0.08] transition-all duration-500 ${adv.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
-                style={{ transitionDelay: `${i * 80}ms` }}
-              >
-                <span className="col-span-2 sm:col-span-2 text-[10.5px] tracking-[3px] uppercase text-rust">{item.tag}</span>
-                <h3 className="col-span-7 sm:col-span-3 text-ink text-[18px] lg:text-[20px] tracking-tight" style={{ fontWeight: 400 }}>{item.title}</h3>
-                <p className="col-span-12 sm:col-span-5 text-stone text-[13px] font-light leading-relaxed">{item.desc}</p>
-                <span className="col-span-3 sm:col-span-2 text-ink text-[12.5px] tabular-nums text-right tracking-wider">{item.time}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* ── MAP ── */}
-      <div ref={map.ref} className="bg-paper-deep border-b border-ink/[0.08]">
-        <div className={`max-w-[1280px] mx-auto px-6 lg:pl-[88px] lg:pr-10 py-20 lg:py-24 transition-all duration-700 ${map.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
-          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 mb-10">
+      {/* ── 지역도 (부각) ── */}
+      <div className="bg-paper-deep border-b border-ink/[0.08]">
+        <div className="max-w-[1280px] mx-auto px-6 lg:pl-[88px] lg:pr-10 py-12 lg:py-16">
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-7">
             <div>
-              <p className="text-[10.5px] tracking-[3px] uppercase text-rust mb-3">Map</p>
-              <h2 className="text-ink text-[26px] lg:text-[32px] tracking-tight" style={{ fontWeight: 300 }}>입지 안내</h2>
+              <p className="text-[10.5px] tracking-[3px] uppercase text-rust mb-2">Location Map</p>
+              <h2 className="text-ink text-[24px] lg:text-[30px] tracking-tight" style={{ fontWeight: 300 }}>입지 안내도</h2>
             </div>
             <p className="text-stone-light text-[11px] font-light">
               * 본 이미지는 소비자의 이해를 돕기 위한 것으로 실제와 차이가 있을 수 있습니다.
             </p>
           </div>
-          <div className="border border-ink/10 p-2 bg-paper">
+          <div className="border border-ink/10 bg-paper p-2 lg:p-3">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/images/location-map.jpg"
@@ -133,9 +76,25 @@ export default function LocationSection() {
         </div>
       </div>
 
+      {/* ── ADVANTAGES TABLE ── */}
+      <div className="bg-paper border-b border-ink/[0.08]">
+        <div className="max-w-[1280px] mx-auto px-6 lg:pl-[88px] lg:pr-10 py-16 lg:py-20">
+          <div className="border-t border-ink/15">
+            {advantages.map((item, i) => (
+              <div key={i} className="grid grid-cols-12 gap-3 sm:gap-6 items-center py-7 sm:py-8 border-b border-ink/[0.08]">
+                <span className="col-span-2 sm:col-span-2 text-[10.5px] tracking-[3px] uppercase text-rust">{item.tag}</span>
+                <h3 className="col-span-7 sm:col-span-3 text-ink text-[18px] lg:text-[20px] tracking-tight" style={{ fontWeight: 400 }}>{item.title}</h3>
+                <p className="col-span-12 sm:col-span-5 text-stone text-[13px] font-light leading-relaxed">{item.desc}</p>
+                <span className="col-span-3 sm:col-span-2 text-ink text-[12.5px] tabular-nums text-right tracking-wider">{item.time}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
       {/* ── INFRASTRUCTURE ── */}
-      <div ref={infra.ref} className="bg-paper">
-        <div className={`max-w-[1280px] mx-auto px-6 lg:pl-[88px] lg:pr-10 py-24 lg:py-28 transition-all duration-700 ${infra.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
+      <div className="bg-paper-deep border-b border-ink/[0.08]">
+        <div className="max-w-[1280px] mx-auto px-6 lg:pl-[88px] lg:pr-10 py-24 lg:py-28">
           <div className="grid grid-cols-12 gap-6 mb-12">
             <div className="col-span-12 lg:col-span-4">
               <p className="text-[10.5px] tracking-[3px] uppercase text-rust mb-3">Infra</p>
@@ -148,7 +107,7 @@ export default function LocationSection() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-ink/10 border border-ink/10">
             {nearbySpots.map((group) => (
-              <div key={group.category} className="bg-paper p-6 lg:p-7 min-h-[220px]">
+              <div key={group.category} className="bg-paper-deep p-6 lg:p-7 min-h-[220px]">
                 <h4 className="text-ink text-[18px] tracking-tight mb-5 pb-3 border-b border-ink/10" style={{ fontWeight: 500 }}>
                   {group.category}
                 </h4>

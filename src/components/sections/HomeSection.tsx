@@ -3,8 +3,6 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import ContactCTA from "@/components/ContactCTA";
-import NoticeBoard from "@/components/NoticeBoard";
-import SalesTimeline from "@/components/SalesTimeline";
 import BrandIdentityStrip from "@/components/BrandIdentityStrip";
 import { SITE, FOUR_UP } from "@/lib/site";
 
@@ -117,28 +115,35 @@ export default function HomeSection({ onTabChange }: HomeSectionProps) {
 
       {/* ─────── VISION ─────── */}
       <div className="bg-paper border-b border-ink/[0.08]">
-        <div className="max-w-[1280px] mx-auto px-6 lg:pl-[88px] lg:pr-10 py-16 lg:py-32 grid grid-cols-12 gap-7 lg:gap-16">
-
-          <div className="col-span-12 lg:col-span-4">
-            <p className="text-[10.5px] tracking-[3px] uppercase text-rust mb-3">Vision</p>
-            <h2 className="text-ink text-[24px] sm:text-[28px] lg:text-[36px] leading-[1.3] tracking-tight" style={{ fontWeight: 300 }}>
-              전망 좋은 레이크뷰,<br />
-              선망 받는 푸르지오
-            </h2>
+        <div className="max-w-[1280px] mx-auto px-6 lg:pl-[88px] lg:pr-10 py-16 lg:py-28">
+          <div className="grid grid-cols-12 gap-7 lg:gap-16 mb-10 lg:mb-14">
+            <div className="col-span-12 lg:col-span-4">
+              <p className="text-[10.5px] tracking-[3px] uppercase text-rust mb-3">Vision</p>
+              <h2 className="text-ink text-[24px] sm:text-[28px] lg:text-[36px] leading-[1.3] tracking-tight" style={{ fontWeight: 300 }}>
+                전망 좋은 레이크뷰,<br />
+                선망 받는 푸르지오
+              </h2>
+            </div>
+            <div className="col-span-12 lg:col-span-8 lg:pl-12 lg:border-l lg:border-ink/10">
+              <div className="grid sm:grid-cols-2 gap-6 lg:gap-12">
+                <p className="text-stone text-[13.5px] lg:text-[14px] leading-[1.95] lg:leading-[2] font-light">
+                  충청남도 천안시 서북구 업성동, 업성3 도시개발지구에 들어서는 1,460세대 규모의 푸르지오 주거단지.
+                  성성호수공원과 맞닿은 입지 위에 호수 조망과 도시 인프라가 균형 있게 자리 잡습니다.
+                </p>
+                <p className="text-stone text-[13.5px] lg:text-[14px] leading-[1.95] lg:leading-[2] font-light">
+                  지하 2층 ~ 지상 39층, 11개동의 단지 구성. 전용 72·84·95㎡ 3개 평형 10개 타입이
+                  가족 구성에 따라 선택의 폭을 제공하며, 39층 스카이라운지와 25m 4레인 실내수영장 등
+                  푸르지오 특유의 특화 설계가 함께합니다.
+                </p>
+              </div>
+            </div>
           </div>
 
-          <div className="col-span-12 lg:col-span-8 lg:pl-12 lg:border-l lg:border-ink/10">
-            <div className="grid sm:grid-cols-2 gap-6 lg:gap-12">
-              <p className="text-stone text-[13.5px] lg:text-[14px] leading-[1.95] lg:leading-[2] font-light">
-                충청남도 천안시 서북구 업성동, 업성3 도시개발지구에 들어서는 1,460세대 규모의 푸르지오 주거단지.
-                성성호수공원과 맞닿은 입지 위에 호수 조망과 도시 인프라가 균형 있게 자리 잡습니다.
-              </p>
-              <p className="text-stone text-[13.5px] lg:text-[14px] leading-[1.95] lg:leading-[2] font-light">
-                지하 2층 ~ 지상 39층, 11개동의 단지 구성. 전용 72·84·95㎡ 3개 평형 10개 타입이
-                가족 구성에 따라 선택의 폭을 제공하며, 39층 스카이라운지와 25m 4레인 실내수영장 등
-                푸르지오 특유의 특화 설계가 함께합니다.
-              </p>
-            </div>
+          {/* 조감 CG 이미지 */}
+          <div className="relative aspect-[16/9] sm:aspect-[2.4/1] overflow-hidden bg-ink">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/images/cg/entrance.jpg" alt="업성 푸르지오 레이크시티 조감 CG" className="absolute inset-0 w-full h-full object-cover" />
+            <div className="absolute inset-0 bg-gradient-to-t from-ink/25 to-transparent" />
           </div>
         </div>
       </div>
@@ -224,12 +229,6 @@ export default function HomeSection({ onTabChange }: HomeSectionProps) {
           </div>
         </div>
       </div>
-
-      {/* ─────── SALES SCHEDULE ─────── */}
-      <SalesTimeline />
-
-      {/* ─────── NOTICES ─────── */}
-      <NoticeBoard />
 
       {/* ─────── MAP TEASER ─────── */}
       <div className="bg-paper border-y border-ink/[0.08]">
